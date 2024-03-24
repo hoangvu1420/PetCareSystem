@@ -1,2 +1,2 @@
-# KTPM-Group19
-Bài tập lớn KTPM - HUST. Đề tài HỆ THỐNG HỖ TRỢ SỰ CỐ XE TRÊN ĐƯỜNG
+# ITSS-Group19
+Bài tập lớn ITSS - HUST. Đề tài HỆ THỐNG HỖ TRỢ SỰ CỐ XE TRÊN ĐƯỜNG
