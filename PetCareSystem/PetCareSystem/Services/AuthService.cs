@@ -26,11 +26,6 @@ public class AuthService : IAuthService
 
 	public async Task<AuthResponse> RegisterAsync(RegisterRequestDto request)
 	{
-		if (await _userManager.Users.CountAsync() == 0)
-		{
-			await SeedRoles();
-		}
-
 		var isUserExist = await _userManager.FindByEmailAsync(request.Email);
 		if (isUserExist != null)
 		{
@@ -47,7 +42,8 @@ public class AuthService : IAuthService
 			Email = request.Email,
 			FirstName = request.FirstName,
 			LastName = request.LastName,
-			Districs = request.Districs
+			Districs = request.Districs,
+			ProfilePictureUrl = ProfilePictureStock.GetRandomProfilePicture()
 		};
 
 		var result = await _userManager.CreateAsync(newUser, request.Password);
@@ -59,6 +55,12 @@ public class AuthService : IAuthService
 				IsSucceed = false,
 				ErrorMessages = result.Errors.Select(e => e.Description).ToList()
 			};
+		}
+
+		if (await _userManager.Users.CountAsync() == 1)
+		{
+			await SeedRoles();
+			await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
 		}
 
 		await _userManager.AddToRoleAsync(newUser, UserRoles.User);
