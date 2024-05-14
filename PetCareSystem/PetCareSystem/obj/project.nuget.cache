@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "AR10+k+7aJCJ3YnkdR4LBUbfSH8qrOdx2ddUMY4ircXmuXtF2JKN3u5kmKr494mxpC1yVtAW6Ynu1p/jcwwARA==",
+  "success": true,
+  "projectFilePath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\FPTSHOP\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
