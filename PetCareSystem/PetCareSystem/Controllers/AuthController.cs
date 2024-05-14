@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.DTOs;
 using PetCareSystem.Services.Contracts;
 
@@ -73,8 +74,11 @@ public class AuthController : ControllerBase
 
 	[HttpPost]
 	[Route("add-to-role")]
+	[Authorize(Roles = "Admin")]
 	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status400BadRequest)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	public async Task<IActionResult> AddToRole([FromBody] AddToRoleDto addToRoleDto)
 	{
 		if (!ModelState.IsValid)
