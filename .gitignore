@@ -1,3 +1,5 @@
 *.log
 temp/
 PetCareSystem/.vs/
+PetCareSystem/PetCareSystem/bin
+PetCareSystem/PetCareSystem/obj

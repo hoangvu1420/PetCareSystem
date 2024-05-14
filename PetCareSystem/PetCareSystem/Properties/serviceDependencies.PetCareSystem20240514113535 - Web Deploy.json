@@ -3,6 +3,13 @@
     "apis1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/PetCareSystemapi/apis/PetCareSystem",
       "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/PetCareSystem20240514113535/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDefault_6165E8FDA1",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/hnv-test-sql-server/databases/PetCareSystem_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Default"
     }
   }
 }
