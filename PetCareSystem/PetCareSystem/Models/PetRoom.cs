@@ -1,10 +1,14 @@
-﻿namespace PetCareSystem.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PetCareSystem.Models;
 
 public class PetRoom
 {
+	[ForeignKey("Pet")]
 	public int PetId { get; set; }
 	public Pet Pet { get; set; }
 
+	[ForeignKey("Room")]
 	public int RoomId { get; set; }
 	public Room Room { get; set; }
 

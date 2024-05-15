@@ -1,6 +1,8 @@
 ﻿using System.Linq.Expressions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PetCareSystem.Infrastructure.DataContext;
+using PetCareSystem.Models;
 using PetCareSystem.Repositories.Contracts;
 
 namespace PetCareSystem.Repositories.Implementations;
@@ -10,9 +12,9 @@ public class Repository<T> : IRepository<T> where T : class
 	private readonly ApplicationDbContext _dbContext;
 	internal DbSet<T> dbSet;
 
-	public Repository(ApplicationDbContext db)
+	public Repository(ApplicationDbContext dbContext)
 	{
-		_dbContext = db;
+		_dbContext = dbContext;
 		dbSet = _dbContext.Set<T>();
 	}
 
@@ -72,6 +74,11 @@ public class Repository<T> : IRepository<T> where T : class
 	{
 		dbSet.Remove(dbSet.Find(id));
 		await SaveAsync();
+	}
+
+	public async Task<bool> ExistsAsync(Expression<Func<T, bool>> filter)
+	{
+		return await dbSet.AnyAsync(filter);
 	}
 
 	public async Task SaveAsync()

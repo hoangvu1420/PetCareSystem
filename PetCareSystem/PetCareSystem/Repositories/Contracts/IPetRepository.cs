@@ -1,5 +1,7 @@
-﻿namespace PetCareSystem.Repositories.Contracts;
+﻿using PetCareSystem.Models;
 
-public interface IPetRepository
+namespace PetCareSystem.Repositories.Contracts;
+
+public interface IPetRepository : IRepository<Pet>
 {
 }

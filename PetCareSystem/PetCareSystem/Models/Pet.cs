@@ -1,4 +1,6 @@
-﻿namespace PetCareSystem.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PetCareSystem.Models;
 
 public class Pet : BaseEntity
 {
@@ -7,9 +9,10 @@ public class Pet : BaseEntity
 	public string Species { get; set; }
 	public string Breed { get; set; }
 	public string HairColor { get; set; }
+	public string ImageUrl { get; set; }
 
-	// Foreign Key for AppUser
-	public int OwnerId { get; set; }
+	[ForeignKey("AppUser")]
+	public string OwnerId { get; set; }
 	public AppUser Owner { get; set; }
 
 	// Navigation Properties
