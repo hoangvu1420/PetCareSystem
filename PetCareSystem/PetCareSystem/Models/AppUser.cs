@@ -9,4 +9,6 @@ public class AppUser : IdentityUser
 	public string? Districs { get; set; }
 	public string ProfilePictureUrl { get; set; }
 	public string FullName => $"{FirstName} {LastName}";
+
+	public IEnumerable<Pet> Pets { get; set; }
 }

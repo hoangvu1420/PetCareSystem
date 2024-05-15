@@ -7,6 +7,7 @@ namespace PetCareSystem.Infrastructure.DataContext;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<AppUser>(options)
 {
 	DbSet<AppUser> AppUsers { get; set; }
+	DbSet<Pet> Pets { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
