@@ -10,5 +10,5 @@ public class PetGroomingService
 
 	public DateTime Date { get; set; }
 	public decimal TotalPrice { get; set; }
-	public string Notes { get; set; }
+	public string? Notes { get; set; }
 }

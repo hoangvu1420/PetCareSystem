@@ -12,5 +12,5 @@ public class PetRoom
 	public DateTime CheckOut { get; set; }
 	public bool IsIn { get; set; }
 	public decimal TotalPrice { get; set; }
-	public string Notes { get; set; }
+	public string? Notes { get; set; }
 }

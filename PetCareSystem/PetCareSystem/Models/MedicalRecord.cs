@@ -8,6 +8,7 @@ public class MedicalRecord : BaseEntity
 	public string Doctor { get; set; }
 	public string Diet { get; set; }
 	public string Medication { get; set; }
+	public string? Notes { get; set; }
 
 	public int PetId { get; set; }
 	public Pet Pet { get; set; }
