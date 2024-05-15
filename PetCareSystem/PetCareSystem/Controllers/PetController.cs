@@ -49,7 +49,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 		}
 	}
 
-	[HttpGet("/user/{userId}")]
+	[HttpGet("user/{userId}")]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
