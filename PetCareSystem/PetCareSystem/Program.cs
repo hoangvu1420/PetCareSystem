@@ -8,6 +8,7 @@ using PetCareSystem.Infrastructure.DataContext;
 using PetCareSystem.Models;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.Services;
+using PetCareSystem.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 

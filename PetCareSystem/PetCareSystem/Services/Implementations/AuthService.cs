@@ -9,7 +9,7 @@ using PetCareSystem.Models;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.StaticDetails;
 
-namespace PetCareSystem.Services;
+namespace PetCareSystem.Services.Implementations;
 
 public class AuthService : IAuthService
 {
