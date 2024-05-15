@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PetCareSystem.Infrastructure.DataContext;
 using PetCareSystem.Models;
+using PetCareSystem.Repositories.Contracts;
+using PetCareSystem.Repositories.Implementations;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.Services;
 using PetCareSystem.Services.Implementations;
@@ -14,6 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// Add repositories to the container.
+builder.Services.AddScoped<IPetRepository, PetRepository>();
 
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
@@ -44,8 +49,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 	options.User.RequireUniqueEmail = true;
 });
 
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]);
-
 // Add Authentication and JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
@@ -67,7 +70,6 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -112,7 +114,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapControllers();
 

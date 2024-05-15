@@ -42,8 +42,8 @@ public class AuthService : IAuthService
 			Email = request.Email,
 			FirstName = request.FirstName,
 			LastName = request.LastName,
-			Districs = request.Districs,
-			ProfilePictureUrl = ProfilePictureStock.GetRandomProfilePicture()
+			District = request.Districs,
+			ProfilePictureUrl = PictureStock.GetRandomPicture()
 		};
 
 		var result = await _userManager.CreateAsync(newUser, request.Password);
@@ -72,12 +72,12 @@ public class AuthService : IAuthService
 		};
 	}
 
-	public async Task<AuthResponse> LoginAsync(LoginRequestDto request)
+	public async Task<LoginResponse> LoginAsync(LoginRequestDto request)
 	{
 		var user = await _userManager.FindByEmailAsync(request.Email);
 		if (user == null)
 		{
-			return new AuthResponse
+			return new LoginResponse
 			{
 				IsSucceed = false,
 				ErrorMessages = ["Email is not registered"]
@@ -88,7 +88,7 @@ public class AuthService : IAuthService
 
 		if (!result)
 		{
-			return new AuthResponse
+			return new LoginResponse
 			{
 				IsSucceed = false,
 				ErrorMessages = ["Password is incorrect"]
@@ -108,10 +108,20 @@ public class AuthService : IAuthService
 
 		var token = GenerateJwtToken(claims);
 
-		return new AuthResponse
+		return new LoginResponse
 		{
 			IsSucceed = true,
-			Message = token
+			Token = token,
+			UserInfo = new UserDto
+			{
+				Id = user.Id,
+				Email = user.Email,
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				District = user.District,
+				ProfilePictureUrl = user.ProfilePictureUrl,
+				Roles = userRoles.ToList()
+			}
 		};
 	}
 
