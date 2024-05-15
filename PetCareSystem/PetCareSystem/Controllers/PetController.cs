@@ -12,7 +12,7 @@ namespace PetCareSystem.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+// [Authorize]
 public class PetController(IPetRepository petRepository, UserManager<AppUser> userManager) : ControllerBase
 {
 	private readonly ApiResponse _response = new();
@@ -37,7 +37,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			}
 
 			_response.IsSucceed = true;
-			_response.Data = pets;
+			_response.Data = pets.ToPetDtoList();
 
 			return Ok(_response);
 		}
@@ -77,7 +77,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			}
 
 			_response.IsSucceed = true;
-			_response.Data = pets;
+			_response.Data = pets.ToPetDtoList();
 
 			return Ok(_response);
 		}
@@ -89,7 +89,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 		}
 	}
 
-	[HttpGet("{petId:int}")]
+	[HttpGet("{petId:int}", Name = "GetPetById")]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -109,7 +109,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			var pet = await petRepository.GetAsync(filter: p => p.Id == petId);
 
 			_response.IsSucceed = true;
-			_response.Data = pet;
+			_response.Data = pet.ToPetDto();
 
 			return Ok(_response);
 		}
@@ -143,6 +143,8 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			}
 
 			var pet = petDto.ToPet();
+			pet.CreatedAt = DateTime.Now;
+			pet.UpdatedAt = pet.CreatedAt;
 
 			await petRepository.CreateAsync(pet);
 

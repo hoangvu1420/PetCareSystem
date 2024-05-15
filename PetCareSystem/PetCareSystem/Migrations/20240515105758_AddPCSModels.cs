@@ -11,17 +11,20 @@ namespace PetCareSystem.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Districs",
-                table: "AspNetUsers");
+	        migrationBuilder.AddColumn<string>(
+		        name: "District",
+		        table: "AspNetUsers",
+		        type: "nvarchar(max)",
+		        nullable: true);
 
-            migrationBuilder.AddColumn<string>(
-                name: "District",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: true);
+	        migrationBuilder.Sql(
+		        @"UPDATE AspNetUsers SET District = Districs");
 
-            migrationBuilder.CreateTable(
+	        migrationBuilder.DropColumn(
+		        name: "Districs",
+		        table: "AspNetUsers");
+
+			migrationBuilder.CreateTable(
                 name: "GroomingServices",
                 columns: table => new
                 {

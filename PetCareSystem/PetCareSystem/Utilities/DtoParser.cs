@@ -1,4 +1,5 @@
-﻿using PetCareSystem.DTOs.PetDtos;
+﻿using Microsoft.IdentityModel.Tokens;
+using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
 using PetCareSystem.StaticDetails;
 
@@ -9,7 +10,7 @@ public static class DtoParser
 	public static Pet ToPet(this CreatePetDto createPetDto)
 	{
 		string imageUrl;
-		if (createPetDto.ImageUrl == null)
+		if (createPetDto.ImageUrl.IsNullOrEmpty())
 		{
 			imageUrl = createPetDto.Species switch
 			{
@@ -33,5 +34,25 @@ public static class DtoParser
 			ImageUrl = imageUrl,
 			OwnerId = createPetDto.OwnerId
 		};
+	}
+
+	public static PetDto ToPetDto(this Pet pet)
+	{
+		return new PetDto
+		{
+			Id = pet.Id,
+			Name = pet.Name,
+			Age = pet.Age,
+			HairColor = pet.HairColor,
+			Species = pet.Species,
+			Breed = pet.Breed,
+			ImageUrl = pet.ImageUrl,
+			OwnerId = pet.OwnerId
+		};
+	}
+
+	public static IEnumerable<PetDto> ToPetDtoList(this IEnumerable<Pet> pets)
+	{
+		return pets.Select(pet => pet.ToPetDto()).ToList();
 	}
 }
