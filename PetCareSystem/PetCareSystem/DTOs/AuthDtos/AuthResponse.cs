@@ -1,4 +1,4 @@
-﻿namespace PetCareSystem.DTOs;
+﻿namespace PetCareSystem.DTOs.AuthDtos;
 
 public class AuthResponse
 {

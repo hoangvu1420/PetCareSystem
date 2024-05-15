@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PetCareSystem.DTOs;
+namespace PetCareSystem.DTOs.AuthDtos;
 
 public class RegisterRequestDto
 {

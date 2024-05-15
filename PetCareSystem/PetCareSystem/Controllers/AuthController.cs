@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PetCareSystem.DTOs;
+using PetCareSystem.DTOs.AuthDtos;
 using PetCareSystem.Services.Contracts;
 
 namespace PetCareSystem.Controllers;

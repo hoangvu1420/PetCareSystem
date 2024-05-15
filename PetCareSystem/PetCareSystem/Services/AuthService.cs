@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using PetCareSystem.DTOs;
+using PetCareSystem.DTOs.AuthDtos;
 using PetCareSystem.Models;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.StaticDetails;
@@ -155,7 +155,7 @@ public class AuthService : IAuthService
 		};
 	}
 
-	private string GenerateJwtToken(List<Claim> claims)
+	private string GenerateJwtToken(IEnumerable<Claim> claims)
 	{
 		var jwtTokenHandler = new JwtSecurityTokenHandler();
 		var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
