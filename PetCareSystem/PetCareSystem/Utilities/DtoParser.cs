@@ -29,6 +29,7 @@ public static class DtoParser
 		{
 			Name = createPetDto.Name,
 			Age = createPetDto.Age,
+			Gender = createPetDto.Gender,
 			HairColor = createPetDto.HairColor,
 			Species = createPetDto.Species,
 			Breed = createPetDto.Breed,
@@ -44,6 +45,7 @@ public static class DtoParser
 			Id = updatePetDto.Id,
 			Name = updatePetDto.Name,
 			Age = updatePetDto.Age,
+			Gender = updatePetDto.Gender,
 			HairColor = updatePetDto.HairColor,
 			Species = updatePetDto.Species,
 			Breed = updatePetDto.Breed,
@@ -58,6 +60,7 @@ public static class DtoParser
 			Id = pet.Id,
 			Name = pet.Name,
 			Age = pet.Age,
+			Gender = pet.Gender,
 			HairColor = pet.HairColor,
 			Species = pet.Species,
 			Breed = pet.Breed,

@@ -74,40 +74,42 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Description = "Please enter your token with this format: ''Bearer YOUR_TOKEN''",
-        Type = SecuritySchemeType.ApiKey,
-        BearerFormat = "JWT",
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Name = "Bearer",
-                In = ParameterLocation.Header,
-                Reference = new OpenApiReference
-                {
-                    Id = "Bearer",
-                    Type = ReferenceType.SecurityScheme
-                }
-            },
-            new List<string>()
-        }
-    });
+	options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+	{
+		Name = "Authorization",
+		In = ParameterLocation.Header,
+		Description = "Please enter your token with this format: ''Bearer YOUR_TOKEN''",
+		Type = SecuritySchemeType.ApiKey,
+		BearerFormat = "JWT",
+		Scheme = "Bearer"
+	});
+	options.AddSecurityRequirement(new OpenApiSecurityRequirement
+	{
+		{
+			new OpenApiSecurityScheme
+			{
+				Name = "Bearer",
+				In = ParameterLocation.Header,
+				Reference = new OpenApiReference
+				{
+					Id = "Bearer",
+					Type = ReferenceType.SecurityScheme
+				}
+			},
+			new List<string>()
+		}
+	});
 });
 
 // Add CORS
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowSpecificOrigin",
+	options.AddPolicy("AllowAllOrigins",
 		builder =>
 		{
-			builder.WithOrigins("http://192.168.1.10:5173");
+			builder.AllowAnyOrigin()
+				.AllowAnyMethod()
+				.AllowAnyHeader();
 		});
 });
 
