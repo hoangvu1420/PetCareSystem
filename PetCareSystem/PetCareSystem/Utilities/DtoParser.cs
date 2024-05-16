@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
+using PetCareSystem.Repositories.Implementations;
 using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Utilities;
@@ -33,6 +34,20 @@ public static class DtoParser
 			Breed = createPetDto.Breed,
 			ImageUrl = imageUrl,
 			OwnerId = createPetDto.OwnerId
+		};
+	}
+
+	public static Pet ToPet(this UpdatePetDto updatePetDto)
+	{
+		return new Pet
+		{
+			Id = updatePetDto.Id,
+			Name = updatePetDto.Name,
+			Age = updatePetDto.Age,
+			HairColor = updatePetDto.HairColor,
+			Species = updatePetDto.Species,
+			Breed = updatePetDto.Breed,
+			ImageUrl = updatePetDto.ImageUrl
 		};
 	}
 

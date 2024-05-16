@@ -10,7 +10,7 @@
   <Class Name="PetCareSystem.Controllers.PetController">
     <Position X="5.75" Y="3" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIKAAAAgAAAAAAAAAAAAAAQAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAIKAAAAgAAAAAAAAAACAAAQAAAAAAgAA=</HashCode>
       <FileName>Controllers\PetController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -147,14 +147,6 @@
       <FileName>Infrastructure\DataContext\ApplicationDbContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PetCareSystem.Repositories.Implementations.PetRepository">
-    <Position X="19.75" Y="18.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repositories\Implementations\PetRepository.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="PetCareSystem.Repositories.Implementations.Repository&lt;T&gt;">
     <Position X="19.25" Y="14" Width="2.75" />
     <TypeIdentifier>
@@ -195,7 +187,7 @@
   <Interface Name="PetCareSystem.Repositories.Contracts.IPetRepository">
     <Position X="24" Y="18.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\Contracts\IPetRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
