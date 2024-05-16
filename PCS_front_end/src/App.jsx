@@ -8,12 +8,8 @@ import RouteGuard from './components/RouteGuard'
 
 export const UserContext = createContext();
 
-// Note: users now are able to login, and will be redirected to
-// root path '/', but the session ends if refresh or close tab
-// (will work on this later)
-
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   return (
     <UserContext.Provider value={{token, setToken}}>

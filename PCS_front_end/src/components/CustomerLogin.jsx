@@ -14,7 +14,6 @@ import { render } from "react-dom";
 function CustomerLogin() {
     const navigate = useNavigate();
     const { token, setToken } = useContext(UserContext);
-    const notify = () => toast.success("Wow so easy!");
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
@@ -33,20 +32,31 @@ function CustomerLogin() {
         axios.post(api_url + '/api/Auth/login', user_info)
             .then((res) => {
                 console.log(res);
-                setToken(res.data.token);
-                //localStorage.setItem("token", res.data.token);
+                if (res.status === 200) {
+                    (() => toast.success("Success! Redirect in 5 seconds"))();
+                    setInterval(()=>{
+                        setToken(res.data.token);
+                        localStorage.setItem("token", res.data.token);
+                    }, 5000);
+                }
+                else {
+                    
+                }
+                
             })
             .then(console.log(token))
             .catch(err => {
-                //do nothing (stop user from )
+                (() => toast.error("Incorrect credentials"))();
+                //do nothing (prevent user from seeing error)
             });
     };
 
     useEffect(()=>{
         console.log("UseEffect was called")
         console.log(token);
-        if (token != null)
+        if (token != null) {
             navigate('/');
+        }  
     }, [token]);
 
     return (
