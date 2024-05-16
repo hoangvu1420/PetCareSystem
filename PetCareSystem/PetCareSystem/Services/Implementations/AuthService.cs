@@ -42,7 +42,7 @@ public class AuthService : IAuthService
 			Email = request.Email,
 			FirstName = request.FirstName,
 			LastName = request.LastName,
-			District = request.Districs,
+			District = request.District,
 			ProfilePictureUrl = PictureStock.GetRandomPicture()
 		};
 

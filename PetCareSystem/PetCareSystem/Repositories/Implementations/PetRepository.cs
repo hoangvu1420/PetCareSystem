@@ -1,6 +1,8 @@
-﻿using PetCareSystem.Infrastructure.DataContext;
+﻿using PetCareSystem.DTOs.PetDtos;
+using PetCareSystem.Infrastructure.DataContext;
 using PetCareSystem.Models;
 using PetCareSystem.Repositories.Contracts;
+using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Repositories.Implementations;
 
@@ -8,11 +10,6 @@ public class PetRepository(ApplicationDbContext dbContext) : Repository<Pet>(dbC
 {
 	public async Task<Pet?> UpdateAsync(Pet pet)
 	{
-		// pet.UpdatedAt = DateTime.Now;
-		// dbContext.Pets.Update(pet);
-		// await dbContext.SaveChangesAsync();
-		// return pet;
-
 		var petToUpdate = await dbContext.Pets.FindAsync(pet.Id);
 
 		if (petToUpdate == null) return petToUpdate;

@@ -15,9 +15,9 @@ public static class DtoParser
 		{
 			imageUrl = createPetDto.Species switch
 			{
-				"Dog" => PictureStock.GetRandomDogPicture(),
-				"Cat" => PictureStock.GetRandomCatPicture(),
-				_ => PictureStock.GetRandomPicture()
+				"Dog" => Breeds.GetDogBreed(createPetDto.Breed).ImageUrl,
+				"Cat" => Breeds.GetCatBreed(createPetDto.Breed).ImageUrl,
+				_ => "null"
 			};
 		}
 		else

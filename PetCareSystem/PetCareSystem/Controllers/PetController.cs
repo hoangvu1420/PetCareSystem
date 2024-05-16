@@ -8,6 +8,7 @@ using PetCareSystem.Repositories.Contracts;
 using PetCareSystem.StaticDetails;
 using PetCareSystem.Utilities;
 using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PetCareSystem.Controllers;
 
@@ -127,6 +128,13 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 
 			var pet = await petRepository.GetAsync(filter: p => p.Id == petId);
 
+			if (!IsUserAuthorized(pet.OwnerId))
+			{
+				_response.IsSucceed = false;
+				_response.ErrorMessages = ["You are not authorized to view this resource"];
+				return StatusCode(StatusCodes.Status403Forbidden, _response);
+			}
+
 			_response.IsSucceed = true;
 			_response.Data = pet.ToPetDto();
 
@@ -159,6 +167,13 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 				_response.IsSucceed = false;
 				_response.ErrorMessages = errorMessages;
 				return BadRequest(_response);
+			}
+
+			if (!IsUserAuthorized(petDto.OwnerId))
+			{
+				_response.IsSucceed = false;
+				_response.ErrorMessages = ["You are not authorized to create this resource"];
+				return StatusCode(StatusCodes.Status403Forbidden, _response);
 			}
 
 			var pet = petDto.ToPet();

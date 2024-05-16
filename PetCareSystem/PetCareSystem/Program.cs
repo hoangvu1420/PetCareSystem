@@ -11,6 +11,7 @@ using PetCareSystem.Repositories.Implementations;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.Services;
 using PetCareSystem.Services.Implementations;
+using PetCareSystem.StaticDetails;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,12 +104,10 @@ builder.Services.AddSwaggerGen(options =>
 // Add CORS
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowAllOrigins",
+	options.AddPolicy("AllowSpecificOrigin",
 		builder =>
 		{
-			builder.AllowAnyOrigin()
-				.AllowAnyMethod()
-				.AllowAnyHeader();
+			builder.WithOrigins("http://192.168.1.10:5173");
 		});
 });
 
@@ -121,6 +120,13 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwaggerUI();
 }
+
+var catBreedsJson = File.ReadAllText(Path.Combine(app.Environment.ContentRootPath, "Resources", "cat_breeds.json"));
+var dogBreedsJson = File.ReadAllText(Path.Combine(app.Environment.ContentRootPath, "Resources", "dog_breeds.json"));
+
+// Store the JSON in a static property
+Breeds.CatBreedsJson = catBreedsJson;
+Breeds.DogBreedsJson = dogBreedsJson;
 
 app.UseHttpsRedirection();
 
