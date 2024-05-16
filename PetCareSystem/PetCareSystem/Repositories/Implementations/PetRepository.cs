@@ -16,6 +16,7 @@ public class PetRepository(ApplicationDbContext dbContext) : Repository<Pet>(dbC
 
 		petToUpdate.Name = pet.Name;
 		petToUpdate.Age = pet.Age;
+		petToUpdate.Gender = pet.Gender;
 		petToUpdate.HairColor = pet.HairColor;
 		petToUpdate.Species = pet.Species;
 		petToUpdate.Breed = pet.Breed;
