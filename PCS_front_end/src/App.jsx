@@ -4,18 +4,16 @@ import { Router, Routes, Route, Link, NavLink, BrowserRouter, Navigate } from "r
 import CustomerLogin from './components/CustomerLogin';
 import EmployeeLogin from './components/EmployeeLogin'
 import Layout from './components/Layout';
-import Homebar from './Homepage/Homebar';
+import RouteGuard from './components/RouteGuard'
 
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='/homebar' element={<Homebar/>}/>
-          <Route path='/login' element={<CustomerLogin/>}/>
           <Route path='/' element={<Layout/>}>
-            {/* <Route index element={<Navbar/>}/> */}
-            
+            <Route index element={<RouteGuard/>}/>
+            <Route path='/login' element={<CustomerLogin/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,9 +2,11 @@ import { Outlet, Link } from "react-router-dom"
 import Navbar from "./Navbar";
 
 function Layout() {
+    const token = localStorage.getItem("token");
+
     return (
         <div>
-            <Navbar/>
+            {(token)? <Navbar/> : null}
             <Outlet/>
         </div>
     );
