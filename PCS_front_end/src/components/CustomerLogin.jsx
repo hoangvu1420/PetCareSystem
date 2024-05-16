@@ -1,20 +1,25 @@
 import { FaUser, FaLock } from "react-icons/fa";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from 'axios'
+
+import { UserContext } from "../App";
 
 // For displaying toasts
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate, redirect } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { render } from "react-dom";
 //
 
 function CustomerLogin() {
+    const navigate = useNavigate();
+    const { token, setToken } = useContext(UserContext);
     const notify = () => toast.success("Wow so easy!");
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
-       "email": "",
-       "password": "" 
+       "email": "vgirardy2@homestead.com",
+       "password": "user1111" 
     });
 
     const handleChange = (e) => {
@@ -26,17 +31,23 @@ function CustomerLogin() {
 
     const onLogin = () => {
         axios.post(api_url + '/api/Auth/login', user_info)
-            .then((res) => console.log(res));
+            .then((res) => {
+                console.log(res);
+                setToken(res.data.token);
+                //localStorage.setItem("token", res.data.token);
+            })
+            .then(console.log(token))
+            .catch(err => {
+                //do nothing (stop user from )
+            });
     };
 
     useEffect(()=>{
-        const token = localStorage.getItem("token");
-        console.log(token)
-        if (token == null) {
-            
-        }
-            
-    }, []);
+        console.log("UseEffect was called")
+        console.log(token);
+        if (token != null)
+            navigate('/');
+    }, [token]);
 
     return (
         <div className="flex justify-center items-center h-screen">

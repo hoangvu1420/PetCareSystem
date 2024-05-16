@@ -1,8 +1,10 @@
 import { Outlet, Link, Navigate } from "react-router-dom"
 import Navbar from "./Navbar";
+import { UserContext } from "../App";
+import { useContext } from "react";
 
 function RouteGuard() {
-    const token = localStorage.getItem("token");
+    const { token, setToken } = useContext(UserContext);
 
     return (
         <div>
