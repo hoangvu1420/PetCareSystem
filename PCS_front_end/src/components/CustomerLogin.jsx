@@ -28,7 +28,9 @@ function CustomerLogin() {
         })
     };
 
-    const onLogin = () => {
+    const onLogin = (e) => {
+        e.preventDefault();
+
         axios.post(api_url + '/api/Auth/login', user_info)
             .then((res) => {
                 console.log(res);
@@ -61,17 +63,20 @@ function CustomerLogin() {
             <div className="w-96 p-6 shadow-lg rounded-md">
                 <h1 className="text-center mb-4 text-2xl font-bold text-[#35b8be]">Đăng nhập</h1>
                 <hr className="mb-4"/>
-                <div className="flex items-center mb-4">
-                    <FaUser />
-                    <input onChange={handleChange} value={user_info.email} name="email" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="email" placeholder="Email" required/>
-                </div>
-                <div className="flex items-center mb-4">
-                    <FaLock />
-                    <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required/>
-                </div>
-                <div className="flex justify-center mb-4">
-                    <button onClick={onLogin} className="bg-[#35b8be] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl">Đăng nhập</button>
-                </div>
+
+                <form onSubmit={onLogin}>
+                    <div className="flex items-center mb-4">
+                        <FaUser />
+                        <input onChange={handleChange} value={user_info.email} name="email" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="email" placeholder="Email" required/>
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <FaLock />
+                        <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required/>
+                    </div>
+                    <div className="flex justify-center mb-4">
+                        <button type="submit" className="bg-[#35b8be] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl">Đăng nhập</button>
+                    </div>
+                </form>
                 
                 <div className="flex justify-center mb-3">
                     <p className="mr-1">Chưa có tài khoản?</p>
