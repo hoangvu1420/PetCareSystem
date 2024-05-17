@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 function RouteGuard() {
     const { token, setToken } = useContext(UserContext);
-
+    
     return (
         <div>
             {(token)? null : <Navigate to='login'/>}

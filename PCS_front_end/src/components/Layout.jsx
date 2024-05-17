@@ -1,15 +1,14 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, Link, Navigate } from "react-router-dom"
 import Navbar from "./Navbar";
 import { UserContext } from "../App";
 import { useContext } from "react";
 
 function Layout() {
-    const { token, setToken } = useContext(UserContext);
+    const { token } = useContext(UserContext);
     return (
         <div>
-            {(token)? <Navbar/> : null}
-            {(token)? <div>You has logged in</div>: <div></div>}
-            <Outlet/>
+            <Navbar/>
+            {(token)? <Outlet/> : <Navigate to='login'/>}
         </div>
     );
 }

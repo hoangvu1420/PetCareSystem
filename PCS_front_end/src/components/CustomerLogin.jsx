@@ -1,17 +1,17 @@
 import { FaUser, FaLock } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from "react";
 import axios from 'axios'
-
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 
 // For displaying toasts
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate, useNavigate } from "react-router-dom";
-import { render } from "react-dom";
 //
 
 function CustomerLogin() {
+    console.log("render customer login");
+
     const navigate = useNavigate();
     const { token, setToken } = useContext(UserContext);
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
@@ -32,28 +32,25 @@ function CustomerLogin() {
         axios.post(api_url + '/api/Auth/login', user_info)
             .then((res) => {
                 console.log(res);
-                if (res.status === 200) {
-                    (() => toast.success("Success! Redirect in 5 seconds"))();
-                    setInterval(()=>{
+                if (res.data.isSucceed === true) {
+                    // Note: using setInterval() here would 
+                    // cause a weird sign-out bug later
+                    (() => toast.success("Success! Redirect in 3 seconds..."))();
+                    setTimeout(() => {
                         setToken(res.data.token);
-                        localStorage.setItem("token", res.data.token);
-                    }, 5000);
-                }
-                else {
+                        sessionStorage.setItem("token", res.data.token);
+                    }, 3000);
                     
                 }
-                
             })
-            .then(console.log(token))
             .catch(err => {
-                (() => toast.error("Incorrect credentials"))();
+                (() => toast.error(err.response.data.errorMessages[0]))();
                 //do nothing (prevent user from seeing error)
             });
     };
 
     useEffect(()=>{
-        console.log("UseEffect was called")
-        console.log(token);
+        console.log("UseEffect was called");
         if (token != null) {
             navigate('/');
         }  
@@ -62,7 +59,7 @@ function CustomerLogin() {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="w-96 p-6 shadow-lg rounded-md">
-                <h1 className="text-center mb-4 text-2xl font-bold text-[#35b8be]">Customer login</h1>
+                <h1 className="text-center mb-4 text-2xl font-bold text-[#35b8be]">Đăng nhập</h1>
                 <hr className="mb-4"/>
                 <div className="flex items-center mb-4">
                     <FaUser />
@@ -70,19 +67,21 @@ function CustomerLogin() {
                 </div>
                 <div className="flex items-center mb-4">
                     <FaLock />
-                    <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Password" required/>
+                    <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required/>
                 </div>
                 <div className="flex justify-center mb-4">
-                    <button onClick={onLogin} className="bg-[#35b8be] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl">Login</button>
+                    <button onClick={onLogin} className="bg-[#35b8be] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl">Đăng nhập</button>
                 </div>
                 
                 <div className="flex justify-center mb-3">
-                    <p className="mr-1">New here?</p>
-                    <button className="text-[#35b8be] hover:underline">Sign Up</button>
+                    <p className="mr-1">Chưa có tài khoản?</p>
+                    <Link to='/register' relative="path">
+                    <button className="text-[#35b8be] hover:underline">Đăng ký</button>
+                    </Link>
                 </div>
                 <div className="flex justify-center items-center mb-3">
                     <hr className="w-1/3"/>
-                    <p className="mx-2 text-gray-400">or</p>
+                    <p className="mx-2 text-gray-400">hoặc</p>
                     <hr className="w-1/3"/>
                 </div>
                 <div className="flex justify-center">
