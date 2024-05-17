@@ -20,6 +20,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Add repositories to the container.
 builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
@@ -53,22 +54,24 @@ builder.Services.Configure<IdentityOptions>(options =>
 // Add Authentication and JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
-	options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-	options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-	options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-	options.TokenValidationParameters = new TokenValidationParameters
-	{
-		ValidateIssuer = true,
-		ValidateAudience = true,
-		ValidateLifetime = true,
-		ValidateIssuerSigningKey = true,
-		ValidIssuer = builder.Configuration["Jwt:Issuer"],
-		ValidAudience = builder.Configuration["Jwt:Audience"],
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
-	};
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"])),
+        ClockSkew = TimeSpan.Zero // Optional: Reduce token expiry time discrepancy
+    };
 });
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

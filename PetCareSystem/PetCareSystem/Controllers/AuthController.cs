@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.DTOs.AuthDtos;
 using PetCareSystem.Services.Contracts;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/auth")]
 [ApiController]
 public class AuthController : ControllerBase
 {
@@ -31,7 +33,7 @@ public class AuthController : ControllerBase
 
 			return BadRequest(new AuthResponse
 			{
-				IsSucceed = false, 
+				IsSucceed = false,
 				ErrorMessages = errorMessages
 			});
 		}
@@ -46,8 +48,8 @@ public class AuthController : ControllerBase
 
 	[HttpPost]
 	[Route("login")]
-	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status400BadRequest)]
+	[ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(LoginResponse), StatusCodes.Status400BadRequest)]
 	public async Task<IActionResult> Login([FromBody] LoginRequestDto loginDto)
 	{
 		if (!ModelState.IsValid)
@@ -57,7 +59,7 @@ public class AuthController : ControllerBase
 				.Select(e => e.ErrorMessage)
 				.ToList();
 
-			return BadRequest(new AuthResponse
+			return BadRequest(new LoginResponse
 			{
 				IsSucceed = false,
 				ErrorMessages = errorMessages
@@ -70,6 +72,36 @@ public class AuthController : ControllerBase
 			return Ok(loginResult);
 
 		return BadRequest(loginResult);
+	}
+
+	[HttpPost]
+	[Route("refresh-token")]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status400BadRequest)]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+	public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestDto request)
+	{
+		if (!ModelState.IsValid)
+		{
+			var errorMessages = ModelState.Values
+				.SelectMany(v => v.Errors)
+				.Select(e => e.ErrorMessage)
+				.ToList();
+
+			return BadRequest(new RefreshTokenResponse
+			{
+				IsSucceed = false,
+				ErrorMessages = errorMessages
+			});
+		}
+
+		var refreshTokenResult = await _authService.IssueRefreshTokenAsync(request);
+
+		if (refreshTokenResult.IsSucceed)
+			return Ok(refreshTokenResult);
+
+		return BadRequest(refreshTokenResult);
 	}
 
 	[HttpPost]

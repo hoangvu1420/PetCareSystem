@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/pet")]
 [ApiController]
 [Authorize]
 public class PetController(IPetRepository petRepository, UserManager<AppUser> userManager) : ControllerBase
@@ -58,8 +58,8 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> GetPetsByUserId(string userId)
 	{
 		try
@@ -114,6 +114,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
+	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> GetPetById(int petId)
 	{
@@ -152,6 +153,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status201Created)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
+	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> CreatePet([FromBody] CreatePetDto petDto)
 	{
@@ -199,8 +201,8 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> DeletePet(int petId)
 	{
 		try
@@ -240,8 +242,8 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> UpdatePet(int petId, [FromBody] UpdatePetDto updatePetDto)
 	{
 		try

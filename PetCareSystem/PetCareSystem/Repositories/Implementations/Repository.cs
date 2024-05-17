@@ -10,17 +10,17 @@ namespace PetCareSystem.Repositories.Implementations;
 public class Repository<T> : IRepository<T> where T : class
 {
 	private readonly ApplicationDbContext _dbContext;
-	internal DbSet<T> dbSet;
+	internal DbSet<T> DbSet;
 
 	public Repository(ApplicationDbContext dbContext)
 	{
 		_dbContext = dbContext;
-		dbSet = _dbContext.Set<T>();
+		DbSet = _dbContext.Set<T>();
 	}
 
 	public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
 	{
-		IQueryable<T> query = dbSet;
+		IQueryable<T> query = DbSet;
 
 		if (filter != null)
 		{
@@ -38,10 +38,10 @@ public class Repository<T> : IRepository<T> where T : class
 		return await query.ToListAsync();
 	}
 
-	public async Task<T> GetAsync(Expression<Func<T, bool>>? filter = null, bool tracked = true,
+	public async Task<T?> GetAsync(Expression<Func<T, bool>>? filter = null, bool tracked = true,
 		string? includeProperties = null)
 	{
-		IQueryable<T> query = dbSet;
+		IQueryable<T> query = DbSet;
 
 		if (!tracked)
 		{
@@ -66,19 +66,19 @@ public class Repository<T> : IRepository<T> where T : class
 
 	public async Task CreateAsync(T entity)
 	{
-		await dbSet.AddAsync(entity);
+		await DbSet.AddAsync(entity);
 		await SaveAsync();
 	}
 
 	public async Task DeleteAsync(int id)
 	{
-		dbSet.Remove(dbSet.Find(id));
+		DbSet.Remove(DbSet.Find(id));
 		await SaveAsync();
 	}
 
 	public async Task<bool> ExistsAsync(Expression<Func<T, bool>> filter)
 	{
-		return await dbSet.AnyAsync(filter);
+		return await DbSet.AnyAsync(filter);
 	}
 
 	public async Task SaveAsync()

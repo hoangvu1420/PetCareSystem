@@ -22,7 +22,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.AuthController",
     "Method": "AddToRole",
-    "RelativePath": "api/Auth/add-to-role",
+    "RelativePath": "api/auth/add-to-role",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -75,7 +75,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -88,7 +88,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "PetCareSystem.DTOs.AuthDtos.AuthResponse",
+        "Type": "PetCareSystem.DTOs.AuthDtos.LoginResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -97,7 +97,7 @@
         "StatusCode": 200
       },
       {
-        "Type": "PetCareSystem.DTOs.AuthDtos.AuthResponse",
+        "Type": "PetCareSystem.DTOs.AuthDtos.LoginResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -109,8 +109,61 @@
   },
   {
     "ContainingType": "PetCareSystem.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/auth/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "PetCareSystem.DTOs.AuthDtos.RefreshTokenRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PetCareSystem.DTOs.AuthDtos.RefreshTokenResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "PetCareSystem.DTOs.AuthDtos.RefreshTokenResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "PetCareSystem.DTOs.AuthDtos.RefreshTokenResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "PetCareSystem.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/auth/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -145,7 +198,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "GetAllPets",
-    "RelativePath": "api/Pet",
+    "RelativePath": "api/pet",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -210,7 +263,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "CreatePet",
-    "RelativePath": "api/Pet",
+    "RelativePath": "api/pet",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -250,6 +303,15 @@
         "StatusCode": 500
       },
       {
+        "Type": "PetCareSystem.DTOs.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
@@ -263,7 +325,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "GetPetById",
-    "RelativePath": "api/Pet/{petId}",
+    "RelativePath": "api/pet/{petId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -312,6 +374,15 @@
         "StatusCode": 500
       },
       {
+        "Type": "PetCareSystem.DTOs.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
@@ -325,7 +396,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "DeletePet",
-    "RelativePath": "api/Pet/{petId}",
+    "RelativePath": "api/pet/{petId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -365,15 +436,6 @@
         "StatusCode": 500
       },
       {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 401
-      },
-      {
         "Type": "PetCareSystem.DTOs.ApiResponse",
         "MediaTypes": [
           "text/plain",
@@ -381,13 +443,22 @@
           "text/json"
         ],
         "StatusCode": 403
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "UpdatePet",
-    "RelativePath": "api/Pet/{petId}",
+    "RelativePath": "api/pet/{petId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -441,15 +512,6 @@
         "StatusCode": 500
       },
       {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 401
-      },
-      {
         "Type": "PetCareSystem.DTOs.ApiResponse",
         "MediaTypes": [
           "text/plain",
@@ -457,13 +519,22 @@
           "text/json"
         ],
         "StatusCode": 403
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "GetPetsByUserId",
-    "RelativePath": "api/Pet/user/{userId}",
+    "RelativePath": "api/pet/user/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -512,15 +583,6 @@
         "StatusCode": 500
       },
       {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 401
-      },
-      {
         "Type": "PetCareSystem.DTOs.ApiResponse",
         "MediaTypes": [
           "text/plain",
@@ -528,6 +590,15 @@
           "text/json"
         ],
         "StatusCode": 403
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   }

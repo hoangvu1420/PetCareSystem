@@ -13,6 +13,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	public DbSet<PetGroomingService> PetGroomingServices { get; set; }
 	public DbSet<Room> Rooms { get; set; }
 	public DbSet<PetRoom> PetRooms { get; set; }
+	public DbSet<RefreshToken> RefreshTokens { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

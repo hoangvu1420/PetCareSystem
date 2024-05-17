@@ -8,9 +8,11 @@ namespace PetCareSystem.Repositories.Implementations;
 
 public class PetRepository(ApplicationDbContext dbContext) : Repository<Pet>(dbContext), IPetRepository
 {
+	private readonly ApplicationDbContext _dbContext1 = dbContext;
+
 	public async Task<Pet?> UpdateAsync(Pet pet)
 	{
-		var petToUpdate = await dbContext.Pets.FindAsync(pet.Id);
+		var petToUpdate = await _dbContext1.Pets.FindAsync(pet.Id);
 
 		if (petToUpdate == null) return petToUpdate;
 
@@ -23,7 +25,7 @@ public class PetRepository(ApplicationDbContext dbContext) : Repository<Pet>(dbC
 		petToUpdate.ImageUrl = pet.ImageUrl;
 		petToUpdate.UpdatedAt = DateTime.Now;
 
-		await dbContext.SaveChangesAsync();
+		await _dbContext1.SaveChangesAsync();
 		return petToUpdate;
 	}
 }
