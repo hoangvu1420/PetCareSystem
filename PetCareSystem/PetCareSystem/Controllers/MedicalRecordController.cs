@@ -11,20 +11,20 @@ using PetCareSystem.StaticDetails;
 using System.Security.Claims;
 using PetCareSystem.Utilities;
 using PetCareSystem.CustomFilters;
+using PetCareSystem.Services.Contracts;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/medical-report")]
+[Route("api/medical-record")]
 [Authorize]
 [ApiController]
-public class MedicalRecordController(IMedicalRecordRepository medicalRecordRepository, UserManager<AppUser> userManager) : ControllerBase
+public class MedicalRecordController(IMedicalRecordService medicalRecordService) : ControllerBase
 {
-	private readonly ApiResponse _response = new();
+	private ApiResponse _response = new();
 
 	[HttpGet("petId/{petId:int}")]
 	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -33,26 +33,9 @@ public class MedicalRecordController(IMedicalRecordRepository medicalRecordRepos
 	{
 		try
 		{
-			var isMedicalRecordExists = await medicalRecordRepository.ExistsAsync(mr => mr.PetId == petId);
-			if (!isMedicalRecordExists)
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["No medical records found"];
+			_response = await medicalRecordService.GetMedicalRecordsByPetIdAsync(petId);
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			var medicalRecords = await medicalRecordRepository.GetAllAsync(filter: mr => mr.PetId == petId);
-
-			var records = medicalRecords.ToList();
-			if (!records.Any())
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["No pets found"];
-				return NotFound(_response);
-			}
-
-			_response.IsSucceed = true;
-			_response.Data = records.ToMedicalRecordDtoList();
 
 			return Ok(_response);
 		}

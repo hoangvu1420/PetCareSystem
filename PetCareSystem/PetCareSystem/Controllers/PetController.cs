@@ -9,15 +9,17 @@ using PetCareSystem.StaticDetails;
 using PetCareSystem.Utilities;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using PetCareSystem.Services.Contracts;
+using PetCareSystem.CustomFilters;
 
 namespace PetCareSystem.Controllers;
 
 [Route("api/pet")]
 [ApiController]
 [Authorize]
-public class PetController(IPetRepository petRepository, UserManager<AppUser> userManager) : ControllerBase
+public class PetController(IPetService petService) : ControllerBase
 {
-	private readonly ApiResponse _response = new();
+	private ApiResponse _response = new();
 
 	[HttpGet]
 	[Authorize(Roles = UserRoles.Admin)]
@@ -26,21 +28,13 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
-	public async Task<ActionResult<ApiResponse>> GetAllPets()
+	public async Task<ActionResult<ApiResponse>> GetPets()
 	{
 		try
 		{
-			var pets = await petRepository.GetAllAsync();
-
-			if (!pets.Any())
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["No pets found"];
+			_response = await petService.GetPetsAsync();
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			_response.IsSucceed = true;
-			_response.Data = pets.ToPetDtoList();
 
 			return Ok(_response);
 		}
@@ -53,36 +47,19 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	}
 
 	[HttpGet("user/{userId}")]
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> GetPetsByUserId(string userId)
 	{
 		try
 		{
-			var isUserExist = await userManager.FindByIdAsync(userId) != null;
-			if (!isUserExist)
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["User not found"];
-				return BadRequest(_response);
-			}
-
-			var pets = await petRepository.GetAllAsync(filter: p => p.OwnerId == userId);
-
-			var petList = pets.ToList();
-			if (!petList.Any())
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["No pets found"];
+			_response = await petService.GetPetsByUserIdAsync(userId);
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			_response.IsSucceed = true;
-			_response.Data = petList.ToPetDtoList();
 
 			return Ok(_response);
 		}
@@ -103,34 +80,19 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	}
 
 	[HttpGet("{petId:int}", Name = "GetPetById")]
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> GetPetById(int petId)
 	{
 		try
 		{
-			if (!await petRepository.ExistsAsync(filter: p => p.Id == petId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["Pet not found"];
+			_response = await petService.GetPetByIdAsync(petId);
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			var pet = await petRepository.GetAsync(filter: p => p.Id == petId);
-
-			if (!IsUserAuthorized(pet.OwnerId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["You are not authorized to view this resource"];
-				return StatusCode(StatusCodes.Status403Forbidden, _response);
-			}
-
-			_response.IsSucceed = true;
-			_response.Data = pet.ToPetDto();
 
 			return Ok(_response);
 		}
@@ -143,10 +105,10 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	}
 
 	[HttpPost]
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status201Created)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> CreatePet([FromBody] CreatePetDto petDto)
 	{
@@ -164,23 +126,10 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 				return BadRequest(_response);
 			}
 
-			if (!IsUserAuthorized(petDto.OwnerId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["You are not authorized to create this resource"];
-				return StatusCode(StatusCodes.Status403Forbidden, _response);
-			}
+			_response = await petService.CreatePetAsync(petDto);
+			var createdPetId = (_response.Data as PetDto)!.Id;
 
-			var pet = petDto.ToPet();
-			pet.CreatedAt = DateTime.Now;
-			pet.UpdatedAt = pet.CreatedAt;
-
-			await petRepository.CreateAsync(pet);
-
-			_response.IsSucceed = true;
-			_response.Data = pet.ToPetDto();
-
-			return CreatedAtRoute(nameof(GetPetById), new { petId = pet.Id }, _response); // return 201 status code with the created pet
+			return CreatedAtRoute(nameof(GetPetById), new { petId = createdPetId }, _response); // return 201 status code with the created pet
 		}
 		catch (Exception e)
 		{
@@ -191,34 +140,19 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	}
 
 	[HttpDelete("{petId:int}")]
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> DeletePet(int petId)
 	{
 		try
 		{
-			if (!await petRepository.ExistsAsync(filter: p => p.Id == petId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["Pet not found"];
+			_response = await petService.DeletePetAsync(petId);
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			var pet = await petRepository.GetAsync(filter: p => p.Id == petId);
-
-			if (!IsUserAuthorized(pet.OwnerId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["You are not authorized to delete this resource"];
-				return StatusCode(StatusCodes.Status403Forbidden, _response);
-			}
-
-			await petRepository.DeleteAsync(petId);
-
-			_response.IsSucceed = true;
 
 			return Ok(_response);
 		}
@@ -231,11 +165,11 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	}
 
 	[HttpPut("{petId:int}")]
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> UpdatePet(int petId, [FromBody] UpdatePetDto updatePetDto)
 	{
@@ -253,34 +187,9 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 				return BadRequest(_response);
 			}
 
-			if (petId != updatePetDto.Id)
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["petId mismatch"];
-				return BadRequest(_response);
-			}
-
-			if (!await petRepository.ExistsAsync(filter: p => p.Id == petId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["Pet not found"];
+			_response = await petService.UpdatePetAsync(petId, updatePetDto);
+			if (!_response.IsSucceed)
 				return NotFound(_response);
-			}
-
-			var petToUpdate = updatePetDto.ToPet();
-			var ownerId = (await petRepository.GetAsync(filter: p => p.Id == petId))?.OwnerId;
-
-			if (!IsUserAuthorized(ownerId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["You are not authorized to update this resource"];
-				return StatusCode(StatusCodes.Status403Forbidden, _response);
-			}
-			
-			var pet = await petRepository.UpdateAsync(petToUpdate);
-
-			_response.IsSucceed = true;
-			_response.Data = pet.ToPetDto();
 
 			return Ok(_response);
 		}
