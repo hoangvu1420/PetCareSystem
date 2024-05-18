@@ -1,5 +1,5 @@
 import { useState, createContext, useContext } from 'react'
-import Navbar from './components/Navbar';
+import Navbar from './components/NavbarDefault';
 import { Router, Routes, Route, Link, NavLink, BrowserRouter, Navigate } from "react-router-dom";
 import CustomerLogin from './components/CustomerLogin';
 import CustomerRegister from './components/CustomerRegister';
