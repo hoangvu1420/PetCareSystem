@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-using Azure;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.DTOs.AuthDtos;
 using PetCareSystem.Services.Contracts;
