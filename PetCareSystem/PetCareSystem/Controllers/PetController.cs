@@ -22,7 +22,6 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	[HttpGet]
 	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -64,13 +63,6 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 	{
 		try
 		{
-			if (!IsUserAuthorized(userId))
-			{
-				_response.IsSucceed = false;
-				_response.ErrorMessages = ["You are not authorized to view this resource"];
-				return StatusCode(StatusCodes.Status403Forbidden, _response);
-			}
-
 			var isUserExist = await userManager.FindByIdAsync(userId) != null;
 			if (!isUserExist)
 			{
@@ -81,7 +73,8 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 
 			var pets = await petRepository.GetAllAsync(filter: p => p.OwnerId == userId);
 
-			if (!pets.Any())
+			var petList = pets.ToList();
+			if (!petList.Any())
 			{
 				_response.IsSucceed = false;
 				_response.ErrorMessages = ["No pets found"];
@@ -89,7 +82,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			}
 
 			_response.IsSucceed = true;
-			_response.Data = pets.ToPetDtoList();
+			_response.Data = petList.ToPetDtoList();
 
 			return Ok(_response);
 		}
@@ -275,7 +268,7 @@ public class PetController(IPetRepository petRepository, UserManager<AppUser> us
 			}
 
 			var petToUpdate = updatePetDto.ToPet();
-			var ownerId = (await petRepository.GetAsync(filter: p => p.Id == petId)).OwnerId;
+			var ownerId = (await petRepository.GetAsync(filter: p => p.Id == petId))?.OwnerId;
 
 			if (!IsUserAuthorized(ownerId))
 			{

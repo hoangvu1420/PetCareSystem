@@ -3,5 +3,7 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_UserAlreadyExists_ReturnsError&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_SuccessfulRegistration_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_InvalidRequest_ReturnsError&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_InvalidEmailRequest_ReturnsError&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

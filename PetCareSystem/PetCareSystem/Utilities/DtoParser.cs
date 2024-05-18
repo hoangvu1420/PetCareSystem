@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
 using PetCareSystem.Repositories.Implementations;
@@ -72,5 +73,25 @@ public static class DtoParser
 	public static IEnumerable<PetDto> ToPetDtoList(this IEnumerable<Pet> pets)
 	{
 		return pets.Select(pet => pet.ToPetDto()).ToList();
+	}
+
+	public static MedicalRecordDto ToMedicalRecordDto(this MedicalRecord medicalRecord, int petId)
+	{
+		return new MedicalRecordDto
+		{
+			Id = medicalRecord.Id,
+			PetId = petId,
+			Diagnosis = medicalRecord.Diagnosis,
+			Doctor = medicalRecord.Doctor,
+			Diet = medicalRecord.Diet,
+			Medication = medicalRecord.Medication,
+			Notes = medicalRecord.Notes,
+			NextAppointment = medicalRecord.NextAppointment
+		};
+	}
+
+	public static IEnumerable<MedicalRecordDto> ToMedicalRecordDtoList(this IEnumerable<MedicalRecord> medicalRecords)
+	{
+		return medicalRecords.Select(medicalRecord => medicalRecord.ToMedicalRecordDto(medicalRecord.PetId)).ToList();
 	}
 }
