@@ -39,8 +39,8 @@ function CustomerLogin() {
                     // cause a weird sign-out bug later
                     (() => toast.success("Success! Redirect in 3 seconds..."))();
                     setTimeout(() => {
-                        setToken(res.data.token);
-                        sessionStorage.setItem("token", res.data.token);
+                        setToken(res.data);
+                        sessionStorage.setItem("token", res.data);
                     }, 3000);
                     
                 }

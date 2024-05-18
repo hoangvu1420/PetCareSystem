@@ -6,6 +6,7 @@ import CustomerRegister from './components/CustomerRegister';
 import EmployeeLogin from './components/EmployeeLogin'
 import Layout from './components/Layout';
 import RouteGuard from './components/RouteGuard'
+import CustomerViewAllPet from './components/CustomerViewAllPet';
 
 export const UserContext = createContext();
 
@@ -22,7 +23,7 @@ function App() {
           <Route exact path='/login' element={<CustomerLogin/>}/>
           <Route exact path='/register' element={<CustomerRegister/>}/>
           <Route path='/' element={<Layout/>}>
-            <Route index element={<div>you has logged in</div>}/>
+            <Route index element={<CustomerViewAllPet/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
