@@ -108,7 +108,8 @@ public class AuthService(
 		return new LoginResponse
 		{
 			IsSucceed = true,
-			Token = accessToken,
+			Token = accessToken.AccessToken,
+			ExpirationDate = accessToken.ExpirationDate,
 			RefreshToken = newRefreshToken.Token,
 			UserInfo = new UserDto
 			{
@@ -136,22 +137,28 @@ public class AuthService(
 		return claims;
 	}
 
-	private string GenerateJwtToken(IEnumerable<Claim> claims)
+	private Token GenerateJwtToken(IEnumerable<Claim> claims)
 	{
 		var jwtTokenHandler = new JwtSecurityTokenHandler();
 		var key = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]);
 
+		var expirationDate = DateTime.Now.AddMinutes(15);
+
 		var tokenObject = new JwtSecurityToken(
 			issuer: configuration["JWT:Issuer"],
 			audience: configuration["JWT:Audience"],
-			expires: DateTime.Now.AddMinutes(15),
+			expires: expirationDate,
 			claims: claims,
 			signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key),
 				SecurityAlgorithms.HmacSha256Signature)
 		);
 
 		var token = jwtTokenHandler.WriteToken(tokenObject);
-		return token;
+		return new Token
+		{
+			AccessToken = token,
+			ExpirationDate = expirationDate
+		};
 	}
 
 	private RefreshToken GenerateRefreshToken(string userId)
@@ -223,7 +230,8 @@ public class AuthService(
 		return new RefreshTokenResponse
 		{
 			IsSucceed = true,
-			Token = accessToken,
+			Token = accessToken.AccessToken,
+			ExpirationDate = accessToken.ExpirationDate,
 			RefreshToken = newRefreshToken.Token
 		};
 	}
@@ -280,4 +288,10 @@ public class AuthService(
 			await roleManager.CreateAsync(new IdentityRole(role));
 		}
 	}
+}
+
+internal struct Token
+{
+	public string AccessToken { get; set; }
+	public DateTime ExpirationDate { get; set; }
 }
