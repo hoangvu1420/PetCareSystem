@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import PetCard from './PetCard.jsx'
-import { UserContext } from "../App.jsx";
+import PetCard from './components/PetCard.jsx'
+import { UserContext } from "../../App.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 

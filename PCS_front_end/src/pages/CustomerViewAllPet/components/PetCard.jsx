@@ -7,10 +7,13 @@ import {
     Button,
   } from "@material-tailwind/react";
 import { FaEdit } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
 import EditPetDialog from "./EditPetDialog";
+import { useContext } from "react";
+import { UserContext } from "../../../App";
+import DeletePetButton from "./DeletePetButton";
    
 export default function PetCard(props) {
+  const { user_data, setUserData } = useContext(UserContext);
 
   return (
     <Card className="mt-6 w-80">
@@ -45,13 +48,7 @@ export default function PetCard(props) {
                             imageUrl={props.imageUrl}
                             ownerId={props.ownerId}
                             getPetByCurrentId={props.getPetByCurrentId}/>
-        <Button color="red" className="ml-1" variant="text" onClick={() => {}}>
-              <div className="flex items-center">
-                <MdDeleteForever className=" mr-1 w-5 h-5"/>
-                Xoá
-              </div>
-              
-        </Button>
+        <DeletePetButton id={props.id}/>
       </CardFooter>
     </Card>
   );

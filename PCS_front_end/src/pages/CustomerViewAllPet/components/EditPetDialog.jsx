@@ -11,7 +11,7 @@ import {
   Checkbox,
 } from "@material-tailwind/react";
 import axios from "axios";
-import { UserContext } from "../App";
+import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
  
 export default function EditPetDialog(props) {

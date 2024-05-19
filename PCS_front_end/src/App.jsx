@@ -1,12 +1,12 @@
 import { useState, createContext, useContext } from 'react'
-import Navbar from './components/NavbarDefault';
+import Navbar from './pages/NavbarDefault';
 import { Router, Routes, Route, Link, NavLink, BrowserRouter, Navigate } from "react-router-dom";
-import CustomerLogin from './components/CustomerLogin';
-import CustomerRegister from './components/CustomerRegister';
-import EmployeeLogin from './components/EmployeeLogin'
-import Layout from './components/Layout';
+import CustomerLogin from './pages/CustomerLogin';
+import CustomerRegister from './pages/CustomerRegister';
+import EmployeeLogin from './pages/EmployeeLogin'
+import Layout from './pages/Layout';
 import RouteGuard from './components/RouteGuard'
-import CustomerViewAllPet from './components/CustomerViewAllPet';
+import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
 
 export const UserContext = createContext();
 
