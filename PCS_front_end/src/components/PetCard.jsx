@@ -7,6 +7,8 @@ import {
     Button,
   } from "@material-tailwind/react";
 import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
+import EditPetDialog from "./EditPetDialog";
    
 export default function PetCard(props) {
 
@@ -26,6 +28,7 @@ export default function PetCard(props) {
         <div className="mb-0 pb-0">
           <div className="flex flex-wrap justify-between">
             <div className="w-1/2"><span className="font-semibold">Tuổi:</span> {props.age}</div>
+            <div className="w-1/2"><span className="font-semibold">Giới tính:</span> {props.gender}</div>
             <div className="w-1/2"><span className="font-semibold">Loài:</span> {props.species}</div>
             <div className="w-1/2"><span className="font-semibold">Giống:</span> {props.breed}</div>
             <div className="w-1/2"><span className="font-semibold">Màu lông:</span> {props.hairColor}</div>
@@ -33,9 +36,21 @@ export default function PetCard(props) {
         </div>
       </CardBody>
       <CardFooter className="pt-0 mt-0">
-        <Button className="flex items-center justify-center w-5/12">
-          <FaEdit className="mr-2"/>
-          Sửa
+        <EditPetDialog id={props.id} name={props.name}
+                            age={props.age}
+                            gender={props.gender}
+                            hairColor={props.hairColor}
+                            species={props.species}
+                            breed={props.breed}
+                            imageUrl={props.imageUrl}
+                            ownerId={props.ownerId}
+                            getPetByCurrentId={props.getPetByCurrentId}/>
+        <Button color="red" className="ml-1" variant="text" onClick={() => {}}>
+              <div className="flex items-center">
+                <MdDeleteForever className=" mr-1 w-5 h-5"/>
+                Xoá
+              </div>
+              
         </Button>
       </CardFooter>
     </Card>

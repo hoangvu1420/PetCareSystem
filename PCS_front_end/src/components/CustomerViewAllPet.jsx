@@ -21,7 +21,7 @@ export default function CustomerViewAllPet() {
         })
         .catch((e) => {
             console.log(e);
-            toast.error(e.response.data.errorMessages[0]);
+            toast.error(e.response.statusText);
         });
     };
 
@@ -36,11 +36,13 @@ export default function CustomerViewAllPet() {
                     <li className="p-2" key={pet.id}>
                         <PetCard id={pet.id} name={pet.name}
                             age={pet.age}
+                            gender={pet.gender}
                             hairColor={pet.hairColor}
                             species={pet.species}
                             breed={pet.breed}
                             imageUrl={pet.imageUrl}
                             ownerId={pet.ownerId}
+                            getPetByCurrentId={getPetByCurrentId}
                         />
                     </li>
                 ))}
