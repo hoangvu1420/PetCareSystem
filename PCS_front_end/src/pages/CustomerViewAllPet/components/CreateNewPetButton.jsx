@@ -46,7 +46,7 @@ export default function CreateNewPetButton(props) {
             console.log(res);
             if (res.data.isSucceed === true) {
                 props.getPetByCurrentId();
-                toast.success("Tạo thành công");
+                toast.success("Tạo thành công", {autoClose: 2000});
             }
         })
         .catch((e) => console.log(e));

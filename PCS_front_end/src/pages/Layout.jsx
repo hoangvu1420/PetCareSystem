@@ -1,10 +1,19 @@
-import { Outlet, Link, Navigate } from "react-router-dom"
+import { Outlet, Navigate } from "react-router-dom"
 import NavbarDefault from "./NavbarDefault";
 import { UserContext } from "../App";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 function Layout() {
-    const { user_data } = useContext(UserContext);
+    const { user_data, setUserData } = useContext(UserContext);
+
+    useEffect(() => {
+        if (user_data != null)
+            if (new Date(JSON.parse(user_data).expirationDate) < new Date()) {
+                sessionStorage.removeItem("user_data");
+                setUserData(null);
+            }
+    }, []);
+
     return (
         <div>
             <NavbarDefault/>

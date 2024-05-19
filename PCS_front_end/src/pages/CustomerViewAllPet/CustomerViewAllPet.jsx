@@ -22,7 +22,8 @@ export default function CustomerViewAllPet() {
         })
         .catch((e) => {
             console.log(e);
-            toast.error(e.response.statusText);
+            toast.error(e.response.data.errorMessages[0]);
+            updateData([]);
         });
     };
 

@@ -48,7 +48,7 @@ export default function EditPetDialog(props) {
         console.log(res);
         if (res.data.isSucceed === true) {
             props.getPetByCurrentId();
-            toast.success("Sửa thành công");
+            toast.success("Sửa thành công", {autoClose: 2000});
         }
     })
     .catch((e) => console.log(e));
