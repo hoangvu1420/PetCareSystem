@@ -110,7 +110,7 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 			var createdRecordId = createdRecord.Id;
 
 			return CreatedAtRoute(nameof(GetMedicalRecordByRecordId),
-				new { petId = createdPetId, recordId = createdRecordId },
+				new { recordId = createdRecordId },
 				_response); // return 201 status code with the created medical record
 		}
 		catch (Exception e)
