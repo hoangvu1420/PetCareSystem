@@ -13,7 +13,7 @@ function CustomerLogin() {
     console.log("render customer login");
 
     const navigate = useNavigate();
-    const { token, setToken } = useContext(UserContext);
+    const { user_data, setUserData } = useContext(UserContext);
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
@@ -39,8 +39,8 @@ function CustomerLogin() {
                     // cause a weird sign-out bug later
                     (() => toast.success("Success! Redirect in 3 seconds..."))();
                     setTimeout(() => {
-                        setToken(res.data);
-                        sessionStorage.setItem("token", res.data);
+                        setUserData(JSON.stringify(res.data));
+                        sessionStorage.setItem("user_data", JSON.stringify(res.data));
                     }, 3000);
                     
                 }
@@ -53,10 +53,10 @@ function CustomerLogin() {
 
     useEffect(()=>{
         console.log("UseEffect was called");
-        if (token != null) {
+        if (user_data != null) {
             navigate('/');
         }  
-    }, [token]);
+    }, [user_data]);
 
     return (
         <div className="flex justify-center items-center h-screen">

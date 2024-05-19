@@ -13,7 +13,7 @@ import {
 
 export default function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { token, setToken } = useContext(UserContext);
+  const { user_data, setUserData } = useContext(UserContext);
  
   React.useEffect(() => {
     window.addEventListener(
@@ -23,8 +23,8 @@ export default function NavbarDefault() {
   }, []);
 
   const onSignOut = () => {
-    sessionStorage.removeItem("token");
-    setToken(null);
+    sessionStorage.removeItem("user_data");
+    setUserData(null);
   }
  
   const navList = (

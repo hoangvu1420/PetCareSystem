@@ -1,35 +1,32 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PetCard from './PetCard.jsx'
-
+import { UserContext } from "../App.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CustomerViewAllPet() {
-    const [data, updateData] = useState(
-        [
-            {
-                "id": 1,
-                "name": "Bob",
-                "age": 1,
-                "hairColor": "Black",
-                "species": "Dog",
-                "breed": "Pug",
-                "imageUrl": "https://images.unsplash.com/photo-1558788353-f76d92427f16?q=80&w=1638&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "ownerId": "1bf413dd-9df7-4823-9490-435a71507ee8"
-            },
-            {
-                "id": 2,
-                "name": "Kimmi",
-                "age": 2,
-                "hairColor": "Brown",
-                "species": "Cat",
-                "breed": "Ragdoll",
-                "imageUrl": "https://images.unsplash.com/photo-1584197176155-304c9a3c03ce?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "ownerId": "1bf413dd-9df7-4823-9490-435a71507ee8"
-            },
-        ]
-    );
+    const [data, updateData] = useState([]);
+    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
+    const { user_data, setUserData } = useContext(UserContext);
+
+    const getPetByCurrentId = () => {
+        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
+        axios.get(api_url + '/api/Pet/user/' + JSON.parse(user_data).userInfo.id)
+        .then((res) => {
+            console.log(res);
+            if (res.data.isSucceed === true) {
+                updateData(res.data.data);
+            };
+        })
+        .catch((e) => {
+            console.log(e);
+            toast.error(e.response.data.errorMessages[0]);
+        });
+    };
 
     useEffect(() => {
+        getPetByCurrentId();
     }, [])
 
     return (
@@ -37,7 +34,7 @@ export default function CustomerViewAllPet() {
             <ul className="flex-wrap flex">
                 {data.map((pet) => (
                     <li className="p-2" key={pet.id}>
-                        <PetCard name={pet.name}
+                        <PetCard id={pet.id} name={pet.name}
                             age={pet.age}
                             hairColor={pet.hairColor}
                             species={pet.species}
@@ -48,6 +45,8 @@ export default function CustomerViewAllPet() {
                     </li>
                 ))}
             </ul>
+
+            <ToastContainer position="bottom-right"/>
         </div>
         
     );

@@ -4,11 +4,11 @@ import { UserContext } from "../App";
 import { useContext } from "react";
 
 function Layout() {
-    const { token } = useContext(UserContext);
+    const { user_data } = useContext(UserContext);
     return (
         <div>
             <NavbarDefault/>
-            {(token)? <Outlet/> : <Navigate to='login'/>}
+            {(user_data)? <Outlet/> : <Navigate to='login'/>}
         </div>
     );
 }

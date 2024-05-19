@@ -12,12 +12,12 @@ export const UserContext = createContext();
 
 
 function App() {
-  const [token, setToken] = useState(sessionStorage.getItem("token"));
+  const [user_data, setUserData] = useState(sessionStorage.getItem("user_data"));
 
-  console.log("App rendered", token);
+  console.log("App rendered", user_data);
 
   return (
-    <UserContext.Provider value={{token, setToken}}>
+    <UserContext.Provider value={{user_data, setUserData}}>
       <BrowserRouter>
         <Routes>
           <Route exact path='/login' element={<CustomerLogin/>}/>
