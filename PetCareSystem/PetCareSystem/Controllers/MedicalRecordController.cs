@@ -10,25 +10,34 @@ using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/medical-record")]
+[Route("api/medical-records")]
 [Authorize]
 [ApiController]
 public class MedicalRecordController(IMedicalRecordService medicalRecordService) : ControllerBase
 {
 	private ApiResponse _response = new();
 
-	[HttpGet("petId/{petId:int}")]
-	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
+	[HttpGet]
+	[ResourceAuthorize(typeof(MedicalRecord))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> GetMedicalRecordsByPetId(int petId)
+	public async Task<ActionResult<ApiResponse>> GetMedicalRecords([FromQuery] int? petId)
 	{
 		try
 		{
-			_response = await medicalRecordService.GetMedicalRecordsByPetIdAsync(petId);
+			if (petId.HasValue)
+			{
+				_response = await medicalRecordService.GetMedicalRecordsByPetIdAsync(petId.Value);
+				if (!_response.IsSucceed)
+					return NotFound(_response);
+
+				return Ok(_response);
+			}
+
+			_response = await medicalRecordService.GetMedicalRecordsAsync();
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -42,18 +51,18 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 		}
 	}
 
-	[HttpGet("petId/{petId:int}/recordId/{recordId:int}", Name = "GetMedicalRecordByRecordId")]
-	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
+	[HttpGet("{recordId:int}", Name = "GetMedicalRecordByRecordId")]
+	[ResourceAuthorize(typeof(MedicalRecord))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> GetMedicalRecordByRecordId(int petId, int recordId)
+	public async Task<ActionResult<ApiResponse>> GetMedicalRecordByRecordId(int recordId)
 	{
 		try
 		{
-			_response = await medicalRecordService.GetMedicalRecordByRecordIdAsync(petId, recordId);
+			_response = await medicalRecordService.GetMedicalRecordByRecordIdAsync(recordId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -112,18 +121,18 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 		}
 	}
 
-	[HttpDelete("petId/{petId:int}/recordId/{recordId:int}")]
+	[HttpDelete("{recordId:int}")]
 	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> DeleteMedicalRecord(int petId, int recordId)
+	public async Task<ActionResult<ApiResponse>> DeleteMedicalRecord(int recordId)
 	{
 		try
 		{
-			_response = await medicalRecordService.DeleteMedicalRecordAsync(petId, recordId);
+			_response = await medicalRecordService.DeleteMedicalRecordAsync(recordId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -137,15 +146,14 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 		}
 	}
 
-	[HttpPut("petId/{petId:int}/recordId/{recordId:int}")]
+	[HttpPut("{recordId:int}")]
 	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> UpdateMedicalRecord(int petId, int recordId,
-		[FromBody] UpdateMedicalRecordDto medicalRecordDto)
+	public async Task<ActionResult<ApiResponse>> UpdateMedicalRecord(int recordId, [FromBody] UpdateMedicalRecordDto medicalRecordDto)
 	{
 		try
 		{
@@ -163,7 +171,7 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 				});
 			}
 
-			_response = await medicalRecordService.UpdateMedicalRecordAsync(petId, recordId, medicalRecordDto);
+			_response = await medicalRecordService.UpdateMedicalRecordAsync(recordId, medicalRecordDto);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 

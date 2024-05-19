@@ -531,7 +531,7 @@ namespace PetCareSystem.Migrations
             modelBuilder.Entity("PetCareSystem.Models.MedicalRecord", b =>
                 {
                     b.HasOne("PetCareSystem.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("MedicalRecords")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -600,6 +600,8 @@ namespace PetCareSystem.Migrations
 
             modelBuilder.Entity("PetCareSystem.Models.Pet", b =>
                 {
+                    b.Navigation("MedicalRecords");
+
                     b.Navigation("PetGroomingServices");
 
                     b.Navigation("PetRooms");

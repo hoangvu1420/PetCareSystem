@@ -19,6 +19,11 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	{
 		base.OnModelCreating(modelBuilder);
 
+		modelBuilder.Entity<MedicalRecord>()
+			.HasOne(m => m.Pet)
+			.WithMany(p => p.MedicalRecords)
+			.HasForeignKey(m => m.PetId);
+
 		modelBuilder.Entity<PetGroomingService>()
 			.HasKey(pgs => new { pgs.PetId, pgs.GroomingServiceId });
 

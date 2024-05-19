@@ -197,8 +197,70 @@
   },
   {
     "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
+    "Method": "GetMedicalRecords",
+    "RelativePath": "api/medical-records",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "petId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PetCareSystem.DTOs.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "PetCareSystem.DTOs.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "PetCareSystem.DTOs.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
     "Method": "CreateMedicalRecord",
-    "RelativePath": "api/medical-record",
+    "RelativePath": "api/medical-records",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -259,79 +321,12 @@
   },
   {
     "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
-    "Method": "GetMedicalRecordsByPetId",
-    "RelativePath": "api/medical-record/petId/{petId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "petId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 500
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 403
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 401
-      }
-    ]
-  },
-  {
-    "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
     "Method": "GetMedicalRecordByRecordId",
-    "RelativePath": "api/medical-record/petId/{petId}/recordId/{recordId}",
+    "RelativePath": "api/medical-records/{recordId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "petId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "recordId",
         "Type": "System.Int32",
@@ -389,16 +384,11 @@
   {
     "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
     "Method": "DeleteMedicalRecord",
-    "RelativePath": "api/medical-record/petId/{petId}/recordId/{recordId}",
+    "RelativePath": "api/medical-records/{recordId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "petId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "recordId",
         "Type": "System.Int32",
@@ -456,16 +446,11 @@
   {
     "ContainingType": "PetCareSystem.Controllers.MedicalRecordController",
     "Method": "UpdateMedicalRecord",
-    "RelativePath": "api/medical-record/petId/{petId}/recordId/{recordId}",
+    "RelativePath": "api/medical-records/{recordId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "petId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "recordId",
         "Type": "System.Int32",
@@ -528,11 +513,17 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "GetPets",
-    "RelativePath": "api/pet",
+    "RelativePath": "api/pets",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "PetCareSystem.DTOs.ApiResponse",
@@ -584,7 +575,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "CreatePet",
-    "RelativePath": "api/pet",
+    "RelativePath": "api/pets",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -637,7 +628,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "GetPetById",
-    "RelativePath": "api/pet/{petId}",
+    "RelativePath": "api/pets/{petId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -699,7 +690,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "DeletePet",
-    "RelativePath": "api/pet/{petId}",
+    "RelativePath": "api/pets/{petId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -761,7 +752,7 @@
   {
     "ContainingType": "PetCareSystem.Controllers.PetController",
     "Method": "UpdatePet",
-    "RelativePath": "api/pet/{petId}",
+    "RelativePath": "api/pets/{petId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -774,68 +765,6 @@
       {
         "Name": "updatePetDto",
         "Type": "PetCareSystem.DTOs.PetDtos.UpdatePetDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "PetCareSystem.DTOs.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 500
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 403
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 401
-      }
-    ]
-  },
-  {
-    "ContainingType": "PetCareSystem.Controllers.PetController",
-    "Method": "GetPetsByUserId",
-    "RelativePath": "api/pet/user/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.String",
         "IsRequired": true
       }
     ],

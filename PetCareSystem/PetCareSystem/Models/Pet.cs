@@ -17,6 +17,7 @@ public class Pet : BaseEntity
 	public AppUser Owner { get; set; }
 
 	// Navigation Properties
+	public IEnumerable<MedicalRecord> MedicalRecords { get; set; }
 	public IEnumerable<PetGroomingService> PetGroomingServices { get; set; }
 	public IEnumerable<PetRoom> PetRooms { get; set; }
 }

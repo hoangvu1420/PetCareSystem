@@ -9,7 +9,7 @@ using PetCareSystem.CustomFilters;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/pet")]
+[Route("api/pets")]
 [ApiController]
 [Authorize]
 public class PetController(IPetService petService) : ControllerBase
@@ -17,42 +17,26 @@ public class PetController(IPetService petService) : ControllerBase
 	private ApiResponse _response = new();
 
 	[HttpGet]
-	[Authorize(Roles = UserRoles.Admin)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
-	public async Task<ActionResult<ApiResponse>> GetPets()
-	{
-		try
-		{
-			_response = await petService.GetPetsAsync();
-			if (!_response.IsSucceed)
-				return NotFound(_response);
-
-			return Ok(_response);
-		}
-		catch (Exception e)
-		{
-			_response.IsSucceed = false;
-			_response.ErrorMessages = [e.Message];
-			return StatusCode(StatusCodes.Status500InternalServerError, _response);
-		}
-	}
-
-	[HttpGet("user/{userId}")]
 	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> GetPetsByUserId(string userId)
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
+	public async Task<ActionResult<ApiResponse>> GetPets([FromQuery] string? userId)
 	{
 		try
 		{
-			_response = await petService.GetPetsByUserIdAsync(userId);
+			if (!string.IsNullOrEmpty(userId))
+			{
+				_response = await petService.GetPetsByUserIdAsync(userId);
+				if (!_response.IsSucceed)
+					return NotFound(_response);
+
+				return Ok(_response);
+			}
+
+			_response = await petService.GetPetsAsync();
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 

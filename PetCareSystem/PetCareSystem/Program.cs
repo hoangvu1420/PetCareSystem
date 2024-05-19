@@ -20,7 +20,7 @@ builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 
 // Add repositories to the container.
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
