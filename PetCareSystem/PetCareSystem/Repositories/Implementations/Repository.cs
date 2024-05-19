@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PetCareSystem.Infrastructure.DataContext;
 using PetCareSystem.Models;
@@ -66,13 +65,19 @@ public class Repository<T> : IRepository<T> where T : class
 
 	public async Task CreateAsync(T entity)
 	{
+		if (entity is BaseEntity baseEntity)
+		{
+			baseEntity.CreatedAt = DateTime.Now;
+			baseEntity.UpdatedAt = DateTime.Now;
+		}
+
 		await DbSet.AddAsync(entity);
 		await SaveAsync();
 	}
 
 	public async Task DeleteAsync(int id)
 	{
-		DbSet.Remove(DbSet.Find(id));
+		DbSet.Remove((await DbSet.FindAsync(id))!);
 		await SaveAsync();
 	}
 

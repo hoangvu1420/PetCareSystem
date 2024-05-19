@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using PetCareSystem.DTOs.AuthDtos;
+﻿using PetCareSystem.DTOs.AuthDtos;
 
 namespace PetCareSystem.Services.Contracts;
 

@@ -1,5 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using PetCareSystem.DTOs;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
@@ -83,8 +82,6 @@ public class PetService(IPetRepository petRepository, UserManager<AppUser> userM
 		var response = new ApiResponse();
 
 		var pet = petDto.ToPet();
-		pet.CreatedAt = DateTime.Now;
-		pet.UpdatedAt = pet.CreatedAt;
 
 		await petRepository.CreateAsync(pet);
 
@@ -119,7 +116,7 @@ public class PetService(IPetRepository petRepository, UserManager<AppUser> userM
 		if (petId != updatePetDto.Id)
 		{
 			response.IsSucceed = false;
-			response.ErrorMessages = ["petId mismatch"];
+			response.ErrorMessages = ["petId in the URL and in the request body do not match"];
 			return response;
 		}
 
@@ -132,10 +129,10 @@ public class PetService(IPetRepository petRepository, UserManager<AppUser> userM
 
 		var petToUpdate = updatePetDto.ToPet();
 
-		var pet = await petRepository.UpdateAsync(petToUpdate);
+		var updatedPet = await petRepository.UpdateAsync(petToUpdate);
 
 		response.IsSucceed = true;
-		response.Data = pet.ToPetDto();
+		response.Data = updatedPet.ToPetDto();
 
 		return response;
 	}

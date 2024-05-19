@@ -1,8 +1,6 @@
-﻿using PetCareSystem.DTOs.PetDtos;
-using PetCareSystem.Infrastructure.DataContext;
+﻿using PetCareSystem.Infrastructure.DataContext;
 using PetCareSystem.Models;
 using PetCareSystem.Repositories.Contracts;
-using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Repositories.Implementations;
 

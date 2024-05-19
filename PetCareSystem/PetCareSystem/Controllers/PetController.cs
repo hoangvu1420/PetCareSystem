@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.DTOs;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
-using PetCareSystem.Repositories.Contracts;
 using PetCareSystem.StaticDetails;
-using PetCareSystem.Utilities;
-using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
 using PetCareSystem.Services.Contracts;
 using PetCareSystem.CustomFilters;
 
@@ -69,14 +64,6 @@ public class PetController(IPetService petService) : ControllerBase
 			_response.ErrorMessages = [e.Message];
 			return StatusCode(StatusCodes.Status500InternalServerError, _response);
 		}
-	}
-
-	private bool IsUserAuthorized(string userId)
-	{
-		var loggedInUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-		var loggedInUserRoles = User.FindAll(ClaimTypes.Role).Select(c => c.Value).ToList();
-
-		return loggedInUserId == userId || loggedInUserRoles.Contains(UserRoles.Admin);
 	}
 
 	[HttpGet("{petId:int}", Name = "GetPetById")]

@@ -2,13 +2,14 @@
 using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
-using PetCareSystem.Repositories.Implementations;
 using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Utilities;
 
 public static class DtoParser
 {
+	#region Pet parse methods
+
 	public static Pet ToPet(this CreatePetDto createPetDto)
 	{
 		string imageUrl;
@@ -75,13 +76,20 @@ public static class DtoParser
 		return pets.Select(pet => pet.ToPetDto()).ToList();
 	}
 
-	public static MedicalRecordDto ToMedicalRecordDto(this MedicalRecord medicalRecord, int petId)
+	#endregion
+
+
+
+	#region MedicalRecord parse methods
+
+	public static MedicalRecordDto ToMedicalRecordDto(this MedicalRecord medicalRecord)
 	{
 		return new MedicalRecordDto
 		{
 			Id = medicalRecord.Id,
-			PetId = petId,
+			PetId = medicalRecord.PetId,
 			Diagnosis = medicalRecord.Diagnosis,
+			Date = medicalRecord.Date,
 			Doctor = medicalRecord.Doctor,
 			Diet = medicalRecord.Diet,
 			Medication = medicalRecord.Medication,
@@ -92,6 +100,38 @@ public static class DtoParser
 
 	public static IEnumerable<MedicalRecordDto> ToMedicalRecordDtoList(this IEnumerable<MedicalRecord> medicalRecords)
 	{
-		return medicalRecords.Select(medicalRecord => medicalRecord.ToMedicalRecordDto(medicalRecord.PetId)).ToList();
+		return medicalRecords.Select(medicalRecord => medicalRecord.ToMedicalRecordDto()).ToList();
 	}
+
+	public static MedicalRecord ToMedicalRecord(this CreateMedicalRecordDto createMedicalRecordDto)
+	{
+		return new MedicalRecord
+		{
+			PetId = createMedicalRecordDto.PetId,
+			Diagnosis = createMedicalRecordDto.Diagnosis,
+			Doctor = createMedicalRecordDto.Doctor,
+			Diet = createMedicalRecordDto.Diet,
+			Medication = createMedicalRecordDto.Medication,
+			Notes = createMedicalRecordDto.Notes,
+			NextAppointment = createMedicalRecordDto.NextAppointment
+		};
+	}
+
+	public static MedicalRecord ToMedicalRecord(this UpdateMedicalRecordDto updateMedicalRecordDto)
+	{
+		return new MedicalRecord
+		{
+			Id = updateMedicalRecordDto.Id,
+			PetId = updateMedicalRecordDto.PetId,
+			Diagnosis = updateMedicalRecordDto.Diagnosis,
+			Doctor = updateMedicalRecordDto.Doctor,
+			Diet = updateMedicalRecordDto.Diet,
+			Medication = updateMedicalRecordDto.Medication,
+			Notes = updateMedicalRecordDto.Notes,
+			NextAppointment = updateMedicalRecordDto.NextAppointment
+		};
+	}
+
+	#endregion
+
 }

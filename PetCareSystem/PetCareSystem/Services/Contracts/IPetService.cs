@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PetCareSystem.DTOs;
+﻿using PetCareSystem.DTOs;
 using PetCareSystem.DTOs.PetDtos;
 
 namespace PetCareSystem.Services.Contracts;

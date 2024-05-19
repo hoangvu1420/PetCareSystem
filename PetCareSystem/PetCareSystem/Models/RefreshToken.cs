@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace PetCareSystem.Models;
+﻿namespace PetCareSystem.Models;
 
 public class RefreshToken
 {
