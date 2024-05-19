@@ -48,7 +48,8 @@ export default function PetCard(props) {
                             imageUrl={props.imageUrl}
                             ownerId={props.ownerId}
                             getPetByCurrentId={props.getPetByCurrentId}/>
-        <DeletePetButton id={props.id}/>
+        <DeletePetButton id={props.id}
+            getPetByCurrentId={props.getPetByCurrentId}/>
       </CardFooter>
     </Card>
   );

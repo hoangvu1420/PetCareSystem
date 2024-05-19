@@ -34,9 +34,9 @@ export default function CustomerViewAllPet() {
         <div className="pt-4">
             <ul className="flex-wrap flex">
                 <li className="p-2">
-                    <CreateNewPetButton/>
+                    <CreateNewPetButton getPetByCurrentId={getPetByCurrentId}/>
                 </li>
-                {data.map((pet) => (
+                {data.sort((a, b) => (a.id > b.id)? -1 : 1).map((pet) => (
                     <li className="p-2" key={pet.id}>
                         <PetCard id={pet.id} name={pet.name}
                             age={pet.age}
