@@ -4,6 +4,7 @@ import PetCard from './components/PetCard.jsx'
 import { UserContext } from "../../App.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import CreateNewPetButton from "./components/CreateNewPetButton.jsx";
 
 export default function CustomerViewAllPet() {
     const [data, updateData] = useState([]);
@@ -32,6 +33,9 @@ export default function CustomerViewAllPet() {
     return (
         <div className="pt-4">
             <ul className="flex-wrap flex">
+                <li className="p-2">
+                    <CreateNewPetButton/>
+                </li>
                 {data.map((pet) => (
                     <li className="p-2" key={pet.id}>
                         <PetCard id={pet.id} name={pet.name}
