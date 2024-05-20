@@ -35,9 +35,6 @@ export default function CustomerViewAllPet() {
     return (
         <div className="pt-4">
             <ul className="flex-wrap flex">
-                <li className="p-2">
-                    <CreateNewPetButton getPetByCurrentId={getPetByCurrentId}/>
-                </li>
                 {data.sort((a, b) => (a.id > b.id)? -1 : 1).map((pet) => (
                     <li className="p-2" key={pet.id}>
                         <PetCard id={pet.id} name={pet.name}
@@ -52,6 +49,9 @@ export default function CustomerViewAllPet() {
                         />
                     </li>
                 ))}
+                <li className="p-2">
+                    <CreateNewPetButton getPetByCurrentId={getPetByCurrentId}/>
+                </li>
             </ul>
 
             <ToastContainer position="bottom-right"/>
