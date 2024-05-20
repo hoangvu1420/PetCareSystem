@@ -7,6 +7,8 @@ import {
     CardFooter,
     Typography,
     Input,
+    Select,
+    Option
 } from "@material-tailwind/react";
 import { IoIosAdd } from "react-icons/io";
 import axios from "axios";
@@ -75,7 +77,10 @@ export default function CreateNewPetButton(props) {
                         <Input name="name" value={pet_data.name} onChange={handleChange} label="Tên" size="md" />
                         <Input name="species" value={pet_data.species} onChange={handleChange} label="Loài" size="md" />
                         <Input name="age" value={pet_data.age} onChange={handleChange} label="Tuổi" type="number" size="md" />
-                        <Input name="gender" value={pet_data.gender} onChange={handleChange} label="Giới tính" size="md" />
+                        <Select name="gender" value={pet_data.gender} onChange={handleChange} label="Giới tính" size="md">
+                            <Option>Male</Option>
+                            <Option>Female</Option>
+                        </Select>
                         <Input name="breed" value={pet_data.breed} onChange={handleChange} label="Giống" size="md" />
                         <Input name="hairColor" value={pet_data.hairColor} onChange={handleChange} label="Màu lông" size="md" />
                         <Input name="imageUrl" value={pet_data.imageUrl} onChange={handleChange} label="Link ảnh" type="url" size="md" />
