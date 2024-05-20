@@ -41,7 +41,7 @@ export default function CreateNewPetButton(props) {
     const onCreatingPet = () => {
         handleOpen();
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.post(api_url + '/api/Pet', pet_data)
+        axios.post(api_url + '/api/pets', pet_data)
         .then((res) => {
             console.log(res);
             if (res.data.isSucceed === true) {

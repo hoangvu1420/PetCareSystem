@@ -13,7 +13,7 @@ export default function CustomerViewAllPet() {
 
     const getPetByCurrentId = () => {
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.get(api_url + '/api/Pet/user/' + JSON.parse(user_data).userInfo.id)
+        axios.get(api_url + '/api/pets?userId=' + JSON.parse(user_data).userInfo.id)
         .then((res) => {
             console.log(res);
             if (res.data.isSucceed === true) {
