@@ -8,9 +8,9 @@ import Layout from './pages/Layout';
 import RouteGuard from './components/RouteGuard'
 import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
 import TableWithStripedRows from './pages/TableWithStripedRows';
+import ViewPetMedicalRecords from './pages/ViewPetMedicalRecords';
 
 export const UserContext = createContext();
-
 
 function App() {
   const [user_data, setUserData] = useState(sessionStorage.getItem("user_data"));
@@ -25,7 +25,7 @@ function App() {
           <Route exact path='/register' element={<CustomerRegister/>}/>
           <Route path='/' element={<Layout/>}>
             <Route index element={<CustomerViewAllPet/>}/>
-            <Route path='test' element={<TableWithStripedRows/>}/>
+            <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

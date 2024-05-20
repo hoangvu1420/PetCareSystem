@@ -11,11 +11,13 @@ import EditPetDialog from "./EditPetDialog";
 import { useContext } from "react";
 import { UserContext } from "../../../App";
 import DeletePetButton from "./DeletePetButton";
-import ViewMedicalRecordButton from "./ViewMedicalRecordButton";
+import { useNavigate } from "react-router-dom";
+
+
    
 export default function PetCard(props) {
   const { user_data, setUserData } = useContext(UserContext);
-
+  const navigate = useNavigate();
   return (
     <Card className="mt-6 w-80">
       <CardHeader color="blue-gray" className="relative h-48">
@@ -40,7 +42,7 @@ export default function PetCard(props) {
         </div>
       </CardBody>
       <CardFooter className="pt-0 mt-0">
-        <ViewMedicalRecordButton id={props.id} name={props.name}/>
+        <Button onClick={() => navigate('/medical-records/' + props.id)}>Bệnh án</Button>
         <EditPetDialog id={props.id} name={props.name}
                             age={props.age}
                             gender={props.gender}
