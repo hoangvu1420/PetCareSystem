@@ -17,7 +17,7 @@ function CustomerLogin() {
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
-       "email": "vgirardy2@homestead.com",
+       "email": "john.doe@example.com",
        "password": "user1111" 
     });
 

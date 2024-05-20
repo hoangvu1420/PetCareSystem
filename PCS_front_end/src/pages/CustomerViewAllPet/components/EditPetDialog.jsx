@@ -73,9 +73,9 @@ export default function EditPetDialog(props) {
             <Input name="name" value={pet_data.name} onChange={handleChange} label="Tên" size="md" />
             <Input className="w-1/2" name="species" value={pet_data.species} onChange={handleChange} label="Loài" size="md" />
             <Input className="w-1/2" name="age" value={pet_data.age} onChange={handleChange} label="Tuổi" type="number" size="md" />
-            <Select name="gender" value={pet_data.gender} onChange={handleChange} label="Giới tính" size="md">
-              <Option>Male</Option>
-              <Option>Female</Option>
+            <Select value={pet_data.gender} onChange={(val) => setPetData({...pet_data, ["gender"]: val})} label="Giới tính" size="md">
+              <Option value="Male" onChange={handleChange}>Male</Option>
+              <Option value="Female" onChange={handleChange}>Female</Option>
             </Select>
             <Input name="breed" value={pet_data.breed} onChange={handleChange} label="Giống" size="md" />
             <Input name="hairColor" value={pet_data.hairColor} onChange={handleChange} label="Màu lông" size="md" />

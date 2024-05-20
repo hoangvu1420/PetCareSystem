@@ -11,6 +11,7 @@ import EditPetDialog from "./EditPetDialog";
 import { useContext } from "react";
 import { UserContext } from "../../../App";
 import DeletePetButton from "./DeletePetButton";
+import ViewMedicalRecordButton from "./ViewMedicalRecordButton";
    
 export default function PetCard(props) {
   const { user_data, setUserData } = useContext(UserContext);
@@ -39,6 +40,7 @@ export default function PetCard(props) {
         </div>
       </CardBody>
       <CardFooter className="pt-0 mt-0">
+        <ViewMedicalRecordButton id={props.id} name={props.name}/>
         <EditPetDialog id={props.id} name={props.name}
                             age={props.age}
                             gender={props.gender}

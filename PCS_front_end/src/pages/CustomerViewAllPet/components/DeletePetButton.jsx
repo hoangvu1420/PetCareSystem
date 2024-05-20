@@ -31,11 +31,10 @@ export default function DeletePetButton(props) {
     };
 
     return (
-        <Button color="red" className="ml-1" variant="text" 
+        <Button color="red" className="px-3" variant="text" 
         onClick={onDelete}>
               <div className="flex items-center">
-                <MdDeleteForever className=" mr-1 w-5 h-5"/>
-                Xoá
+                <MdDeleteForever className="w-5 h-5"/>
               </div>
               
         </Button>

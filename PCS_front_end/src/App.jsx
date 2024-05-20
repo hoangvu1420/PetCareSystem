@@ -7,6 +7,7 @@ import EmployeeLogin from './pages/EmployeeLogin'
 import Layout from './pages/Layout';
 import RouteGuard from './components/RouteGuard'
 import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
+import TableWithStripedRows from './pages/TableWithStripedRows';
 
 export const UserContext = createContext();
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/register' element={<CustomerRegister/>}/>
           <Route path='/' element={<Layout/>}>
             <Route index element={<CustomerViewAllPet/>}/>
+            <Route path='test' element={<TableWithStripedRows/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
