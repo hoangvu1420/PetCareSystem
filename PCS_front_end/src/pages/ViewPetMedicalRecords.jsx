@@ -60,71 +60,75 @@ export default function ViewPetMedicalRecords() {
 
   return (
     <div>
-    <Typography className="pl-5 py-3" variant="h4" color="blue-gray">Bệnh án</Typography>
-    <Card className="h-full w-full overflow-scroll">
-        
-      <table className="w-full min-w-max table-auto text-left">
-        <thead>
-          <tr>
-            {TABLE_HEAD.map((head) => (
-              <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal leading-none opacity-70"
-                >
-                  {head}
-                </Typography>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {med_data.map(({ diagnosis, doctor, medication, diet, nextAppointment, notes, date }, index) => (
-            <tr key={diagnosis} className="even:bg-blue-gray-50/50">
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {diagnosis}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {doctor}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {medication}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {diet}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {(new Date(date)).toLocaleString()}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {(new Date(nextAppointment)).toLocaleString()}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal">
-                  {notes}
-                </Typography>
-              </td>
-              <td className="p-4 sticky right-0">
-                <Button className="px-3"><FaEdit/></Button>
-              </td>
+        <div className="w-full flex justify-between p-5">
+        <Typography className="" variant="h4" color="blue-gray">Bệnh án</Typography>
+        <Button className="px-3">Thêm bệnh án</Button>
+        </div>
+    
+        <Card className="h-full w-full overflow-scroll">
+            
+        <table className="w-full min-w-max table-auto text-left">
+            <thead>
+            <tr>
+                {TABLE_HEAD.map((head) => (
+                <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                    <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal leading-none opacity-70"
+                    >
+                    {head}
+                    </Typography>
+                </th>
+                ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </Card>
+            </thead>
+            <tbody>
+            {med_data.map(({ diagnosis, doctor, medication, diet, nextAppointment, notes, date }, index) => (
+                <tr key={diagnosis} className="even:bg-blue-gray-50/50">
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {diagnosis}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {doctor}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {medication}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {diet}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {(new Date(date)).toLocaleString()}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {(new Date(nextAppointment)).toLocaleString()}
+                    </Typography>
+                </td>
+                <td className="p-4">
+                    <Typography variant="small" color="blue-gray" className="font-normal">
+                    {notes}
+                    </Typography>
+                </td>
+                <td className="p-4 sticky right-0">
+                    <Button className="px-3"><FaEdit/></Button>
+                </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+        </Card>
     </div>
   );
 }
