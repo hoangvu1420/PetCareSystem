@@ -135,7 +135,7 @@ export default function NavbarDefault() {
             href="#"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
-            Material Tailwind
+            Pet Care System
           </Typography>
         
         </div>
