@@ -33,7 +33,7 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: <Your-App-Name>
+        app-name: 'PetCareSystem20240514113535'
         slot-name: production
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ../PetCareSystem/PetCareSystem/publish_output
