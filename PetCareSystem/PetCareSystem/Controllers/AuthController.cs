@@ -7,15 +7,8 @@ namespace PetCareSystem.Controllers;
 
 [Route("api/auth")]
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController(IAuthService authService) : ControllerBase
 {
-	private readonly IAuthService _authService;
-
-	public AuthController(IAuthService authService)
-	{
-		_authService = authService;
-	}
-
 	[HttpPost]
 	[Route("register")]
 	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
@@ -36,7 +29,7 @@ public class AuthController : ControllerBase
 			});
 		}
 
-		var registerResult = await _authService.RegisterAsync(registerDto);
+		var registerResult = await authService.RegisterAsync(registerDto);
 
 		if (registerResult.IsSucceed)
 			return Ok(registerResult);
@@ -64,7 +57,7 @@ public class AuthController : ControllerBase
 			});
 		}
 
-		var loginResult = await _authService.LoginAsync(loginDto);
+		var loginResult = await authService.LoginAsync(loginDto);
 
 		if (loginResult.IsSucceed)
 			return Ok(loginResult);
@@ -94,7 +87,7 @@ public class AuthController : ControllerBase
 			});
 		}
 
-		var refreshTokenResult = await _authService.IssueRefreshTokenAsync(request);
+		var refreshTokenResult = await authService.IssueRefreshTokenAsync(request);
 
 		if (refreshTokenResult.IsSucceed)
 			return Ok(refreshTokenResult);
@@ -125,7 +118,7 @@ public class AuthController : ControllerBase
 			});
 		}
 
-		var addToRoleResult = await _authService.AddToRoleAsync(addToRoleDto);
+		var addToRoleResult = await authService.AddToRoleAsync(addToRoleDto);
 
 		if (addToRoleResult.IsSucceed)
 			return Ok(addToRoleResult);

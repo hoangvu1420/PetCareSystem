@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj": {}
+    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj": {
+    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj",
+        "projectUniqueName": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj",
         "projectName": "PetCareSystem.Test",
-        "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj",
+        "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\PetCareSystem.Test.csproj",
         "packagesPath": "C:\\Users\\FPTSHOP\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\obj\\",
+        "outputPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\FPTSHOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj": {
-                "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj"
+              "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj": {
+                "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj"
               }
             }
           }
@@ -104,14 +104,14 @@
         }
       }
     },
-    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj": {
+    "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
+        "projectUniqueName": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
         "projectName": "PetCareSystem",
-        "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
+        "projectPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
         "packagesPath": "C:\\Users\\FPTSHOP\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\obj\\",
+        "outputPath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\FPTSHOP\\AppData\\Roaming\\NuGet\\NuGet.Config",

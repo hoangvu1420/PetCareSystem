@@ -105,7 +105,7 @@ public class MedicalRecordService(IMedicalRecordRepository medicalRecordReposito
 		return response;
 	}
 
-	public async Task<ApiResponse> UpdateMedicalRecordAsync(int recordId, UpdateMedicalRecordDto updateMedicalRecordDto)
+	public async Task<ApiResponse> UpdateMedicalRecordAsync(int recordId, UpdateMedicalReportDto updateMedicalRecordDto)
 	{
 		var response = new ApiResponse();
 

@@ -3,14 +3,14 @@
   <Class Name="PetCareSystem.Controllers.AuthController">
     <Position X="2.25" Y="3" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAABAAAAAAIQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAABAAAAAAIQAAAAAAA=</HashCode>
       <FileName>Controllers\AuthController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.Controllers.PetController">
     <Position X="5.75" Y="3" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIKAAAAgAAAAAAAAAACAAAQAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAKAAAAgAAAAAAAAAACAAAQAABAAAAAA=</HashCode>
       <FileName>Controllers\PetController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.Models.BaseEntity">
-    <Position X="19.75" Y="2" Width="2" />
+    <Position X="19" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\BaseEntity.cs</FileName>
@@ -52,7 +52,7 @@
   <Class Name="PetCareSystem.Models.Pet">
     <Position X="15.75" Y="5.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>AAAEQACIAAAAAAAIAEAAAAQAAAAAAAAAAAQAAgIAAAA=</HashCode>
+      <HashCode>AAAkQACIAAAAAACIAEAAAAQAAAAAAAAAAAQAAgIAAAA=</HashCode>
       <FileName>Models\Pet.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -78,131 +78,316 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.AddToRoleDto">
-    <Position X="1.5" Y="11.75" Width="1.5" />
+    <Position X="5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DTOs\AuthDtos\AddToRoleDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.AuthResponse">
-    <Position X="8" Y="11.75" Width="2.25" />
+    <Position X="1.5" Y="10.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAA=</HashCode>
       <FileName>DTOs\AuthDtos\AuthResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.LoginRequestDto">
-    <Position X="4.5" Y="14.25" Width="1.5" />
+    <Position X="5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>DTOs\AuthDtos\LoginRequestDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.LoginResponse">
-    <Position X="8" Y="14.25" Width="2.25" />
+    <Position X="7.5" Y="13.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAABEAA=</HashCode>
+      <HashCode>AAAAAAAASAAAAAAAAAAAAAAAQAAAABAAAAAAAAABEAA=</HashCode>
       <FileName>DTOs\AuthDtos\LoginResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.RegisterRequestDto">
-    <Position X="4.5" Y="16.75" Width="2" />
+    <Position X="1.5" Y="13.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AACAAEAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAg=</HashCode>
+      <HashCode>AAAAAUAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAg=</HashCode>
       <FileName>DTOs\AuthDtos\RegisterRequestDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.AuthDtos.UserDto">
-    <Position X="8" Y="16.75" Width="2" />
+    <Position X="7.5" Y="10.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAUAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAQAAg=</HashCode>
       <FileName>DTOs\AuthDtos\UserDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.PetDtos.CreatePetDto">
-    <Position X="1.5" Y="13.75" Width="1.5" />
+    <Position X="4.5" Y="19" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEQAAIAAAAAAAIAEAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AAAEQAAIAAAAAACIAEAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>DTOs\PetDtos\CreatePetDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.PetDtos.PetDto">
-    <Position X="1.5" Y="16.75" Width="1.5" />
+    <Position X="1.5" Y="19" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAGQAAIAAAAAAAIAEAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AAAGQAAIAAAAAACIAEAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>DTOs\PetDtos\PetDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.DTOs.ApiResponse">
-    <Position X="4.5" Y="11.75" Width="2.25" />
+    <Position X="4.25" Y="16.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAA=</HashCode>
       <FileName>DTOs\ApiResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.Infrastructure.DataContext.ApplicationDbContext">
-    <Position X="13.5" Y="13.5" Width="3.5" />
+    <Position X="13" Y="17.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAABAAAAAAAEAAAQAAACEAAAAAAAAAQAAgAAAAA=</HashCode>
+      <HashCode>AAAgAAABAAIAAAAEAAAQAAACEAAAAAAAAAQAAgAAAAA=</HashCode>
       <FileName>Infrastructure\DataContext\ApplicationDbContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PetCareSystem.Repositories.Implementations.Repository&lt;T&gt;">
-    <Position X="19.25" Y="14" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAEBAIAAAAAAAAAAAAAAAAAAAIAAAAAACAAAIIAAAIA=</HashCode>
-      <FileName>Repositories\Implementations\Repository.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="PetCareSystem.Services.Implementations.AuthService">
-    <Position X="28.25" Y="13.75" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AgAABAAAAAAAAEAAAAAAAAAgAAAAAAIgAAEAAAAACAA=</HashCode>
-      <FileName>Services\Implementations\AuthService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="PetCareSystem.StaticDetails.PictureStock">
-    <Position X="12.25" Y="21.75" Width="2.5" />
+    <Position X="14.75" Y="22.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAACAAAAAAAAAAAQAIAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>StaticDetails\PictureStock.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.StaticDetails.UserRoles">
-    <Position X="15.5" Y="21.75" Width="1.5" />
+    <Position X="18" Y="22.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaticDetails\UserRoles.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.Utilities.DtoParser">
-    <Position X="19.75" Y="21.75" Width="2.75" />
+    <Position X="21.75" Y="22.25" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAABAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQQAAAgAAgAAABAAACEAAA=</HashCode>
       <FileName>Utilities\DtoParser.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PetCareSystem.DTOs.MedicalReportDtos.CreateMedicalRecordDto">
+    <Position X="1.5" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAoAAAAAAAAABAAAAABAAAAAAAAAAQBAAAAAAAAAgA=</HashCode>
+      <FileName>DTOs\MedicalReportDtos\CreateMedicalRecordDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.MedicalReportDtos.MedicalRecordDto">
+    <Position X="4.5" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAqAAAAAAAAABAAAAABAAAAAAAAAAQBAAAAAAAAAgA=</HashCode>
+      <FileName>DTOs\MedicalReportDtos\MedicalRecordDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.MedicalReportDtos.UpdateMedicalReportDto">
+    <Position X="8" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAqAAAAAAAAABAAAAABAAAAAAAAAAQBAAAAAAAAAgA=</HashCode>
+      <FileName>DTOs\MedicalReportDtos\UpdateMedicalRecordDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.MedicalRecordRepository">
+    <Position X="36.5" Y="24" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAAA=</HashCode>
+      <FileName>Repositories\Implementations\MedicalRecordRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.PetRepository">
+    <Position X="41.5" Y="24" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Implementations\PetRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.RefreshTokenRepository">
+    <Position X="31.25" Y="24" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Repositories\Implementations\RefreshTokenRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.Repository&lt;T&gt;">
+    <Position X="38.75" Y="19.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEBAIAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAIIAAAIA=</HashCode>
+      <FileName>Repositories\Implementations\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.DTOs.PetDtos.UpdatePetDto">
+    <Position X="8" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGQAAAAAAAAACIAEAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DTOs\PetDtos\UpdatePetDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Services.Implementations.AuthService">
+    <Position X="31.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AkAAAAAAAAAAAEAAAAAIAAAAAAAAAAIgAAAAAACACAA=</HashCode>
+      <FileName>Services\Implementations\AuthService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Services.Implementations.MedicalRecordService">
+    <Position X="36.25" Y="5.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAEAAAAAAAQEAEAAAAEAAAAAAA=</HashCode>
+      <FileName>Services\Implementations\MedicalRecordService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Services.Implementations.PetService">
+    <Position X="41.75" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAQAEAAAAAAEAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Implementations\PetService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.StaticDetails.Breeds">
+    <Position X="14.75" Y="25.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAIUAAAAACBgAQAAAAgAAAAAAABAAAAACAA=</HashCode>
+      <FileName>StaticDetails\Breeds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.StaticDetails.DbStatics">
+    <Position X="20.75" Y="25.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StaticDetails\DbStatics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Controllers.MedicalRecordController">
+    <Position X="5.75" Y="6.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAQAAAEAAAA=</HashCode>
+      <FileName>Controllers\MedicalRecordController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.GrommingDtos.CreateGroomingServiceDto">
+    <Position X="1.5" Y="26.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\GrommingDtos\CreateGroomingServiceDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.GrommingDtos.GroomingServiceDto">
+    <Position X="4.75" Y="26.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\GrommingDtos\GroomingServiceDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.GrommingDtos.UpdateGroomingServiceDto">
+    <Position X="8" Y="26.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\GrommingDtos\UpdateGroomingServiceDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.GroomingRepository">
+    <Position X="46.25" Y="24" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAgAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Implementations\GroomingRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Services.Implementations.GroomingService">
+    <Position X="46.5" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAAAAAAAAEAAAAAAAAAAAAAQAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\Implementations\GroomingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="PetCareSystem.Services.Implementations.Token">
+    <Position X="28.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Implementations\AuthService.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PetCareSystem.StaticDetails.Breed">
+    <Position X="18" Y="25.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StaticDetails\Breeds.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="PetCareSystem.Repositories.Contracts.IMedicalRecordRepository">
+    <Position X="36.25" Y="12.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAAA=</HashCode>
+      <FileName>Repositories\Contracts\IMedicalRecordRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="PetCareSystem.Repositories.Contracts.IPetRepository">
-    <Position X="24" Y="18.25" Width="1.5" />
+    <Position X="42" Y="12.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\Contracts\IPetRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="PetCareSystem.Repositories.Contracts.IRefreshTokenRepository">
+    <Position X="31.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Repositories\Contracts\IRefreshTokenRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="PetCareSystem.Repositories.Contracts.IRepository&lt;T&gt;">
-    <Position X="23.5" Y="14.25" Width="2.75" />
+    <Position X="38.75" Y="15.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAEAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAIIAAAIA=</HashCode>
       <FileName>Repositories\Contracts\IRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PetCareSystem.Services.Contracts.IAuthService">
-    <Position X="28.25" Y="17.75" Width="3" />
+    <Position X="31.25" Y="3" Width="4" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AkAAAAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Services\Contracts\IAuthService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Services.Contracts.IMedicalRecordService">
+    <Position X="36.25" Y="2.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAEAAAAAAAQEAEAAAAEAAAAAAA=</HashCode>
+      <FileName>Services\Contracts\IMedicalRecordService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Services.Contracts.IPetService">
+    <Position X="41.75" Y="2.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAQAEAAAAAAEAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Contracts\IPetService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Repositories.Contracts.IGroomingRepository">
+    <Position X="46.75" Y="12.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Contracts\IGroomingRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Services.Contracts.IGroomingService">
+    <Position X="46.5" Y="2.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAAAAAAAAEAAAAAAAAAAAAAQAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\Contracts\IGroomingService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

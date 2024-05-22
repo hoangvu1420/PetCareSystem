@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using PetCareSystem.DTOs.GrommingDtos;
 using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.Models;
@@ -117,7 +118,7 @@ public static class DtoParser
 		};
 	}
 
-	public static MedicalRecord ToMedicalRecord(this UpdateMedicalRecordDto updateMedicalRecordDto)
+	public static MedicalRecord ToMedicalRecord(this UpdateMedicalReportDto updateMedicalRecordDto)
 	{
 		return new MedicalRecord
 		{
@@ -134,4 +135,41 @@ public static class DtoParser
 
 	#endregion
 
+
+	#region GroomingService parse methods
+
+	public static GroomingServiceDto ToGroomingServiceDto(this GroomingService groomingService, int bookedCount)
+	{
+		return new GroomingServiceDto
+		{
+			Id = groomingService.Id,
+			Name = groomingService.Name,
+			Description = groomingService.Description,
+			Price = groomingService.Price,
+			BookedCount = bookedCount
+		};
+	}
+
+	public static GroomingService ToGroomingService(this CreateGroomingServiceDto createGroomingServiceDto)
+	{
+		return new GroomingService
+		{
+			Name = createGroomingServiceDto.Name,
+			Description = createGroomingServiceDto.Description,
+			Price = createGroomingServiceDto.Price
+		};
+	}
+
+	public static GroomingService ToGroomingService(this UpdateGroomingServiceDto updateGroomingServiceDto)
+	{
+		return new GroomingService
+		{
+			Id = updateGroomingServiceDto.Id,
+			Name = updateGroomingServiceDto.Name,
+			Description = updateGroomingServiceDto.Description,
+			Price = updateGroomingServiceDto.Price
+		};
+	}
+
+	#endregion
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MRnMIesWGCM7CBRLs3z5x5TzMP3D3KYdZFzJIYdPEYfuR3n86enY+xynzap0HJYFzRxPeRBP4FrOPKTZVSz4Rw==",
+  "dgSpecHash": "RSHWfzrZYr4oWFQAZAgmrzz3iVO9eS9dVx/XA6AU/oqrQuYV62GABI+LHEpCsEKaavZDDP64puhSTwXXTAd/oQ==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
+  "projectFilePath": "D:\\OneDrive - Hanoi University of Science and Technology\\Flavour\\ITSS\\Back\\ITSS-Group19\\PetCareSystem\\PetCareSystem\\PetCareSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FPTSHOP\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\FPTSHOP\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

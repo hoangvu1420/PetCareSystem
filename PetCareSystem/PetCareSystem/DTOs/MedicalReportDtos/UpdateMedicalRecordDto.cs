@@ -2,7 +2,7 @@
 
 namespace PetCareSystem.DTOs.MedicalReportDtos;
 
-public class UpdateMedicalRecordDto
+public class UpdateMedicalReportDto
 {
 	[Required]
 	public int Id { get; set; }

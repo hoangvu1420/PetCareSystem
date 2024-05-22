@@ -1,43 +1,29 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.DTOs;
-using PetCareSystem.Models;
-using PetCareSystem.CustomFilters;
+using PetCareSystem.DTOs.GrommingDtos;
 using PetCareSystem.Services.Contracts;
-using PetCareSystem.DTOs.AuthDtos;
-using PetCareSystem.DTOs.MedicalReportDtos;
-using PetCareSystem.StaticDetails;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/medical-records")]
-[Authorize]
+[Route("api/grooming-services")]
 [ApiController]
-public class MedicalRecordController(IMedicalRecordService medicalRecordService) : ControllerBase
+[Authorize]
+public class GroomingController(IGroomingService groomingService) : ControllerBase
 {
 	private ApiResponse _response = new();
 
 	[HttpGet]
-	[ResourceAuthorize(typeof(MedicalRecord))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> GetMedicalRecords([FromQuery] int? petId)
+	public async Task<ActionResult<ApiResponse>> GetGroomingServices()
 	{
 		try
 		{
-			if (petId.HasValue)
-			{
-				_response = await medicalRecordService.GetMedicalRecordsByPetIdAsync(petId.Value);
-				if (!_response.IsSucceed)
-					return NotFound(_response);
-
-				return Ok(_response);
-			}
-
-			_response = await medicalRecordService.GetMedicalRecordsAsync();
+			_response = await groomingService.GetGroomingServicesAsync();
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -49,20 +35,18 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 			_response.ErrorMessages = [e.Message];
 			return StatusCode(StatusCodes.Status500InternalServerError, _response);
 		}
-	}
+	} 
 
-	[HttpGet("{recordId:int}", Name = "GetMedicalRecordByRecordId")]
-	[ResourceAuthorize(typeof(MedicalRecord))] // Custom filter to authorize access to resources
+	[HttpGet("{groomServiceId:int}", Name = "GetGroomingServiceById")]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> GetMedicalRecordByRecordId(int recordId)
+	public async Task<ActionResult<ApiResponse>> GetGroomingServiceById(int groomServiceId)
 	{
 		try
 		{
-			_response = await medicalRecordService.GetMedicalRecordByRecordIdAsync(recordId);
+			_response = await groomingService.GetGroomingServiceByIdAsync(groomServiceId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -77,13 +61,14 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 	}
 
 	[HttpPost]
-	[Authorize(Roles = UserRoles.Admin)]
-	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
+	[Authorize(Roles = "Admin")]
+	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status201Created)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> CreateMedicalRecord([FromBody] CreateMedicalRecordDto medicalRecordDto)
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
+	public async Task<ActionResult<ApiResponse>> CreateGroomingService(
+		[FromBody] CreateGroomingServiceDto groomingServiceDto)
 	{
 		try
 		{
@@ -94,23 +79,18 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 					.Select(e => e.ErrorMessage)
 					.ToList();
 
-				return BadRequest(new AuthResponse
-				{
-					IsSucceed = false,
-					ErrorMessages = errorMessages
-				});
+				_response.IsSucceed = false;
+				_response.ErrorMessages = errorMessages;
+				return BadRequest(_response);
 			}
 
-			_response = await medicalRecordService.CreateMedicalRecordAsync(medicalRecordDto);
-			if (!_response.IsSucceed)
-				return BadRequest(_response);
+			_response = await groomingService.CreateGroomingServiceAsync(groomingServiceDto);
+			var createdGroomingServiceId = (_response.Data as GroomingServiceDto)!.Id;
 
-			var createdRecord = (_response.Data as MedicalRecordDto)!;
-			var createdRecordId = createdRecord.Id;
-
-			return CreatedAtRoute(nameof(GetMedicalRecordByRecordId),
-				new { recordId = createdRecordId },
-				_response); // return 201 status code with the created medical record
+			return CreatedAtRoute(
+				"GetGroomingServiceById", 
+				new { groomServiceId = createdGroomingServiceId },
+				_response);
 		}
 		catch (Exception e)
 		{
@@ -120,18 +100,18 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 		}
 	}
 
-	[HttpDelete("{recordId:int}")]
-	[Authorize(Roles = UserRoles.Admin)]
+	[HttpDelete("{groomServiceId:int}")]
+	[Authorize(Roles = "Admin")]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> DeleteMedicalRecord(int recordId)
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
+	public async Task<ActionResult<ApiResponse>> DeleteGroomingService(int groomServiceId)
 	{
 		try
 		{
-			_response = await medicalRecordService.DeleteMedicalRecordAsync(recordId);
+			_response = await groomingService.DeleteGroomingServiceAsync(groomServiceId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -145,14 +125,16 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 		}
 	}
 
-	[HttpPut("{recordId:int}")]
-	[Authorize(Roles = UserRoles.Admin)]
+	[HttpPut("{groomServiceId:int}")]
+	[Authorize(Roles = "Admin")]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> UpdateMedicalRecord(int recordId, [FromBody] UpdateMedicalReportDto medicalRecordDto)
+	[ProducesResponseType(StatusCodes.Status403Forbidden)]
+	public async Task<ActionResult<ApiResponse>> UpdateGroomingService(
+		int groomServiceId, [FromBody] UpdateGroomingServiceDto updateGroomingServiceDto)
 	{
 		try
 		{
@@ -163,14 +145,12 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 					.Select(e => e.ErrorMessage)
 					.ToList();
 
-				return BadRequest(new AuthResponse
-				{
-					IsSucceed = false,
-					ErrorMessages = errorMessages
-				});
+				_response.IsSucceed = false;
+				_response.ErrorMessages = errorMessages;
+				return BadRequest(_response);
 			}
 
-			_response = await medicalRecordService.UpdateMedicalRecordAsync(recordId, medicalRecordDto);
+			_response = await groomingService.UpdateGroomingServiceAsync(groomServiceId, updateGroomingServiceDto);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
