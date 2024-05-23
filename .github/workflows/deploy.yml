@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - deploy  # Trigger this workflow on pushes to the 'deploy' branch
+    paths:
+      - 'PetCareSystem/**'
 
 jobs:
   build-and-deploy:
@@ -11,12 +13,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up .NET Core
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0' 
+        dotnet-version: '8.0'
 
     - name: Restore dependencies
       run: dotnet restore
@@ -36,4 +38,4 @@ jobs:
         app-name: 'PetCareSystem20240514113535'
         slot-name: production
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ../PetCareSystem/PetCareSystem/publish_output
+        package: ./PetCareSystem/PetCareSystem/publish_output
