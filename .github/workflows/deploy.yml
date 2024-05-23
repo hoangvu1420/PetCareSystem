@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - deploy  # Trigger this workflow on pushes to the 'deploy' branch
+    paths:
+      - 'PetCareSystem/**'
 
 jobs:
   build-and-deploy:
