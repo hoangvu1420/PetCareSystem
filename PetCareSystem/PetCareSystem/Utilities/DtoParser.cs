@@ -2,6 +2,7 @@
 using PetCareSystem.DTOs.GrommingDtos;
 using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
+using PetCareSystem.DTOs.RoomDtos;
 using PetCareSystem.Models;
 using PetCareSystem.StaticDetails;
 
@@ -168,6 +169,49 @@ public static class DtoParser
 			Name = updateGroomingServiceDto.Name,
 			Description = updateGroomingServiceDto.Description,
 			Price = updateGroomingServiceDto.Price
+		};
+	}
+
+	#endregion
+
+
+	#region Room parse methods
+
+	public static RoomDto ToRoomDto(this Room room)
+	{
+		return new RoomDto
+		{
+			Id = room.Id,
+			Name = room.Name,
+			Price = room.Price,
+			Description = room.Description,
+			BookedCount = room.PetRooms == null ? 0 : room.PetRooms.Count()
+		};
+	}
+
+	public static IEnumerable<RoomDto> ToRoomDtoList(this IEnumerable<Room> rooms)
+	{
+		return rooms.Select(room => room.ToRoomDto()).ToList();
+	}
+
+	public static Room ToRoom(this CreateRoomDto createRoomDto)
+	{
+		return new Room
+		{
+			Name = createRoomDto.Name,
+			Price = createRoomDto.Price,
+			Description = createRoomDto.Description
+		};
+	}
+
+	public static Room ToRoom(this UpdateRoomDto updateRoomDto)
+	{
+		return new Room
+		{
+			Id = updateRoomDto.Id,
+			Name = updateRoomDto.Name,
+			Price = updateRoomDto.Price,
+			Description = updateRoomDto.Description
 		};
 	}
 
