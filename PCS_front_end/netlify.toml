@@ -1,6 +1,6 @@
 [build]
   base = "PCS_front_end"
-  publish = "PCS_front_end/"
+  publish = ""
   command = "npm run build"
 
 [[headers]]
