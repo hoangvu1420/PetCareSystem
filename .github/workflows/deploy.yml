@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - deploy  # Trigger this workflow on pushes to the 'deploy' branch
-    paths:
-      - 'PetCareSystem/**'
 
 jobs:
   build-and-deploy:
@@ -39,3 +37,4 @@ jobs:
         slot-name: production
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ./PetCareSystem/PetCareSystem/publish_output
+        
