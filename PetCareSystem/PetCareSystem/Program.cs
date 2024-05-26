@@ -22,7 +22,7 @@ builder.Services.AddScoped<IGroomingService, PetCareSystem.Services.Implementati
 builder.Services.AddScoped<IRoomService, RoomService>();
 
 // Add repositories to the container.
-builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
