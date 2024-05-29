@@ -50,7 +50,7 @@ export default function NavbarDefault() {
         </svg>
  
         <a href="#" className="flex items-center">
-          Pages
+          Home
         </a>
       </Typography>
       <Typography
@@ -73,8 +73,8 @@ export default function NavbarDefault() {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
-          Account
+        <a href="" className="flex items-center">
+          Service
         </a>
       </Typography>
       <Typography
@@ -96,7 +96,7 @@ export default function NavbarDefault() {
           />
         </svg>
         <a href="#" className="flex items-center">
-          Blocks
+          Blog
         </a>
       </Typography>
       <Typography
@@ -120,7 +120,7 @@ export default function NavbarDefault() {
           />
         </svg>
         <a href="#" className="flex items-center">
-          Docs
+          Contact
         </a>
       </Typography>
     </ul>
@@ -141,9 +141,7 @@ export default function NavbarDefault() {
         </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
-          <Button variant="text" size="sm" className="hidden lg:inline-block">
-            <span>Log In</span>
-          </Button>
+         
           <Button
             variant="gradient"
             size="sm"
@@ -195,9 +193,7 @@ export default function NavbarDefault() {
         <div className="container mx-auto">
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="">
-              <span>Log In</span>
-            </Button>
+            
             <Button onClick={onSignOut} fullWidth variant="gradient" size="sm" className="">
               <span>Đăng xuất</span>
             </Button>

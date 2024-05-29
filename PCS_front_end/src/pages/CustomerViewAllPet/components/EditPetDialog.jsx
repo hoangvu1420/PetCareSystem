@@ -60,7 +60,6 @@ export default function EditPetDialog(props) {
     <>
       <Button onClick={handleOpen}>Sửa</Button>
       <Dialog
-        size="xs"
         open={open}
         handler={handleOpen}
         className="bg-transparent shadow-none"
