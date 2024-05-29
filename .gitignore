@@ -3,3 +3,4 @@ temp/
 PetCareSystem/.vs/
 PetCareSystem/PetCareSystem/bin
 PetCareSystem/PetCareSystem/obj
+node_modules
