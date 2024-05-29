@@ -36,7 +36,6 @@ function Hero() {
     <div className="section-container">
       <div className="hero-section">
         <div className="text-section">
-          <p className="text-headline">❤️ Health comes first</p>
           <h2 className="text-title">
             Find your Doctor and make an Appointments
           </h2>
