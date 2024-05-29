@@ -84,7 +84,7 @@ function AppointmentForm() {
 
         <form className="form-content" onSubmit={handleSubmit}>
           <label>
-            Patient Full Name:
+            Owners Full Name:
             <input
               type="text"
               value={patientName}
@@ -96,7 +96,7 @@ function AppointmentForm() {
 
           <br />
           <label>
-            Patient Phone Number:
+            Owners Phone Number:
             <input
               type="text"
               value={patientNumber}
@@ -108,16 +108,15 @@ function AppointmentForm() {
 
           <br />
           <label>
-            Patient Gender:
+            Services:
             <select
               value={patientGender}
               onChange={(e) => setPatientGender(e.target.value)}
               required
             >
               <option value="default">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="private">I will inform Doctor only</option>
+              <option value="male">Groom</option>
+              <option value="female">Helth check</option>
             </select>
             {formErrors.patientGender && <p className="error-message">{formErrors.patientGender}</p>}
           </label>
@@ -142,10 +141,6 @@ function AppointmentForm() {
 
           <p className="success-message" style={{display: isSubmitted ? "block" : "none"}}>Appointment details has been sent to the patients phone number via SMS.</p>
         </form>
-      </div>
-
-      <div className="legal-footer">
-        <p>© 2013-2023 Health+. All rights reserved.</p>
       </div>
 
       <ToastContainer autoClose={5000} limit={1} closeButton={false} />

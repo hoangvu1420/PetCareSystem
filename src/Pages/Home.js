@@ -3,9 +3,7 @@ import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
 import Info from "../Components/Info";
 import BookAppointment from "../Components/BookAppointment";
-import Reviews from "../Components/Reviews";
 import Doctors from "../Components/Doctors";
-import Footer from "../Components/Footer";
 
 function Home() {
   return (
@@ -14,9 +12,8 @@ function Home() {
       <Hero />
       <Info />
       <BookAppointment />
-      <Reviews />
       <Doctors />
-      <Footer />
+
     </div>
   );
 }

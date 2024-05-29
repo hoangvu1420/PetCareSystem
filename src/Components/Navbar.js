@@ -53,13 +53,8 @@ function Navbar() {
           </a>
         </li>
         <li>
-          <a href="#reviews" className="navbar-links">
-            Reviews
-          </a>
-        </li>
-        <li>
           <a href="#doctors" className="navbar-links">
-            Doctors
+            Your pets
           </a>
         </li>
       </ul>
@@ -96,18 +91,8 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <a onClick={openNav} href="#reviews">
-              Reviews
-            </a>
-          </li>
-          <li>
             <a onClick={openNav} href="#doctors">
-              Doctors
-            </a>
-          </li>
-          <li>
-            <a onClick={openNav} href="#contact">
-              Contact
+              Your pets
             </a>
           </li>
         </ul>
