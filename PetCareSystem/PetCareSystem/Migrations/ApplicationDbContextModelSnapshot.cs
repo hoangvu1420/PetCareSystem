@@ -332,6 +332,10 @@ namespace PetCareSystem.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("HairColor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -414,6 +418,33 @@ namespace PetCareSystem.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("PetRooms");
+                });
+
+            modelBuilder.Entity("PetCareSystem.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("PetCareSystem.Models.Room", b =>
@@ -500,7 +531,7 @@ namespace PetCareSystem.Migrations
             modelBuilder.Entity("PetCareSystem.Models.MedicalRecord", b =>
                 {
                     b.HasOne("PetCareSystem.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("MedicalRecords")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -569,6 +600,8 @@ namespace PetCareSystem.Migrations
 
             modelBuilder.Entity("PetCareSystem.Models.Pet", b =>
                 {
+                    b.Navigation("MedicalRecords");
+
                     b.Navigation("PetGroomingServices");
 
                     b.Navigation("PetRooms");

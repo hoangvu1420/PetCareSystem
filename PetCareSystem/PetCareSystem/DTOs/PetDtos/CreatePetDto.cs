@@ -9,6 +9,8 @@ public class CreatePetDto
 	[Required]
 	public int Age { get; set; }
 	[Required]
+	public string Gender { get; set; }
+	[Required]
 	public string HairColor { get; set; }
 	[Required]
 	public string Species { get; set; }

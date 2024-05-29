@@ -10,7 +10,7 @@ public class RegisterRequestDto
 	[Required(ErrorMessage = "Last name is required")]
 	public string LastName { get; init; }
 
-	public string? Districs { get; init; }
+	public string? District { get; init; }
 
 	public string? ProfilePictureUrl { get; init; }
 

@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=88a60063_002Dbe90_002D4f18_002Db4de_002D266a1225e14d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Register_ValidRequest_ReturnsOk" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_UserAlreadyExists_ReturnsError&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_SuccessfulRegistration_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_InvalidRequest_ReturnsError&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F11CCB42-FA80-47A4-B39C-308116ED5AC4::net8.0::PetCareSystem.Test.AuthTests.AuthServiceTests.RegisterAsync_InvalidEmailRequest_ReturnsError&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
