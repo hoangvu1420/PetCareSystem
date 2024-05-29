@@ -11,14 +11,11 @@ function Doctors() {
     <div className="doctor-section" id="doctors">
       <div className="dt-title-content">
         <h3 className="dt-title">
-          <span>Meet Our Doctors</span>
+          <span>See your pets</span>
         </h3>
 
         <p className="dt-description">
-          Meet our exceptional team of specialist doctors, dedicated to
-          providing top-notch healthcare services at Health Plus. Trust in their
-          knowledge and experience to lead you towards a healthier and happier
-          life.
+          See your pets, get on track with appointment, booked room or condition of your pets
         </p>
       </div>
 

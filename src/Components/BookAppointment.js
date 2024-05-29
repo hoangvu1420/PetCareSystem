@@ -50,7 +50,7 @@ function BookAppointment() {
           type="button"
           onClick={handleBookAppointmentClick}
         >
-          <FontAwesomeIcon icon={faCalendarCheck} /> Book Appointment
+          <FontAwesomeIcon icon={faCalendarCheck} /> Book a room
         </button>
       </div>
     </div>

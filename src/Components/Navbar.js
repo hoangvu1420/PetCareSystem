@@ -49,7 +49,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#about" className="navbar-links">
-            About
+            Appoint
           </a>
         </li>
         <li>
