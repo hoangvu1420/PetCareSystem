@@ -2,12 +2,22 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/AppointmentForm.css";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 function AppointmentForm() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+  const handleNewPost = (new_post) => {
+    console.log(new_post);
+    axios.post()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(error => console.log(error));
+  }
 
+  const [description, setDescription] = useState("");
   const [patientName, setPatientName] = useState("");
   const [patientNumber, setPatientNumber] = useState("");
   const [patientGender, setPatientGender] = useState("default");
@@ -55,6 +65,7 @@ function AppointmentForm() {
     }
 
     // Reset form fields and errors after successful submission
+    setDescription("");
     setPatientName("");
     setPatientNumber("");
     setPatientGender("default");
@@ -132,10 +143,23 @@ function AppointmentForm() {
             />
             {formErrors.appointmentTime && <p className="error-message">{formErrors.appointmentTime}</p>}
           </label>
+          <label>
+            Description:
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+            {formErrors.description && <p className="error-message">{formErrors.description}</p>}
+          </label>
 
           <br />
           <br />
-          <button type="submit" className="text-appointment-btn">
+          <button 
+            type="submit"
+            className="text-appointment-btn"
+            ononClick={handleSubmit}>
             Confirm Appointment
           </button>
 
