@@ -17,8 +17,8 @@ function CustomerLogin() {
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
-       "email": "john.doe@example.com",
-       "password": "user1111" 
+        "email": "john.doe@example.com",
+        "password": "user1111"
     });
 
     const [loading, setLoading] = useState(false); // Add loading state
@@ -55,30 +55,30 @@ function CustomerLogin() {
             });
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("UseEffect was called");
         if (user_data != null) {
             navigate('/');
-        }  
+        }
     }, [user_data]);
 
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="w-96 p-6 shadow-lg rounded-md">
-                <h1 className="text-center mb-4 text-2xl font-bold text-[#35b8be]">Đăng nhập</h1>
+                <h1 className="text-center mb-4 text-2xl font-bold text-[#212121]">Đăng nhập</h1>
                 <hr className="mb-4" />
 
                 <form onSubmit={onLogin}>
                     <div className="flex items-center mb-4">
                         <FaUser />
-                        <input onChange={handleChange} value={user_info.email} name="email" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="email" placeholder="Email" required />
+                        <input onChange={handleChange} value={user_info.email} name="email" className="ml-2 focus:border-[#212121] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="email" placeholder="Email" required />
                     </div>
                     <div className="flex items-center mb-4">
                         <FaLock />
-                        <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#35b8be] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required />
+                        <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#212121] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required />
                     </div>
                     <div className="flex justify-center mb-4">
-                        <button type="submit" className="bg-[#35b8be] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl" disabled={loading}>
+                        <button type="submit" className="bg-[#212121] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl" disabled={loading}>
                             {loading ? 'Đang đăng nhập...' : 'Đăng nhập'} {/* Change button text based on loading state */}
                         </button>
                     </div>
@@ -97,7 +97,7 @@ function CustomerLogin() {
                 </div>
                 <div className="flex justify-center">
                     <p className="mr-1">Not a customer?</p>
-                    <button className="text-[#35b8be] hover:underline">Go to employee page</button>
+                    <button className="text-[#35b8be] hover:underline">Đến trang nhân viên</button>
                 </div>
             </div>
             {/* To let Toastify able to display a toast */}
