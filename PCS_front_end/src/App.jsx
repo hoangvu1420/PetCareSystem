@@ -9,6 +9,7 @@ import RouteGuard from './components/RouteGuard'
 import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
 import TableWithStripedRows from './pages/TableWithStripedRows';
 import ViewPetMedicalRecords from './pages/MedicalRecord/ViewPetMedicalRecords';
+import HomePage from './Homepage/HomePage';
 
 export const UserContext = createContext();
 
@@ -24,7 +25,8 @@ function App() {
           <Route exact path='/login' element={<CustomerLogin/>}/>
           <Route exact path='/register' element={<CustomerRegister/>}/>
           <Route path='/' element={<Layout/>}>
-            <Route index element={<CustomerViewAllPet/>}/>
+            <Route index element={<HomePage/>}/>
+            <Route path='pets' element={<CustomerViewAllPet/>}/>
             <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
           </Route>
         </Routes>
