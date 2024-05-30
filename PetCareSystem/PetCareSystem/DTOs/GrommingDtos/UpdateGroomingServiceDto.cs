@@ -13,5 +13,5 @@ public class UpdateGroomingServiceDto
 	[MinLength(3)]
 	public string Description { get; set; }
 	[Required]
-	public double Price { get; set; }
+	public decimal Price { get; set; }
 }

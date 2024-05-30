@@ -14,7 +14,6 @@ public class RoomService(IRoomRepository roomRepository) : IRoomService
 
 		var rooms = await roomRepository.GetAllAsync(includeProperties: "PetRooms");
 		var roomList = rooms.ToList();
-
 		if (!roomList.Any())
 		{
 			response.IsSucceed = false;

@@ -128,6 +128,9 @@ public class MedicalRecordService(IMedicalRecordRepository medicalRecordReposito
 
 		await medicalRecordRepository.UpdateAsync(medicalRecordToUpdate);
 
+		response.IsSucceed = true;
+		response.Data = medicalRecordToUpdate.ToMedicalRecordDto();
+
 		return response;
 	}
 }

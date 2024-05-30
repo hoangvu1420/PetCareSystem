@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using PetCareSystem.DTOs.GrommingDtos;
+using PetCareSystem.DTOs.GroomingServiceBookingDtos;
 using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
 using PetCareSystem.DTOs.RoomDtos;
@@ -79,7 +80,6 @@ public static class DtoParser
 	}
 
 	#endregion
-
 
 
 	#region MedicalRecord parse methods
@@ -212,6 +212,51 @@ public static class DtoParser
 			Name = updateRoomDto.Name,
 			Price = updateRoomDto.Price,
 			Description = updateRoomDto.Description
+		};
+	}
+
+	#endregion
+
+
+	#region GroomingServiceBooking parse methods
+
+	public static GroomingServiceBookingDto ToGroomingServiceBookingDto(
+		this PetGroomingService groomingServiceBooking, string petName, string groomingServiceName)
+	{
+		return new GroomingServiceBookingDto
+		{
+			Id = groomingServiceBooking.Id,
+			PetId = groomingServiceBooking.PetId,
+			GroomingServiceId = groomingServiceBooking.GroomingServiceId,
+			PetName = petName,
+			GroomingServiceName = groomingServiceName,
+			BookingDate = groomingServiceBooking.Date,
+			TotalPrice = groomingServiceBooking.TotalPrice,
+			Notes = groomingServiceBooking.Notes,
+		};
+	}
+
+	public static PetGroomingService ToPetGroomingService(
+		this CreateGroomingServiceBookingDto createGroomingServiceBookingDto, decimal totalPrice)
+	{
+		return new PetGroomingService
+		{
+			PetId = createGroomingServiceBookingDto.PetId,
+			GroomingServiceId = createGroomingServiceBookingDto.GroomingServiceId,
+			Date = createGroomingServiceBookingDto.BookingDate,
+			TotalPrice = totalPrice,
+			Notes = createGroomingServiceBookingDto.Notes
+		};
+	}
+
+	public static PetGroomingService ToPetGroomingService(
+		this UpdateGroomingServiceBookingDto updateGroomingServiceBookingDto)
+	{
+		return new PetGroomingService
+		{
+			Id = updateGroomingServiceBookingDto.Id,
+			Date = updateGroomingServiceBookingDto.BookingDate,
+			Notes = updateGroomingServiceBookingDto.Notes
 		};
 	}
 

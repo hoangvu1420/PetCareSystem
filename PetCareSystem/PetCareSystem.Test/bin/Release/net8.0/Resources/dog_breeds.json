@@ -1,0 +1,630 @@
+[
+  {
+    "BreedName": "Affenpinscher",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/affenpinscher-walk-grass.jpg"
+  },
+  {
+    "BreedName": "Afghan Hound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/afghan-dog.jpeg"
+  },
+  {
+    "BreedName": "Airedale Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/airedale-terrier.jpg"
+  },
+  {
+    "BreedName": "Akita",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/akita.jpg"
+  },
+  {
+    "BreedName": "Alaskan Klee Kai",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/alaskan-klee-kai-1.jpeg"
+  },
+  {
+    "BreedName": "Alaskan Malamute",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/alaskan-malamute.jpeg"
+  },
+  {
+    "BreedName": "American Bulldog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/american-bulldogs.jpg"
+  },
+  {
+    "BreedName": "American Bully",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/american-bully.jpeg"
+  },
+  {
+    "BreedName": "American Cocker Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/american-cocker-spaniel.jpg"
+  },
+  {
+    "BreedName": "American Pit Bull Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/american-pit-bull-terrier.jpg"
+  },
+  {
+    "BreedName": "American Staffordshire Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/american-staffordshire-terrier.jpeg"
+  },
+  {
+    "BreedName": "Anatolian Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/anatolian-shepherd-dog.jpg"
+  },
+  {
+    "BreedName": "Aussiedoodle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/aussiedoodle.jpg"
+  },
+  {
+    "BreedName": "Australian Cattle Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/australian-cattle-dog.jpg"
+  },
+  {
+    "BreedName": "Australian Kelpie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/australian-kelpie.jpeg"
+  },
+  {
+    "BreedName": "Australian Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/australian-shepherd.jpg"
+  },
+  {
+    "BreedName": "Basenji",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/basenji.jpeg"
+  },
+  {
+    "BreedName": "Beagle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/beagle-face.jpg"
+  },
+  {
+    "BreedName": "Bearded Collie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/bearded-collie.jpeg"
+  },
+  {
+    "BreedName": "Beauceron",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/beauceron.jpeg"
+  },
+  {
+    "BreedName": "Bedlington Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/bedlington-terrier-1.jpeg"
+  },
+  {
+    "BreedName": "Belgian Malinois",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/belgian-malinois.jpg"
+  },
+  {
+    "BreedName": "Belgian Shepherd (Belgian Sheepdog)",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/belgian-shepherd.jpg"
+  },
+  {
+    "BreedName": "Bernedoodle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/bernedoodle.jpeg"
+  },
+  {
+    "BreedName": "Bernese Mountain Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/bernese-mountain-dog.jpg"
+  },
+  {
+    "BreedName": "Bichon Fris�",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Bichon-frise?.jpeg"
+  },
+  {
+    "BreedName": "Biewer Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/biewer-terrier-borek-lupomesky.jpg"
+  },
+  {
+    "BreedName": "Black Mouth Cur",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/black-mouth-cur-woods.jpg"
+  },
+  {
+    "BreedName": "Bluetick Coonhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/bluetick-coonhound-park.jpeg"
+  },
+  {
+    "BreedName": "Boerboel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/boerboel.jpg"
+  },
+  {
+    "BreedName": "Border Collies",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Bordercollie.jpg"
+  },
+  {
+    "BreedName": "Border Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/border-terrier.jpeg"
+  },
+  {
+    "BreedName": "Borzoi",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/borzoi.jpg"
+  },
+  {
+    "BreedName": "Boston Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/boston-terrier.jpg"
+  },
+  {
+    "BreedName": "Boxer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/boxer.jpg"
+  },
+  {
+    "BreedName": "Boykin Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/boykin-spaniel-portrait.jpeg"
+  },
+  {
+    "BreedName": "Brittany Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/brittany-spaniel.jpg"
+  },
+  {
+    "BreedName": "Brussels Griffon",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/brussels-griffon.jpeg"
+  },
+  {
+    "BreedName": "Bull Mastiff",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/bull-mastiff-training.jpeg"
+  },
+  {
+    "BreedName": "Bull Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/bull-terrier.jpeg"
+  },
+  {
+    "BreedName": "Cairn Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/cairn-terrier-grass.jpg"
+  },
+  {
+    "BreedName": "Cane Corso",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/cane-corso-resting.jpeg"
+  },
+  {
+    "BreedName": "Cardigan Welsh Corgi",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/welsh-corgi-cardigan-dogs.jpg"
+  },
+  {
+    "BreedName": "Catahoula Leopard Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/catahoula-leopard-dog.jpeg"
+  },
+  {
+    "BreedName": "Caucasian Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/Caucasianshepherd.jpeg"
+  },
+  {
+    "BreedName": "Cavachon",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/cavachon.jpg"
+  },
+  {
+    "BreedName": "Cavalier King Charles Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/cavalier-king-charles-spaniel.jpeg"
+  },
+  {
+    "BreedName": "Cavapoo",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/cavapoo.jpg"
+  },
+  {
+    "BreedName": "Chesapeake Bay Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/chesapeake-bay-retriever.jpeg"
+  },
+  {
+    "BreedName": "Chihuahua",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Chihuahua.jpeg"
+  },
+  {
+    "BreedName": "Chinese Crested",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/two-chinese-crested-dogs.jpg"
+  },
+  {
+    "BreedName": "Chiweenie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/chiweenie-exercise.jpeg"
+  },
+  {
+    "BreedName": "Chow Chow",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/chow-chow.jpg"
+  },
+  {
+    "BreedName": "Clumber Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/clumber-spaniel.jpeg"
+  },
+  {
+    "BreedName": "Cockapoo",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/Cockapoo.jpeg"
+  },
+  {
+    "BreedName": "Cocker Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/cocker-spaniel.jpg"
+  },
+  {
+    "BreedName": "Collie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/collie.jpg"
+  },
+  {
+    "BreedName": "Coton De Tulear",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/coton-de-tulear-portrait.jpeg"
+  },
+  {
+    "BreedName": "Dachshund",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/brown-dachshunds.jpg"
+  },
+  {
+    "BreedName": "Dalmatian",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/dalmation-leash-walk.jpg"
+  },
+  {
+    "BreedName": "Doberman Pinscher",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/doberman.jpg"
+  },
+  {
+    "BreedName": "Dogo Argentino",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/dogo-argentino-outside.jpg"
+  },
+  {
+    "BreedName": "Dogue De Bordeaux",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/dogue-de-bordeaux-in-woods.jpg"
+  },
+  {
+    "BreedName": "Dutch Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/dutch-shepherd.jpg"
+  },
+  {
+    "BreedName": "English Bulldog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/english-bulldog-sleepy.jpg"
+  },
+  {
+    "BreedName": "English Cocker Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/english-cocker-spaniel-exercise.jpg"
+  },
+  {
+    "BreedName": "English Cream Golden Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/goldenretriever.jpeg"
+  },
+  {
+    "BreedName": "English Pointer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/english-pointer-exercise.jpg"
+  },
+  {
+    "BreedName": "English Setter",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/english-setter.jpeg"
+  },
+  {
+    "BreedName": "English Springer Spaniel",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/english-springer-spaniel-sitting-on-grass.jpg"
+  },
+  {
+    "BreedName": "Finnish Spitz",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/finnish-spitz.jpeg"
+  },
+  {
+    "BreedName": "Flat-Coated Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/flatcoated-retriever.jpg"
+  },
+  {
+    "BreedName": "Fox Red Labrador Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/fox-red-labrador-retriever.jpeg"
+  },
+  {
+    "BreedName": "Fox Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/fox-terrier-white.jpg"
+  },
+  {
+    "BreedName": "Foxhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/foxhound-outside.jpeg"
+  },
+  {
+    "BreedName": "French Bulldog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/black-and-white-french-bulldog.jpg"
+  },
+  {
+    "BreedName": "German Pinscher",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/german-pinscher.jpeg"
+  },
+  {
+    "BreedName": "German Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+h_211+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/German-shepherd.jpeg"
+  },
+  {
+    "BreedName": "German Shorthaired Pointer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/german-shorthaired-pointer-resting.jpg"
+  },
+  {
+    "BreedName": "German Spitz",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/brown-german-spitz-outside.jpg"
+  },
+  {
+    "BreedName": "German Wirehaired Pointer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/german-wirehaired-pointer-closeup.jpg"
+  },
+  {
+    "BreedName": "Giant Schnauzer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/giant-schnauzer.jpg"
+  },
+  {
+    "BreedName": "Golden Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/golden-retriever-pose.jpg"
+  },
+  {
+    "BreedName": "Goldendoodle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/goldendoodle.jpg"
+  },
+  {
+    "BreedName": "Gordon Setter",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/gordon-setter.jpeg"
+  },
+  {
+    "BreedName": "Great Dane",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/great-dane.jpg"
+  },
+  {
+    "BreedName": "Great Pyrenees",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/great-pyrenees.jpg"
+  },
+  {
+    "BreedName": "Greater Swiss Mountain Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/greater-swiss-mountain-dog.jpeg"
+  },
+  {
+    "BreedName": "Greyhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/greyhound-closeup.jpg"
+  },
+  {
+    "BreedName": "Havanese",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/havanese.jpg"
+  },
+  {
+    "BreedName": "Irish Setter",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/irish-setter-closeup.jpg"
+  },
+  {
+    "BreedName": "Irish Wolfhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/irish-wolfhound.jpg"
+  },
+  {
+    "BreedName": "Italian Greyhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/italian-greyhound.jpg"
+  },
+  {
+    "BreedName": "Jack Russell Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/JackRussell.jpeg"
+  },
+  {
+    "BreedName": "Kangal",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/kangal.jpg"
+  },
+  {
+    "BreedName": "Keeshond",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/keeshond.jpeg"
+  },
+  {
+    "BreedName": "King Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+h_211+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/king-shepherd.jpeg"
+  },
+  {
+    "BreedName": "Labradoodle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/labradoodle-close-up.jpg"
+  },
+  {
+    "BreedName": "Labrador Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Labrador.jpeg"
+  },
+  {
+    "BreedName": "Lagotto Romagnolo",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/lagotto-romagnolo.jpg"
+  },
+  {
+    "BreedName": "Leonberger",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/leonberger-walking.jpg"
+  },
+  {
+    "BreedName": "Lhasa Apso",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/two-lhasa-apso-dogs.jpeg"
+  },
+  {
+    "BreedName": "Maltese",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/Maltese.jpeg"
+  },
+  {
+    "BreedName": "Maltipoo",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/maltipoo-running.jpeg"
+  },
+  {
+    "BreedName": "Mastiff",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/mastiff.jpeg"
+  },
+  {
+    "BreedName": "Miniature American Shepherd",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/miniature-american-shepherd.jpeg"
+  },
+  {
+    "BreedName": "Miniature Pinscher",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/miniature-pinscher.jpg"
+  },
+  {
+    "BreedName": "Miniature Schnauzer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/miniature-schnauzer-grass.jpeg"
+  },
+  {
+    "BreedName": "Morkie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/morkie.jpg"
+  },
+  {
+    "BreedName": "Mountain Cur",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/mountain-cur.jpeg"
+  },
+  {
+    "BreedName": "Neapolitan Mastiff",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/neapolitan-mastiff.jpeg"
+  },
+  {
+    "BreedName": "Newfoundland",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/brown-newfoundland-dog.jpg"
+  },
+  {
+    "BreedName": "Norwegian Elkhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/norwegian-elkhound-training.jpg"
+  },
+  {
+    "BreedName": "Nova Scotia Duck Tolling Retriever",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/nova-scotia-duck-tolling-retriever.jpg"
+  },
+  {
+    "BreedName": "Old English Sheepdog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/old-english-sheepdog.jpeg"
+  },
+  {
+    "BreedName": "Papillon",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/papillon.jpg"
+  },
+  {
+    "BreedName": "Patterdale Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/black-patterdale-terrier.jpeg"
+  },
+  {
+    "BreedName": "Pekingese",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/pekingese.jpg"
+  },
+  {
+    "BreedName": "Pembroke Welsh Corgi",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Pembroke-Welsh-corgi.jpeg"
+  },
+  {
+    "BreedName": "Plott Hound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/plott-hound.jpeg"
+  },
+  {
+    "BreedName": "Pocket Bully",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/pocket-bully-portrait.jpg"
+  },
+  {
+    "BreedName": "Pomeranian",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/Pomeranian.jpeg"
+  },
+  {
+    "BreedName": "Pomsky",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/pomsky.jpeg"
+  },
+  {
+    "BreedName": "Poodles",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/poodle-fun-facts.jpg"
+  },
+  {
+    "BreedName": "Portuguese Water Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/portugese-water-dog.jpg"
+  },
+  {
+    "BreedName": "Presa Canario",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/presa-canario.jpg"
+  },
+  {
+    "BreedName": "Pug",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/pug-laying-on-floor.jpg"
+  },
+  {
+    "BreedName": "Puggle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/puggle.jpg"
+  },
+  {
+    "BreedName": "Rat Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/rat-terrier-laying-down.jpg"
+  },
+  {
+    "BreedName": "Redbone Coonhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/redbone-coonhound.jpeg"
+  },
+  {
+    "BreedName": "Rhodesian Ridgeback",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/rhodesian-ridgeback.jpg"
+  },
+  {
+    "BreedName": "Rottweiler",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/rottweiler.jpeg"
+  },
+  {
+    "BreedName": "Russell Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/russell-terrier-exercise.jpg"
+  },
+  {
+    "BreedName": "Saluki",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/Saluki-dog-breed-posing.jpg"
+  },
+  {
+    "BreedName": "Samoyed",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/two-samoyeds.jpg"
+  },
+  {
+    "BreedName": "Schipperke",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/schipperke.jpeg"
+  },
+  {
+    "BreedName": "Scottish Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/scottish-terrier.jpeg"
+  },
+  {
+    "BreedName": "Shar-Pei",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/07/sharpei.jpeg"
+  },
+  {
+    "BreedName": "Shetland Sheepdog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/shetland-sheepdog-closeup.jpg"
+  },
+  {
+    "BreedName": "Shih Tzu",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/Shih-tzu-funfacts.jpeg"
+  },
+  {
+    "BreedName": "Silky Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/silky-terrier.jpeg"
+  },
+  {
+    "BreedName": "Spanish Water Dog",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/spanish-water-dog-outside.jpeg"
+  },
+  {
+    "BreedName": "St. Bernard",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/08/St.Bernard-exercise.jpeg"
+  },
+  {
+    "BreedName": "Staffordshire Bull Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/black-staffordshire-bull-terrier.jpg"
+  },
+  {
+    "BreedName": "Standard Schnauzer",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/standard-schnauzer-outside.jpeg"
+  },
+  {
+    "BreedName": "Tibetan Mastiff",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_358+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2022/06/tibetan-mastiff-in-snow.jpeg"
+  },
+  {
+    "BreedName": "Toy Poodle",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/toy-poodles.jpg"
+  },
+  {
+    "BreedName": "Treeing Walker Coonhound",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/treeing-walker-coonhound.jpeg"
+  },
+  {
+    "BreedName": "Vizsla",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/vizsla-portrait.jpg"
+  },
+  {
+    "BreedName": "Weimaraner",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/weimaraner.jpg"
+  },
+  {
+    "BreedName": "West Highland White Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/03/westies.jpg"
+  },
+  {
+    "BreedName": "Wheaten Terrier",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/wheaten-terrier.jpeg"
+  },
+  {
+    "BreedName": "Whippet",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/whippet.jpeg"
+  },
+  {
+    "BreedName": "Wirehaired Pointing Griffon",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/wirehaired-pointing-griffon.jpeg"
+  },
+  {
+    "BreedName": "Xoloitzcuintli",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/xoloitzcuintli.jpeg"
+  },
+  {
+    "BreedName": "Yorkie",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/02/yorkshire-terrier.jpg"
+  },
+  {
+    "BreedName": "Yorkipoo",
+    "ImageUrl": "https://cdn.shortpixel.ai/spai/w_375+q_lossy+ret_img+to_webp/betterpet.com/wp-content/uploads/2023/04/yorkiepoo.jpg"
+  }
+]

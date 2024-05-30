@@ -20,6 +20,7 @@ builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 builder.Services.AddScoped<IGroomingService, PetCareSystem.Services.Implementations.GroomingService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<IGroomingServiceBookingService, GroomingServiceBookingService>();
 
 // Add repositories to the container.
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -28,6 +29,7 @@ builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
 builder.Services.AddScoped<IGroomingRepository, GroomingRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IPetGroomingServiceRepository, PetGroomingServiceRepository>();
 
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
