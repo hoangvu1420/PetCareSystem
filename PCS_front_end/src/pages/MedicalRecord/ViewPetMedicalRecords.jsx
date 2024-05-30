@@ -2,10 +2,11 @@ import { Card, Typography, Button } from "@material-tailwind/react";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
 import AddMedicalRecordDialog from "./AddMedicalRecordDialog";
 import EditMedicalRecordDialog from "./EditMedicalRecordDialog";
+import { toast } from "react-toastify";
 
 const TABLE_HEAD = ["Chẩn đoán", "Bác sĩ", "Thuốc", "Chế độ ăn", "Ngày", "Hẹn khám lại", "Ghi chú", ""];
 
@@ -23,8 +24,26 @@ export default function ViewPetMedicalRecords() {
         setCurrentRecord(record);
         setOpenEdit(!openEdit);
     };
+    const handleDelete = (record) => {
+        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
+        axios.delete(api_url + '/api/medical-records/' + record.id)
+        .then(
+            (res) => {
+                console.log(res);
+                if (res.data.isSucceed) {
+                    toast.success("Xoá thành công", {autoClose: 2000});
+                    getPetMedicalRecords();
+                }
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        )
+    };
 
-    const getPetMedicalRecord = () => {
+    const getPetMedicalRecords = () => {
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
         axios.get(api_url + '/api/medical-records?petId=' + pet_id)
         .then((res) => {
@@ -34,7 +53,7 @@ export default function ViewPetMedicalRecords() {
     };
 
     useEffect(() => {
-        getPetMedicalRecord();
+        getPetMedicalRecords();
     }, []);
 
   return (
@@ -66,7 +85,8 @@ export default function ViewPetMedicalRecords() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleDateString()}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.notes}</Typography></td>
                 <td className="p-4 sticky right-0">
-                    <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
+                    <Button className="px-3 mr-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
+                    <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
                 </td>
                 </tr>
             ))}
@@ -78,7 +98,7 @@ export default function ViewPetMedicalRecords() {
           open={openAdd} 
           handleOpen={handleOpenAdd} 
           petId={pet_id} 
-          getPetMedicalRecord={getPetMedicalRecord} 
+          getPetMedicalRecords={getPetMedicalRecords} 
         />
 
         {currentRecord && (
@@ -86,7 +106,7 @@ export default function ViewPetMedicalRecords() {
             open={openEdit} 
             handleOpen={handleOpenEdit} 
             recordData={currentRecord} 
-            getPetMedicalRecord={getPetMedicalRecord} 
+            getPetMedicalRecords={getPetMedicalRecords} 
           />
         )}
     </div>
