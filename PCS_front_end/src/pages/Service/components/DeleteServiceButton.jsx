@@ -13,13 +13,13 @@ export default function DeletePetButton(props) {
 
     const onDelete = () => {
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.delete(api_url + '/api/pets/' + props.id)
+        axios.delete(api_url + '/api/grooming-services/' + props.id)
             .then(
                 (res) => {
                     console.log(res);
                     if (res.data.isSucceed) {
                         toast.success("Xoá thành công", { autoClose: 2000 });
-                        props.getPetByCurrentId();
+                        props.getGroomingServices();
                     }
                 }
             )

@@ -12,6 +12,7 @@ import {
   Select,
   Option
 } from "@material-tailwind/react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
 import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
@@ -58,7 +59,7 @@ export default function EditPetDialog(props) {
 
   return (
     <>
-      <Button onClick={handleOpen}>Sửa</Button>
+      <Button className="px-3 mr-3" onClick={() => handleOpen()}><FaEdit /></Button>
       <Dialog
         open={open}
         handler={handleOpen}
@@ -72,7 +73,7 @@ export default function EditPetDialog(props) {
             <Input name="name" value={pet_data.name} onChange={handleChange} label="Tên" size="md" />
             <Input className="w-1/2" name="species" value={pet_data.species} onChange={handleChange} label="Loài" size="md" />
             <Input className="w-1/2" name="age" value={pet_data.age} onChange={handleChange} label="Tuổi" type="number" size="md" />
-            <Select value={pet_data.gender} onChange={(val) => setPetData({...pet_data, ["gender"]: val})} label="Giới tính" size="md">
+            <Select value={pet_data.gender} onChange={(val) => setPetData({ ...pet_data, ["gender"]: val })} label="Giới tính" size="md">
               <Option value="Male" onChange={handleChange}>Male</Option>
               <Option value="Female" onChange={handleChange}>Female</Option>
             </Select>

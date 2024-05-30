@@ -10,6 +10,7 @@ import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
 import TableWithStripedRows from './pages/TableWithStripedRows';
 import ViewPetMedicalRecords from './pages/MedicalRecord/ViewPetMedicalRecords';
 import HomePage from './Homepage/HomePage';
+import ViewServices from './pages/Service/ViewServices';
 
 export const UserContext = createContext();
 
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/register' element={<CustomerRegister/>}/>
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>}/>
+            <Route path='services' element={<ViewServices/>}/>
             <Route path='pets' element={<CustomerViewAllPet/>}/>
             <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
           </Route>

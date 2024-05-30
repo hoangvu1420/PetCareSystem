@@ -53,7 +53,7 @@ export default function NavbarDefault() {
       >
         <MdRoomService className='h-5 w-5' />
 
-        <a href="" className="flex items-center">
+        <a href="/services" className="flex items-center">
           Service
         </a>
       </Typography>
