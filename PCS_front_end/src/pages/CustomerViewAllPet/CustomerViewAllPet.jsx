@@ -34,7 +34,7 @@ export default function CustomerViewAllPet() {
 
     return (
         <div className="pt-4">
-            <ul className="flex-wrap flex">
+            <ul className="flex-wrap flex mx-20 mt-10">
                 {data.sort((a, b) => (a.id > b.id)? -1 : 1).map((pet) => (
                     <li className="p-2" key={pet.id}>
                         <PetCard id={pet.id} name={pet.name}

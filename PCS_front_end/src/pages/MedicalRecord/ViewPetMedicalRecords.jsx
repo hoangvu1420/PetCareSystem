@@ -38,13 +38,13 @@ export default function ViewPetMedicalRecords() {
     }, []);
 
   return (
-    <div>
+    <div className="h-full w-4/5 mx-auto my-5">
         <div className="w-full flex justify-between p-5">
         <Typography className="" variant="h4" color="blue-gray">Bệnh án</Typography>
         <Button className="px-3" onClick={handleOpenAdd}>Thêm bệnh án</Button>
         </div>
     
-        <Card className="h-full w-full overflow-scroll">
+        <Card className="h-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-left">
             <thead>
             <tr>
@@ -62,8 +62,8 @@ export default function ViewPetMedicalRecords() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.doctor}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.medication}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.diet}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.date)).toLocaleString()}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleString()}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.date)).toLocaleDateString()}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleDateString()}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.notes}</Typography></td>
                 <td className="p-4 sticky right-0">
                     <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>

@@ -42,8 +42,9 @@ export default function PetCard(props) {
         </div>
       </CardBody>
       <CardFooter className="pt-0 mt-0">
-        <Button onClick={() => navigate('/medical-records/' + props.id)}>Bệnh án</Button>
-        <EditPetDialog id={props.id} name={props.name}
+        <Button className="mr-2" onClick={() => navigate('/medical-records/' + props.id)}>Bệnh án</Button>
+        <EditPetDialog className="mr-2" 
+                            id={props.id} name={props.name}
                             age={props.age}
                             gender={props.gender}
                             hairColor={props.hairColor}
@@ -52,7 +53,7 @@ export default function PetCard(props) {
                             imageUrl={props.imageUrl}
                             ownerId={props.ownerId}
                             getPetByCurrentId={props.getPetByCurrentId}/>
-        <DeletePetButton id={props.id}
+        <DeletePetButton className="mr-2" id={props.id}
             getPetByCurrentId={props.getPetByCurrentId}/>
       </CardFooter>
     </Card>
