@@ -66,7 +66,7 @@ export default function ViewPetMedicalRecords() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleString()}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.notes}</Typography></td>
                 <td className="p-4 sticky right-0">
-                    <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/> Sửa</Button>
+                    <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
                 </td>
                 </tr>
             ))}

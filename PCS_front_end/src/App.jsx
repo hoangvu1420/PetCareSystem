@@ -8,7 +8,7 @@ import Layout from './pages/Layout';
 import RouteGuard from './components/RouteGuard'
 import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
 import TableWithStripedRows from './pages/TableWithStripedRows';
-import ViewPetMedicalRecords from './pages/ViewPetMedicalRecords';
+import ViewPetMedicalRecords from './pages/MedicalRecord/ViewPetMedicalRecords';
 
 export const UserContext = createContext();
 
