@@ -46,7 +46,6 @@ export default function EditPetDialog(props) {
     try {
       const res = await crudPetService.editPet(
         JSON.parse(user_data).token,
-        pet_data.id,
         pet_data
       )
       console.log(res);

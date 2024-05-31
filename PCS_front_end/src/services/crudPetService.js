@@ -15,7 +15,7 @@ const createPet = (token, pet_data) => {
     return axios.post(`${baseUrl}/api/pets`, pet_data)
 }
 
-const editPet = (token, pet_id, pet_data) => {
+const editPet = (token, pet_data) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     return axios.put(`${baseUrl}/api/pets/${pet_data.id}`, pet_data)
 }

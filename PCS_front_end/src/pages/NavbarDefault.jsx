@@ -12,6 +12,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
+import { BiLogOut } from "react-icons/bi";
 
 
 export default function NavbarDefault() {
@@ -127,7 +128,10 @@ export default function NavbarDefault() {
             className="hidden lg:inline-block"
             onClick={onSignOut}
           >
-            <span>Đăng xuất</span>
+            <div className='flex items-center'>
+              <BiLogOut className='mr-2 w-4 h-4'/>
+              Đăng xuất
+            </div>
           </Button>
         </div>
         <IconButton
