@@ -1,7 +1,6 @@
 import { FaUser, FaLock } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from "react";
-import axios from 'axios'
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 
 // For displaying toasts
@@ -9,12 +8,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //
 
-function CustomerLogin() {
-    console.log("render customer login");
+import authService from "../services/authService";
 
+function CustomerLogin() {
     const navigate = useNavigate();
     const { user_data, setUserData } = useContext(UserContext);
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
 
     const [user_info, updateUserInfo] = useState({
         "email": "john.doe@example.com",
@@ -30,36 +28,53 @@ function CustomerLogin() {
         })
     };
 
-    const onLogin = (e) => {
+    const onLogin = async (e) => {
         e.preventDefault();
 
         setLoading(true); // Set loading to true when login starts
-        axios.post(api_url + '/api/Auth/login', user_info)
-            .then((res) => {
-                console.log(res);
-                if (res.data.isSucceed === true) {
-                    toast.success("Success! Redirect in 2 seconds...");
+
+        try {
+            const response = await authService.signIn(user_info)
+            if (response.data.isSucceed) {
+                toast.success("Success! Redirect in 2 seconds...");
                     setTimeout(() => {
-                        setUserData(JSON.stringify(res.data));
-                        sessionStorage.setItem("user_data", JSON.stringify(res.data));
+                        setUserData(JSON.stringify(response.data));
+                        sessionStorage.setItem("user_data", JSON.stringify(response.data));
                         setLoading(false); // Reset loading state after response
                         navigate('/');
                     }, 2000);
-                } else {
-                    setLoading(false); // Reset loading state if login fails
-                }
-            })
-            .catch(err => {
-                toast.error(err.response.data.errorMessages[0]);
-                setLoading(false); // Reset loading state if there is an error
-            });
+            }
+        }
+        catch (error) {
+            toast.error(error.response.data.errorMessages[0]);   
+        }
+
+        setLoading(false);
+
+        // axios.post(api_url + '/api/Auth/login', user_info)
+        //     .then((res) => {
+        //         console.log(res);
+        //         if (res.data.isSucceed === true) {
+        //             toast.success("Success! Redirect in 2 seconds...");
+        //             setTimeout(() => {
+        //                 setUserData(JSON.stringify(res.data));
+        //                 sessionStorage.setItem("user_data", JSON.stringify(res.data));
+        //                 setLoading(false); // Reset loading state after response
+        //                 navigate('/');
+        //             }, 2000);
+        //         } else {
+        //             setLoading(false); // Reset loading state if login fails
+        //         }
+        //     })
+        //     .catch(err => {
+        //         toast.error(err.response.data.errorMessages[0]);
+        //         setLoading(false); // Reset loading state if there is an error
+        //     });
     };
 
     useEffect(() => {
-        console.log("UseEffect was called");
-        if (user_data != null) {
+        if (user_data != null)
             navigate('/');
-        }
     }, [user_data]);
 
     return (
