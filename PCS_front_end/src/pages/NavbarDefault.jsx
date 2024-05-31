@@ -1,10 +1,9 @@
-import reactlogo from '../assets/react.svg'
 import { UserContext } from '../App';
 import {
   MdPets,
   MdRoomService
 } from "react-icons/md";
-import React, { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Navbar,
   Collapse,
@@ -16,10 +15,10 @@ import { Link } from 'react-router-dom';
 
 
 export default function NavbarDefault() {
-  const [openNav, setOpenNav] = React.useState(false);
+  const [openNav, setOpenNav] = useState(false);
   const { user_data, setUserData } = useContext(UserContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false),

@@ -1,31 +1,32 @@
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import PetCard from './components/PetCard.jsx'
 import { UserContext } from "../../App.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import CreateNewPetButton from "./components/CreateNewPetButton.jsx";
+import crudPetService from "../../services/crudPetService.js";
 
 export default function CustomerViewAllPet() {
     const [data, updateData] = useState([]);
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
     const { user_data, setUserData } = useContext(UserContext);
 
-    const getPetByCurrentId = () => {
-        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.get(api_url + '/api/pets?userId=' + JSON.parse(user_data).userInfo.id)
-        .then((res) => {
-            console.log(res);
-            if (res.data.isSucceed === true) {
-                updateData(res.data.data);
+    const getPetByCurrentId = async () => {
+        try {
+            const response = await crudPetService.getOwnedPet(
+                JSON.parse(user_data).token,
+                JSON.parse(user_data).userInfo.id
+            )
+            console.log(response)
+            if (response.data.isSucceed) {
+                updateData(response.data.data);
             };
-        })
-        .catch((e) => {
-            console.log(e);
-            if (e.response.status !== 404)
-                toast.error(e.response.data.errorMessages[0]);
+        }
+        catch (error) {
+            console.log(error);
+            if (error.response.status !== 404)
+                toast.error(error.response.data.errorMessages[0]);
             updateData([]);
-        });
+        }
     };
 
     useEffect(() => {

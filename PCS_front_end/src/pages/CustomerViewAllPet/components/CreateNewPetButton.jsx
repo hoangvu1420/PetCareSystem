@@ -11,9 +11,10 @@ import {
     Option
 } from "@material-tailwind/react";
 import { IoIosAdd } from "react-icons/io";
-import axios from "axios";
 import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
+
+import crudPetService from "../../../services/crudPetService";
 
 export default function CreateNewPetButton(props) {
     const [open, setOpen] = useState(false);
@@ -29,8 +30,6 @@ export default function CreateNewPetButton(props) {
         "ownerId": JSON.parse(user_data).userInfo.id
     });
 
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
-
     const handleOpen = () => setOpen((cur) => !cur);
 
     const handleChange = (e) => {
@@ -40,18 +39,22 @@ export default function CreateNewPetButton(props) {
         })
     }
 
-    const onCreatingPet = () => {
+    const onCreatingPet = async () => {
         handleOpen();
-        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.post(api_url + '/api/pets', pet_data)
-            .then((res) => {
-                console.log(res);
-                if (res.data.isSucceed === true) {
-                    props.getPetByCurrentId();
-                    toast.success("Tạo thành công", { autoClose: 2000 });
-                }
-            })
-            .catch((e) => console.log(e));
+
+        try {
+            const res = await crudPetService.createPet(
+                JSON.parse(user_data).token,
+                pet_data
+            )
+            console.log(res);
+            if (res.data.isSucceed === true) {
+                props.getPetByCurrentId();
+                toast.success("Tạo thành công", { autoClose: 2000 });
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
 

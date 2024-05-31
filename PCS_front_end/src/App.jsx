@@ -1,13 +1,10 @@
-import { useState, createContext, useContext } from 'react'
-import Navbar from './pages/NavbarDefault';
+import { useState, createContext } from 'react'
 import { Router, Routes, Route, Link, NavLink, BrowserRouter, Navigate } from "react-router-dom";
 import CustomerLogin from './pages/CustomerLogin';
 import CustomerRegister from './pages/CustomerRegister';
 import EmployeeLogin from './pages/EmployeeLogin'
 import Layout from './pages/Layout';
-import RouteGuard from './components/RouteGuard'
 import CustomerViewAllPet from './pages/CustomerViewAllPet/CustomerViewAllPet';
-import TableWithStripedRows from './pages/TableWithStripedRows';
 import ViewPetMedicalRecords from './pages/MedicalRecord/ViewPetMedicalRecords';
 import HomePage from './Homepage/HomePage';
 import ViewServices from './pages/Service/ViewServices';

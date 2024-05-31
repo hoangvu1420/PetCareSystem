@@ -3,19 +3,17 @@ import {
   Button,
   Dialog,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Typography,
   Input,
-  Checkbox,
   Select,
   Option
 } from "@material-tailwind/react";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import axios from "axios";
+import { FaEdit } from "react-icons/fa";
 import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
+import crudPetService from "../../../services/crudPetService";
 
 export default function EditPetDialog(props) {
   const [open, setOpen] = useState(false);
@@ -31,7 +29,6 @@ export default function EditPetDialog(props) {
     "imageUrl": props.imageUrl
   });
 
-  const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
   const { user_data, setUserData } = useContext(UserContext);
 
   const handleOpen = () => setOpen((cur) => !cur);
@@ -43,18 +40,24 @@ export default function EditPetDialog(props) {
     })
   }
 
-  const onSavingChange = () => {
+  const onSavingChange = async () => {
     handleOpen();
-    axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-    axios.put(api_url + '/api/pets/' + pet_data.id, pet_data)
-      .then((res) => {
-        console.log(res);
-        if (res.data.isSucceed === true) {
-          props.getPetByCurrentId();
-          toast.success("Sửa thành công", { autoClose: 2000 });
-        }
-      })
-      .catch((e) => console.log(e));
+
+    try {
+      const res = await crudPetService.editPet(
+        JSON.parse(user_data).token,
+        pet_data.id,
+        pet_data
+      )
+      console.log(res);
+      if (res.data.isSucceed) {
+        props.getPetByCurrentId();
+        toast.success("Sửa thành công", { autoClose: 2000 });
+      }
+    }
+    catch (e) {
+      console.log(e)
+    }
   }
 
   return (

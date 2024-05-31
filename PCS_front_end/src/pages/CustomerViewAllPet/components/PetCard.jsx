@@ -6,7 +6,6 @@ import {
     Typography,
     Button,
   } from "@material-tailwind/react";
-import { FaEdit } from "react-icons/fa";
 import EditPetDialog from "./EditPetDialog";
 import { useContext } from "react";
 import { UserContext } from "../../../App";
