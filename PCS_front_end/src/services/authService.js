@@ -1,3 +1,6 @@
+/* This file contains functions that 
+make auth request to API endpoint */
+
 import axios from "axios"
 
 const baseUrl = 'https://petcaresystem20240514113535.azurewebsites.net'

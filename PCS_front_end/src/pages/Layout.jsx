@@ -9,7 +9,7 @@ function Layout() {
     useEffect(() => {
         if (user_data != null)
             if (new Date(JSON.parse(user_data).expirationDate) < new Date()) {
-                sessionStorage.removeItem("user_data");
+                localStorage.removeItem("user_data");
                 setUserData(null);
             }
     }, []);

@@ -27,7 +27,7 @@ export default function NavbarDefault() {
   }, []);
 
   const onSignOut = () => {
-    sessionStorage.removeItem("user_data");
+    localStorage.removeItem("user_data");
     setUserData(null);
   }
 

@@ -15,7 +15,7 @@ import ViewServices from './pages/Service/ViewServices';
 export const UserContext = createContext();
 
 function App() {
-  const [user_data, setUserData] = useState(sessionStorage.getItem("user_data"));
+  const [user_data, setUserData] = useState(localStorage.getItem("user_data"));
 
   console.log("App rendered", user_data);
 
