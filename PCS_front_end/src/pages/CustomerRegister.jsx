@@ -2,24 +2,24 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { useState } from "react";
-import axios from "axios";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
-function CustomerRegister() {
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
+import authService from "../services/authService";
 
-    const [user_info, updateUserInfo] = useState({
-        "firstName": "Valenka",
-        "lastName": "Girardy",
-        "districs": "Dong Da",
+function CustomerRegister() {
+    const init_info = {
+        "firstName": "",
+        "lastName": "",
+        "districs": "",
         "profilePictureUrl": "null",
-        "email": "vgirardy2@homestead.com",
-        "password": "user1111",
-        "confirm_password": "user1111"
-    });
+        "email": "",
+        "password": "",
+        "confirm_password": ""
+    }
+
+    const [user_info, updateUserInfo] = useState(init_info);
 
     const handleChange = (e) => {
         updateUserInfo({
@@ -28,41 +28,24 @@ function CustomerRegister() {
         })
     };
 
-    const onRegister = (e) => {
+    const onRegister = async (e) => {
         e.preventDefault();
-
         if (user_info.confirm_password != user_info.password) {
-            (() => toast.error("Mật khẩu xác nhận không khớp"))();
-            return;
+            toast.error("Mật khẩu xác nhận không khớp")
+            return
         }
-
-        axios.post(api_url + '/api/Auth/register', {
-            "firstName": user_info.firstName,
-            "lastName": user_info.lastName,
-            "districs": user_info.districs,
-            "profilePictureUrl": user_info.profilePictureUrl,
-            "email": user_info.email,
-            "password": user_info.password,
-        })
-            .then((res) => {
-                console.log(res.data);
-                if (res.data.isSucceed === true) {
-                    (() => toast.success("Đăng ký thành công"))();
-                    updateUserInfo({
-                        "firstName": "",
-                        "lastName": "",
-                        "districs": "",
-                        "profilePictureUrl": "null",
-                        "email": "",
-                        "password": "",
-                        "confirm_password": ""
-                        }
-                    );
-                    }
-                })
-            .catch(err => {
-                (() => toast.error(err.response.data.errorMessages[0]))();
-            });
+        try {
+            const {confirm_password, ...credentials} = user_info
+            const response = await authService.signUp(credentials)
+            updateUserInfo(init_info);
+            if (response.data.isSucceed) {
+                toast.success("Đăng ký thành công")
+            }
+            console.log(response.data)
+        }
+        catch (error) {
+            toast.error(error.response.data.errorMessages[0])
+        }
     };
 
     return (

@@ -2,9 +2,12 @@ import axios from "axios"
 
 const baseUrl = 'https://petcaresystem20240514113535.azurewebsites.net'
 
-const signIn = async credentials => {
-    const response = await axios.post(`${baseUrl}/api/Auth/login`, credentials)
-    return response
+const signIn = credentials => {
+    return axios.post(`${baseUrl}/api/Auth/login`, credentials)
 }
 
-export default { signIn }
+const signUp = credentials => {
+    return axios.post(`${baseUrl}/api/Auth/register`, credentials)
+}
+
+export default { signIn, signUp }

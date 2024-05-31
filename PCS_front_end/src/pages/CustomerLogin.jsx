@@ -50,26 +50,6 @@ function CustomerLogin() {
         }
 
         setLoading(false);
-
-        // axios.post(api_url + '/api/Auth/login', user_info)
-        //     .then((res) => {
-        //         console.log(res);
-        //         if (res.data.isSucceed === true) {
-        //             toast.success("Success! Redirect in 2 seconds...");
-        //             setTimeout(() => {
-        //                 setUserData(JSON.stringify(res.data));
-        //                 sessionStorage.setItem("user_data", JSON.stringify(res.data));
-        //                 setLoading(false); // Reset loading state after response
-        //                 navigate('/');
-        //             }, 2000);
-        //         } else {
-        //             setLoading(false); // Reset loading state if login fails
-        //         }
-        //     })
-        //     .catch(err => {
-        //         toast.error(err.response.data.errorMessages[0]);
-        //         setLoading(false); // Reset loading state if there is an error
-        //     });
     };
 
     useEffect(() => {
