@@ -11,13 +11,14 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
-import { BiLogOut } from "react-icons/bi";
+import { Link, useNavigate } from 'react-router-dom';
+import { BiLogOut, BiLogIn } from "react-icons/bi";
 
 
 export default function NavbarDefault() {
   const [openNav, setOpenNav] = useState(false);
   const { user_data, setUserData } = useContext(UserContext);
+  const navigate = useNavigate()
 
   useEffect(() => {
     window.addEventListener(
@@ -27,11 +28,13 @@ export default function NavbarDefault() {
   }, []);
 
   const onSignOut = () => {
-    localStorage.removeItem("user_data");
+    setOpenNav(false)
+    navigate('/')
     setUserData(null);
   }
 
   const navList = (
+    user_data?
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
@@ -41,9 +44,9 @@ export default function NavbarDefault() {
       >
         <MdPets className='h-5 w-5' />
 
-        <a href="/pets" className="flex items-center">
+        <Link to="/protected/pets">
           Pets
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -53,9 +56,9 @@ export default function NavbarDefault() {
       >
         <MdRoomService className='h-5 w-5' />
 
-        <a href="/services" className="flex items-center">
+        <Link to="/protected/services">
           Service
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -104,6 +107,8 @@ export default function NavbarDefault() {
         </a>
       </Typography>
     </ul>
+    :
+    null
   );
 
   return (
@@ -121,18 +126,35 @@ export default function NavbarDefault() {
         </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex items-center gap-x-1">
+          {user_data?
+            <Button
+              variant="gradient"
+              size="sm"
+              className="hidden lg:inline-block"
+              onClick={onSignOut}
+            >
+              <div className='flex items-center'>
+                <BiLogOut className='mr-2 w-4 h-4'/>
+                Đăng xuất
+              </div>
+            </Button>
+            :
+            <Link to='/auth/login'>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+                onClick={onSignOut}
+              >
+                <div className='flex items-center'>
+                  <BiLogIn className='mr-2 w-4 h-4'/>
+                  Đăng nhập
+                </div>
+              </Button>
+            </Link>
+          }
 
-          <Button
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-            onClick={onSignOut}
-          >
-            <div className='flex items-center'>
-              <BiLogOut className='mr-2 w-4 h-4'/>
-              Đăng xuất
-            </div>
-          </Button>
+          
         </div>
         <IconButton
           variant="text"

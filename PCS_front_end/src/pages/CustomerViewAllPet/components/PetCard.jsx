@@ -41,7 +41,7 @@ export default function PetCard(props) {
         </div>
       </CardBody>
       <CardFooter className="pt-0 mt-0">
-        <Button className="mr-2" onClick={() => navigate('/medical-records/' + props.id)}>Bệnh án</Button>
+        <Button className="mr-2" onClick={() => navigate(`/protected/medical-records/${props.id}`)}>Bệnh án</Button>
         <EditPetDialog className="mr-2" 
                             id={props.id} name={props.name}
                             age={props.age}

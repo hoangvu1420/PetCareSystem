@@ -39,7 +39,6 @@ function CustomerLogin() {
                 toast.success("Success! Redirect in 2 seconds...");
                     setTimeout(() => {
                         setUserData(JSON.stringify(response.data));
-                        localStorage.setItem("user_data", JSON.stringify(response.data));
                         setLoading(false); // Reset loading state after response
                         navigate('/');
                     }, 2000);
