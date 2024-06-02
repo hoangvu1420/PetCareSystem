@@ -78,9 +78,9 @@ export default function NavbarDefault() {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
+        <Link to='/'>
           Blog
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -102,9 +102,9 @@ export default function NavbarDefault() {
             fill="#90A4AE"
           />
         </svg>
-        <a href="#" className="flex items-center">
+        <Link to='/'>
           Contact
-        </a>
+        </Link>
       </Typography>
     </ul>
     :
@@ -198,10 +198,23 @@ export default function NavbarDefault() {
         <div className="container mx-auto">
           {navList}
           <div className="flex items-center gap-x-1">
-
-            <Button onClick={onSignOut} fullWidth variant="gradient" size="sm" className="">
-              <span>Đăng xuất</span>
-            </Button>
+            {user_data?
+              <Button onClick={onSignOut} fullWidth variant="gradient" size="sm" className="">
+                <div className='flex items-center'>
+                  <BiLogOut className='mr-2 w-4 h-4'/>
+                  Đăng xuất
+                </div>
+              </Button>
+            :
+              <Button fullWidth variant="gradient" size="sm" className="">
+                <Link to='/auth/login'>
+                  <div className='flex items-center'>
+                    <BiLogIn className='mr-2 w-4 h-4'/>
+                    Đăng nhập
+                  </div>
+                </Link>
+              </Button>
+            }
           </div>
         </div>
       </Collapse>
