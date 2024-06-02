@@ -13,7 +13,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        navigate('/pets');
+        navigate('/protected/pets');
     };
 
     return (
