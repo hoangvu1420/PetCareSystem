@@ -29,8 +29,10 @@ export default function ServiceCard(props) {
                 <div className="mb-0 pb-0">
                     <div className="flex flex-col">
                         <div className="w-full"><span className="font-semibold">Mô tả:</span> {props.description}</div>
-                        <div className="w-full"><span className="font-semibold">Giá:</span> {props.price}đ</div>
-                        <div className="w-full"><span className="font-semibold">Đã đặt:</span> {props.bookedCount}</div>
+                        <div className="w-full flex">
+                            <div className="w-1/2"><span className="font-semibold">Giá:</span> {props.price}đ</div>
+                            <div className="w-1/2"><span className="font-semibold">Đã đặt:</span> {props.bookedCount}</div>
+                        </div>
                     </div>
                 </div>
             </CardBody>

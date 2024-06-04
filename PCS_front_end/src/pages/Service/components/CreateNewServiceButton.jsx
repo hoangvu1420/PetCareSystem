@@ -51,9 +51,9 @@ export default function CreateNewPetButton(props) {
     return (
         <div className="">
             <button onClick={handleOpen} className="mt-1 flex justify-center items-center rounded-xl hover:bg-gray-200 duration-300 w-80 h-96 shadow-md">
-                <div>
+                <div className="text-center">
                     <IoIosAdd className="fill-gray-600 w-36 h-36" />
-                    <div className="text-gray-600 text-2xl">Thêm dịch vụ mới</div>
+                    <div className="text-gray-600 text-2xl">Thêm dịch vụ</div>
                 </div>
             </button>
             <Dialog
