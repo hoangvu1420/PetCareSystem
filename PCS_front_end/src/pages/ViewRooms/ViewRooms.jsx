@@ -1,14 +1,14 @@
 import { Card, Typography, Button } from "@material-tailwind/react";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import axios from "axios";
-import AddMedicalRecordDialog from "./AddMedicalRecordDialog";
+import AddRoomDialog from "./AddRoomDialog";
 import EditMedicalRecordDialog from "./EditMedicalRecordDialog";
 import { toast } from "react-toastify";
+import crudRoomService from "../../services/crudRoomService";
 
-const TABLE_HEAD = ["Chẩn đoán", "Bác sĩ", "Thuốc", "Chế độ ăn", "Ngày", "Hẹn khám lại", "Ghi chú", ""];
+const TABLE_HEAD = ["Phòng", "Giá (VND)", "Lượt book", "Mô tả", ""];
 
 export default function ViewRooms() {
     const { user_data } = useContext(UserContext);
@@ -31,7 +31,7 @@ export default function ViewRooms() {
                 console.log(res);
                 if (res.data.isSucceed) {
                     toast.success("Xoá thành công", {autoClose: 2000});
-                    getPetMedicalRecords();
+                    getRooms();
                 }
             }
         )
@@ -42,24 +42,36 @@ export default function ViewRooms() {
         )
     };
 
-    const getPetMedicalRecords = () => {
-        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.get(api_url + '/api/medical-records?petId=' + pet_id)
-        .then((res) => {
-            setMedData(res.data.data);
-        })
-        .catch((err) => console.log(err));
+    const getRooms = async () => {
+        try {
+            const res = await crudRoomService.getRooms(JSON.parse(user_data).token)
+            setMedData(res.data.data)
+        }
+        catch (e) {
+            console.log(e)
+        }
+        // axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
+        // axios.get(api_url + '/api/rooms')
+        // .then((res) => {
+        //     setMedData(res.data.data);
+        // })
+        // .catch((err) => console.log(err));
     };
 
     useEffect(() => {
-        getPetMedicalRecords();
+        getRooms();
     }, []);
 
   return (
     <div className="h-full w-4/5 mx-auto my-5">
         <div className="w-full flex justify-between p-5">
-        <Typography className="" variant="h4" color="blue-gray">Bệnh án</Typography>
-        <Button className="px-3" onClick={handleOpenAdd}>Thêm bệnh án</Button>
+        <Typography className="" variant="h4" color="blue-gray">Phòng</Typography>
+        <Button className="px-3" onClick={handleOpenAdd}>
+            <div className="flex justify-center items-center">
+                <FaPlus className="mr-1"/>
+                Thêm phòng
+            </div>
+        </Button>
         </div>
     
         <Card className="h-full overflow-scroll">
@@ -76,13 +88,10 @@ export default function ViewRooms() {
             <tbody>
             {med_data.map((record, index) => (
                 <tr key={index} className="even:bg-blue-gray-50/50">
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.diagnosis}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.doctor}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.medication}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.diet}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.date)).toLocaleDateString()}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleDateString()}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.notes}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.name}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.price}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.bookedCount}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.description}</Typography></td>
                 <td className="p-4 sticky right-0">
                     <Button className="px-3 mr-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
                     <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
@@ -93,11 +102,11 @@ export default function ViewRooms() {
         </table>
         </Card>
         
-        <AddMedicalRecordDialog 
+        <AddRoomDialog 
           open={openAdd} 
           handleOpen={handleOpenAdd} 
-          petId={pet_id} 
-          getPetMedicalRecords={getPetMedicalRecords} 
+          petId={null} 
+          getRooms={getRooms} 
         />
 
         {currentRecord && (
@@ -105,7 +114,7 @@ export default function ViewRooms() {
             open={openEdit} 
             handleOpen={handleOpenEdit} 
             recordData={currentRecord} 
-            getPetMedicalRecords={getPetMedicalRecords} 
+            getRooms={getRooms} 
           />
         )}
     </div>

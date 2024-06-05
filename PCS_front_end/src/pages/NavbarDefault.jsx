@@ -78,8 +78,8 @@ export default function NavbarDefault() {
             fill="#90A4AE"
           />
         </svg>
-        <Link to='/'>
-          Blog
+        <Link to='/protected/rooms'>
+          Rooms
         </Link>
       </Typography>
       <Typography

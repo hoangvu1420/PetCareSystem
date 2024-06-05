@@ -4,7 +4,7 @@ import axios from "axios";
 import { UserContext } from "../../App";
 import { toast } from "react-toastify";
 
-export default function EditMedicalRecordDialog({ open, handleOpen, recordData, getPetMedicalRecords }) {
+export default function EditMedicalRecordDialog({ open, handleOpen, recordData, getRooms }) {
   const [medicalRecordData, setMedicalRecordData] = useState(recordData);
   const { user_data } = useContext(UserContext);
   const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
@@ -21,7 +21,7 @@ export default function EditMedicalRecordDialog({ open, handleOpen, recordData, 
     axios.put(api_url + '/api/medical-records/' + medicalRecordData.id, medicalRecordData)
       .then((res) => {
         if (res.data.isSucceed) {
-          getPetMedicalRecords();
+          getRooms();
           toast.success("Sửa bệnh án thành công", { autoClose: 2000 });
           handleOpen();
         }
