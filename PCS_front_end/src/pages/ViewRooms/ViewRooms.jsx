@@ -50,7 +50,7 @@ export default function ViewRooms() {
     }, []);
 
   return (
-    <div className="h-full w-4/5 mx-auto my-5">
+    <div className="">
         <div className="w-full flex justify-between p-5">
         <Typography className="" variant="h4" color="blue-gray">Phòng</Typography>
         <Button className="px-3" onClick={handleOpenAdd}>
@@ -61,8 +61,8 @@ export default function ViewRooms() {
         </Button>
         </div>
     
-        <Card className="h-full overflow-scroll">
-        <table className="w-full min-w-max table-auto text-left">
+        <Card className="h-full">
+        <table className="w-full table-auto text-left">
             <thead>
             <tr>
                 {TABLE_HEAD.map((head) => (
@@ -79,8 +79,8 @@ export default function ViewRooms() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.price}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.bookedCount}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.description}</Typography></td>
-                <td className="p-4 sticky right-0">
-                    <Button className="px-3 mr-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
+                <td className="p-4 flex flex-col md:flex-row gap-3">
+                    <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
                     <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
                 </td>
                 </tr>

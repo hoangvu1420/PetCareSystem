@@ -57,14 +57,14 @@ export default function ViewPetMedicalRecords() {
     }, []);
 
   return (
-    <div className="h-full w-4/5 mx-auto my-5">
+    <div className="">
         <div className="w-full flex justify-between p-5">
         <Typography className="" variant="h4" color="blue-gray">Bệnh án</Typography>
         <Button className="px-3" onClick={handleOpenAdd}>Thêm bệnh án</Button>
         </div>
     
         <Card className="h-full overflow-scroll">
-        <table className="w-full min-w-max table-auto text-left">
+        <table className="w-full table-auto text-left">
             <thead>
             <tr>
                 {TABLE_HEAD.map((head) => (

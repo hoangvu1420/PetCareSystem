@@ -33,7 +33,7 @@ export default function ViewServices() {
 
     return (
         <div className="pt-4">
-            <ul className="flex-wrap flex mx-20 mt-10">
+            <ul className="flex-wrap flex justify-center">
                 {data.sort((a, b) => (a.id > b.id)? -1 : 1).map((service) => (
                     <li className="p-2" key={service.id}>
                         <ServiceCard 
