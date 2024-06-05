@@ -61,7 +61,9 @@ export default function EditPetDialog(props) {
 
   return (
     <>
-      <Button className="px-3 mr-3" onClick={() => handleOpen()}><FaEdit /></Button>
+      <Button variant="text" className="px-3" onClick={() => handleOpen()}>
+        <FaEdit className="w-4 h-4"/>
+      </Button>
       <Dialog
         open={open}
         handler={handleOpen}
