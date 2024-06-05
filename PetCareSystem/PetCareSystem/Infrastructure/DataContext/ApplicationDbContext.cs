@@ -23,11 +23,5 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 			.HasOne(m => m.Pet)
 			.WithMany(p => p.MedicalRecords)
 			.HasForeignKey(m => m.PetId);
-
-		modelBuilder.Entity<PetGroomingService>()
-			.HasKey(pgs => new { pgs.PetId, pgs.GroomingServiceId });
-
-		modelBuilder.Entity<PetRoom>()
-			.HasKey(pr => new { pr.PetId, pr.RoomId });
 	}
 }

@@ -111,6 +111,13 @@ public class GroomingService(IGroomingRepository groomingRepository) : IGrooming
 		var groomingServiceToUpdate = groomingServiceDto.ToGroomingService();
 
 		var updatedGroomingService = await groomingRepository.UpdateAsync(groomingServiceToUpdate);
+		if (updatedGroomingService == null)
+		{
+			response.IsSucceed = false;
+			response.ErrorMessages = ["Failed to update grooming service"];
+			return response;
+		}
+		
 		var bookedCount = await groomingRepository.GetBookedCountAsync(updatedGroomingService.Id);
 
 		response.IsSucceed = true;

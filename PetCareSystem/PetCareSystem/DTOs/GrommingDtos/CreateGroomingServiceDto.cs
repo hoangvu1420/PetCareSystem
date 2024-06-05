@@ -11,5 +11,5 @@ public class CreateGroomingServiceDto
 	[MinLength(10)]
 	public string Description { get; set; }
 	[Required]
-	public double Price { get; set; }
+	public decimal Price { get; set; }
 }

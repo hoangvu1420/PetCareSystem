@@ -13,7 +13,7 @@ public class GroomingRepository(ApplicationDbContext dbContext)
 
 	public async Task<int> GetBookedCountAsync(int groomingServiceId)
 	{
-		var count = await _dbContext1.PetGroomingServices.CountAsync(pgs => pgs.PetId == groomingServiceId);
+		var count = await _dbContext1.PetGroomingServices.CountAsync(pgs => pgs.GroomingServiceId == groomingServiceId);
 
 		return count;
 	}
