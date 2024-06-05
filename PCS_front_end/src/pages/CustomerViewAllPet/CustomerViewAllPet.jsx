@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import PetCard from './components/PetCard.jsx'
 import { UserContext } from "../../App.jsx";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 import CreateNewPetButton from "./components/CreateNewPetButton.jsx";
 import crudPetService from "../../services/crudPetService.js";
 
@@ -54,8 +53,6 @@ export default function CustomerViewAllPet() {
                     <CreateNewPetButton getPetByCurrentId={getPetByCurrentId}/>
                 </li>
             </ul>
-
-            <ToastContainer position="bottom-right"/>
         </div>
         
     );

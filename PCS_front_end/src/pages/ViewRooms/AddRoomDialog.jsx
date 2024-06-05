@@ -36,7 +36,7 @@ export default function AddRoomDialog({ open, handleOpen, petId, getRooms }) {
       const res = await crudRoomService.addRoom(JSON.parse(user_data).token, roomData)
       if (res.data.isSucceed) {
           getRooms();
-          toast.success("Thêm bệnh án thành công", { autoClose: 2000 });
+          toast.success("Thêm thành công", { autoClose: 2000 });
       }
     }
     catch (e) {
