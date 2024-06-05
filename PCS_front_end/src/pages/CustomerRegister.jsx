@@ -2,8 +2,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 
 import authService from "../services/authService";
@@ -108,7 +107,6 @@ function CustomerRegister() {
                     </Link>
                 </div>
             </div>
-            <ToastContainer position="bottom-right"/> 
         </div>
     );
 }

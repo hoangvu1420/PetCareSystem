@@ -2,11 +2,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
-
-// For displaying toasts
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-//
+import { toast } from 'react-toastify';
 
 import authService from "../services/authService";
 import { Button, Spinner } from "@material-tailwind/react";
@@ -100,8 +96,6 @@ function CustomerLogin() {
                     </Link>
                 </div>
             </div>
-            {/* To let Toastify able to display a toast */}
-            <ToastContainer position="bottom-right" />
         </div>
     );
 }

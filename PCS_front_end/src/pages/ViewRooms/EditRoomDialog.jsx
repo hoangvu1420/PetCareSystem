@@ -22,12 +22,12 @@ export default function EditRoomDialog({ open, handleOpen, recordData, getRooms 
       console.log(res)
       if (res.data.isSucceed) {
         getRooms();
-        toast.success("Sửa bệnh án thành công", { autoClose: 2000 });
+        toast.success("Sửa thành công", { autoClose: 2000 });
       }
     }
     catch (e) {
       console.log(e);
-      toast.error("Sửa bệnh án thất bại");
+      toast.error("Sửa thất bại");
     }
   };
 

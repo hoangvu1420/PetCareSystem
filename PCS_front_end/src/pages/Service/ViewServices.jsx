@@ -3,8 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import ServiceCard from './components/ServiceCard.jsx'
 import CreateNewServiceButton from "./components/CreateNewServiceButton.jsx";
 import { UserContext } from "../../App.jsx";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 
 export default function ViewServices() {
     const [data, updateData] = useState([]);
@@ -51,8 +50,6 @@ export default function ViewServices() {
                     <CreateNewServiceButton getGroomingServices={getGroomingServices}/>
                 </li>
             </ul>
-
-            <ToastContainer position="bottom-right"/>
         </div>
         
     );
