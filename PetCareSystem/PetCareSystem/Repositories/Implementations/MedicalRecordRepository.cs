@@ -7,19 +7,21 @@ namespace PetCareSystem.Repositories.Implementations;
 public class MedicalRecordRepository(ApplicationDbContext dbContext)
 	: Repository<MedicalRecord>(dbContext), IMedicalRecordRepository
 {
+	private readonly ApplicationDbContext _dbContext1 = dbContext;
+
 	public new async Task CreateAsync(MedicalRecord medicalRecord)
 	{
 		medicalRecord.Date = DateTime.Now;
 		medicalRecord.CreatedAt = medicalRecord.Date;
 		medicalRecord.UpdatedAt = medicalRecord.Date;
 
-		await dbContext.MedicalRecords.AddAsync(medicalRecord);
-		await dbContext.SaveChangesAsync();
+		await _dbContext1.MedicalRecords.AddAsync(medicalRecord);
+		await _dbContext1.SaveChangesAsync();
 	}
 
 	public async Task<MedicalRecord?> UpdateAsync(MedicalRecord medicalRecord)
 	{
-		var medicalRecordToUpdate = await dbContext.MedicalRecords.FindAsync(medicalRecord.Id);
+		var medicalRecordToUpdate = await _dbContext1.MedicalRecords.FindAsync(medicalRecord.Id);
 		if (medicalRecordToUpdate == null)
 			return medicalRecordToUpdate;
 
@@ -31,7 +33,7 @@ public class MedicalRecordRepository(ApplicationDbContext dbContext)
 		medicalRecordToUpdate.Notes = medicalRecord.Notes;
 		medicalRecordToUpdate.UpdatedAt = DateTime.Now;
 
-		await dbContext.SaveChangesAsync();
+		await _dbContext1.SaveChangesAsync();
 
 		return medicalRecordToUpdate;
 	}
