@@ -6,7 +6,8 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Input
+  Input,
+  Textarea
 } from "@material-tailwind/react";
 import { UserContext } from "../../App";
 import { toast } from "react-toastify";
@@ -41,16 +42,6 @@ export default function AddRoomDialog({ open, handleOpen, petId, getRooms }) {
     catch (e) {
       console.log(e)
     }
-    // axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-    // axios.post(api_url + '/api/rooms', roomData)
-    //   .then((res) => {
-    //     console.log(res);
-    //     if (res.data.isSucceed === true) {
-    //       getRooms();
-    //       toast.success("Thêm bệnh án thành công", { autoClose: 2000 });
-    //     }
-    //   })
-    //   .catch((e) => console.log(e));
   };
 
   return (
@@ -62,11 +53,11 @@ export default function AddRoomDialog({ open, handleOpen, petId, getRooms }) {
       <Card className="mx-auto w-full max-w-[24rem]">
         <CardBody className="flex flex-col gap-4">
           <Typography variant="h4" color="blue-gray">
-            Thêm Bệnh Án
+            Thêm phòng
           </Typography>
-          <Input name="name" value={roomData.name} onChange={handleChange} label="Tên phòng" size="md" />
-          <Input name="price" value={roomData.price} type="number" onChange={handleChange} label="Giá" size="md" />
-          <Input name="description" value={roomData.description} onChange={handleChange} label="Mô tả" size="md" />
+          <Input required name="name" value={roomData.name} onChange={handleChange} label="Tên phòng" size="md" />
+          <Input required name="price" value={roomData.price} type="number" onChange={handleChange} label="Giá" size="md" />
+          <Textarea required name="description" value={roomData.description} onChange={handleChange} label="Mô tả" size="md" />
         </CardBody>
         <CardFooter className="pt-0">
           <Button variant="text" color="gray" onClick={handleOpen}>

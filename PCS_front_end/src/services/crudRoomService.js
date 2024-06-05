@@ -15,4 +15,14 @@ const addRoom = (token, room_data) => {
     return axios.post(`${baseUrl}/api/rooms`, room_data)
 }
 
-export default { getRooms, addRoom }
+const deleteRoom = (token, room_id) => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    return axios.delete(`${baseUrl}/api/rooms/${room_id}`)
+}
+
+const editRoom = (token, room_id, room_data) => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    return axios.put(`${baseUrl}/api/rooms/${room_id}`, room_data)
+}
+
+export default { getRooms, addRoom, deleteRoom, editRoom }

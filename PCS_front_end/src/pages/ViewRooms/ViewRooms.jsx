@@ -2,9 +2,8 @@ import { Card, Typography, Button } from "@material-tailwind/react";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
-import axios from "axios";
 import AddRoomDialog from "./AddRoomDialog";
-import EditMedicalRecordDialog from "./EditMedicalRecordDialog";
+import EditRoomDialog from "./EditRoomDialog";
 import { toast } from "react-toastify";
 import crudRoomService from "../../services/crudRoomService";
 
@@ -12,50 +11,38 @@ const TABLE_HEAD = ["Phòng", "Giá (VND)", "Lượt book", "Mô tả", ""];
 
 export default function ViewRooms() {
     const { user_data } = useContext(UserContext);
-    const [med_data, setMedData] = useState([]);
+    const [room_data, setRoomData] = useState([]);
     const [openAdd, setOpenAdd] = useState(false);
     const [openEdit, setOpenEdit] = useState(false);
     const [currentRecord, setCurrentRecord] = useState(null);
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
 
     const handleOpenAdd = () => setOpenAdd(!openAdd);
     const handleOpenEdit = (record) => {
         setCurrentRecord(record);
         setOpenEdit(!openEdit);
     };
-    const handleDelete = (record) => {
-        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.delete(api_url + '/api/rooms/' + record.id)
-        .then(
-            (res) => {
-                console.log(res);
-                if (res.data.isSucceed) {
-                    toast.success("Xoá thành công", {autoClose: 2000});
-                    getRooms();
-                }
+    const handleDelete = async (record) => {
+        try {
+            const res = await crudRoomService.deleteRoom(JSON.parse(user_data).token, record.id)
+            console.log(res)
+            if (res.data.isSucceed) {
+                toast.success("Xoá thành công", {autoClose: 2000});
+                getRooms();
             }
-        )
-        .catch(
-            (error) => {
-                console.log(error);
-            }
-        )
+        }
+        catch (e) {
+            console.log(e)
+        }
     };
 
     const getRooms = async () => {
         try {
             const res = await crudRoomService.getRooms(JSON.parse(user_data).token)
-            setMedData(res.data.data)
+            setRoomData(res.data.data)
         }
         catch (e) {
             console.log(e)
         }
-        // axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        // axios.get(api_url + '/api/rooms')
-        // .then((res) => {
-        //     setMedData(res.data.data);
-        // })
-        // .catch((err) => console.log(err));
     };
 
     useEffect(() => {
@@ -86,7 +73,7 @@ export default function ViewRooms() {
             </tr>
             </thead>
             <tbody>
-            {med_data.map((record, index) => (
+            {room_data.map((record, index) => (
                 <tr key={index} className="even:bg-blue-gray-50/50">
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.name}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.price}</Typography></td>
@@ -110,7 +97,7 @@ export default function ViewRooms() {
         />
 
         {currentRecord && (
-          <EditMedicalRecordDialog 
+          <EditRoomDialog 
             open={openEdit} 
             handleOpen={handleOpenEdit} 
             recordData={currentRecord} 
