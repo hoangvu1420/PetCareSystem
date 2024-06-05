@@ -10,6 +10,7 @@ import HomePage from './Homepage/HomePage';
 import ViewServices from './pages/Service/ViewServices';
 import Protected from './pages/Protected';
 import Auth from './pages/Auth';
+import ViewRooms from './pages/ViewRooms/ViewRooms';
 
 export const UserContext = createContext();
 
@@ -30,18 +31,20 @@ function App() {
     <UserContext.Provider value={{user_data, setUserData}}>
       <BrowserRouter>
         <Routes>
-            <Route path='/auth' element={<Auth/>}>
-              <Route path='login' element={<CustomerLogin/>}/>
-              <Route path='register' element={<CustomerRegister/>}/>
-            </Route>
+          <Route path='/auth' element={<Auth/>}>
+            <Route path='login' element={<CustomerLogin/>}/>
+            <Route path='register' element={<CustomerRegister/>}/>
+          </Route>
           <Route path='/' element={<Layout/>}>
             <Route index element={<HomePage/>}/>
             <Route path='protected' element={<Protected/>}>
               <Route path='services' element={<ViewServices/>}/>
               <Route path='pets' element={<CustomerViewAllPet/>}/>
               <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
+              <Route path='rooms' element={<ViewRooms/>}/>
             </Route>
           </Route>
+          <Route path='*' element={<>404 ERROR This page was not found</>}/>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

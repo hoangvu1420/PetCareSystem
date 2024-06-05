@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //
 
 import authService from "../services/authService";
+import { Button, Spinner } from "@material-tailwind/react";
 
 function CustomerLogin() {
     const navigate = useNavigate();
@@ -72,16 +73,20 @@ function CustomerLogin() {
                         <input onChange={handleChange} value={user_info.password} name="password" className="ml-2 focus:border-[#212121] border-transparent border-b duration-300 outline-none h-10 p-2 w-full" type="password" placeholder="Mật khẩu" required />
                     </div>
                     <div className="flex justify-center mb-4">
-                        <button type="submit" className="bg-[#212121] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl" disabled={loading}>
-                            {loading ? 'Đang đăng nhập...' : 'Đăng nhập'} {/* Change button text based on loading state */}
-                        </button>
+                        <Button fullWidth type="submit" disabled={loading}>
+                            <div className="flex justify-center items-center">
+                                {loading ? <Spinner className="h-4 w-4 mr-2"/> : null}
+                                {loading ? 'Đang đăng nhập' : 'Đăng nhập'}
+                            </div>
+                        </Button>
+                        
                     </div>
                 </form>
 
                 <div className="flex justify-center mb-3">
-                    <p className="mr-1">Chưa có tài khoản?</p>
-                    <Link to='/register' relative="path">
-                        <button className="text-[#35b8be] hover:underline">Đăng ký</button>
+                    <p className="mr-1 text-gray-700">Chưa có tài khoản?</p>
+                    <Link to='/auth/register' relative="path">
+                        <button className="hover:underline">Đăng ký</button>
                     </Link>
                 </div>
                 <div className="flex justify-center items-center mb-3">
@@ -90,8 +95,9 @@ function CustomerLogin() {
                     <hr className="w-1/3" />
                 </div>
                 <div className="flex justify-center">
-                    <p className="mr-1">Not a customer?</p>
-                    <button className="text-[#35b8be] hover:underline">Đến trang nhân viên</button>
+                    <Link to='/'>
+                        <button className="hover:underline">Về trang chủ</button>
+                    </Link>
                 </div>
             </div>
             {/* To let Toastify able to display a toast */}

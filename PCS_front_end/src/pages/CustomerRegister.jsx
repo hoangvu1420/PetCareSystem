@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
 import authService from "../services/authService";
+import { Button } from "@material-tailwind/react";
 
 function CustomerRegister() {
     const init_info = {
@@ -84,24 +85,27 @@ function CustomerRegister() {
                     </div>
                     
                     <div className="flex justify-center mb-4">
-                        <button type="submit" className="bg-[#212121] duration-300 hover:bg-[#35c9cf] w-full py-2 text-white rounded-xl">Đăng ký</button>
+                        <Button type="submit" fullWidth>
+                            Đăng ký
+                        </Button>
                     </div>
 
                 </form>
                 <div className="flex justify-center mb-3">
-                    <p className="mr-1">Đã có tài khoản?</p>
-                    <Link to='/login' relative='path'>
-                        <button className="text-[#35b8be] hover:underline">Đăng nhập</button>
+                    <p className="mr-1 text-gray-700">Đã có tài khoản?</p>
+                    <Link to='/auth/login' relative='path'>
+                        <button className="hover:underline">Đăng nhập</button>
                     </Link>
                 </div>
                 <div className="flex justify-center items-center mb-3">
                     <hr className="w-1/3"/>
-                    <p className="mx-2 text-gray-400">or</p>
+                    <p className="mx-2 text-gray-400">hoặc</p>
                     <hr className="w-1/3"/>
                 </div>
                 <div className="flex justify-center">
-                    <p className="mr-1">Not an employee?</p>
-                    <button className="text-[#35b8be] hover:underline">Đến trang nhân viên</button>
+                    <Link to='/'>
+                        <button className="hover:underline">Về trang chủ</button>
+                    </Link>
                 </div>
             </div>
             <ToastContainer position="bottom-right"/> 
