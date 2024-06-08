@@ -3,6 +3,7 @@ using PetCareSystem.DTOs.GrommingDtos;
 using PetCareSystem.DTOs.GroomingServiceBookingDtos;
 using PetCareSystem.DTOs.MedicalReportDtos;
 using PetCareSystem.DTOs.PetDtos;
+using PetCareSystem.DTOs.RoomBookingDtos;
 using PetCareSystem.DTOs.RoomDtos;
 using PetCareSystem.Models;
 using PetCareSystem.StaticDetails;
@@ -257,6 +258,52 @@ public static class DtoParser
 			Id = updateGroomingServiceBookingDto.Id,
 			Date = updateGroomingServiceBookingDto.BookingDate,
 			Notes = updateGroomingServiceBookingDto.Notes
+		};
+	}
+
+	#endregion
+
+	#region Room booking DTO parser
+
+	public static RoomBookingDto ToRoomBookingDto(this PetRoom petRoom, string petName, string roomName)
+	{
+		return new RoomBookingDto
+		{
+			Id = petRoom.Id,
+			PetId = petRoom.PetId,
+			PetName = petName,
+			RoomId = petRoom.RoomId,
+			RoomName = roomName,
+			CheckIn = petRoom.CheckIn,
+			CheckOut = petRoom.CheckOut,
+			TotalDays = (petRoom.CheckOut - petRoom.CheckIn).Days,
+			TotalPrice = petRoom.TotalPrice,
+			Notes = petRoom.Notes
+		};
+	}
+
+	public static PetRoom ToPetRoom(this CreateRoomBookingDto createRoomBookingDto, decimal totalPrice)
+	{
+		return new PetRoom
+		{
+			PetId = createRoomBookingDto.PetId,
+			RoomId = createRoomBookingDto.RoomId,
+			CheckIn = createRoomBookingDto.CheckIn,
+			CheckOut = createRoomBookingDto.CheckOut,
+			TotalPrice = totalPrice,
+			Notes = createRoomBookingDto.Notes
+		};
+	}
+
+	public static PetRoom ToPetRoom(this UpdateRoomBookingDto updateRoomBookingDto, decimal price)
+	{
+		return new PetRoom
+		{
+			Id = updateRoomBookingDto.Id,
+			CheckIn = updateRoomBookingDto.CheckIn,
+			CheckOut = updateRoomBookingDto.CheckOut,
+			TotalPrice = price * (updateRoomBookingDto.CheckOut - updateRoomBookingDto.CheckIn).Days,
+			Notes = updateRoomBookingDto.Notes
 		};
 	}
 

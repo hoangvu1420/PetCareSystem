@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetCareSystem.CustomFilters;
 using PetCareSystem.DTOs;
-using PetCareSystem.DTOs.GroomingServiceBookingDtos;
+using PetCareSystem.DTOs.RoomBookingDtos;
 using PetCareSystem.Models;
-using PetCareSystem.Repositories.Contracts;
 using PetCareSystem.Services.Contracts;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/grooming-service-bookings")]
+[Route("api/room-bookings")]
 [ApiController]
-public class GroomingServiceBookingController(IGroomingServiceBookingService groomingServiceBooking) : ControllerBase
+public class RoomBookingController(IRoomBookingService roomBookingService) : ControllerBase
 {
 	private ApiResponse _response = new();
 
@@ -28,14 +26,14 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 		{
 			if (!string.IsNullOrEmpty(userId))
 			{
-				_response = await groomingServiceBooking.GetGroomingServiceBookingsByUserIdAsync(userId);
+				_response = await roomBookingService.GetRoomBookingsByUserIdAsync(userId);
 				if (!_response.IsSucceed)
 					return NotFound(_response);
 
 				return Ok(_response);
 			}
 
-			_response = await groomingServiceBooking.GetGroomingServiceBookingsAsync();
+			_response = await roomBookingService.GetRoomBookingsAsync();
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -49,7 +47,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 		}
 	}
 
-	[HttpGet("{bookingId:int}", Name = "GetGroomingServiceBookingById")]
+	[HttpGet("{bookingId:int}", Name = "GetRoomBookingById")]
 	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -60,7 +58,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	{
 		try
 		{
-			_response = await groomingServiceBooking.GetGroomingServiceBookingByIdAsync(bookingId);
+			_response = await roomBookingService.GetRoomBookingByIdAsync(bookingId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
@@ -81,7 +79,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> CreateBooking(CreateGroomingServiceBookingDto groomingServiceBookingDto)
+	public async Task<ActionResult<ApiResponse>> CreateBooking([FromBody] CreateRoomBookingDto bookingDto)
 	{
 		try
 		{
@@ -97,12 +95,13 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 				return BadRequest(_response);
 			}
 
-			_response = await groomingServiceBooking.CreateGroomingServiceBookingAsync(groomingServiceBookingDto);
+			_response = await roomBookingService.CreateRoomBookingAsync(bookingDto);
 			if (!_response.IsSucceed)
 				return BadRequest(_response);
-			var createdBookingId = (_response.Data as GroomingServiceBookingDto)!.Id;
 
-			return CreatedAtRoute("GetGroomingServiceBookingById", new { bookingId = createdBookingId }, _response);
+			var createdBookingId = (_response.Data as RoomBookingDto)!.Id;
+
+			return CreatedAtRoute("GetRoomBookingById", new { bookingId = createdBookingId }, _response);
 		}
 		catch (Exception e)
 		{
@@ -120,7 +119,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> UpdateBooking(int bookingId,
-		UpdateGroomingServiceBookingDto groomingServiceBookingDto)
+		[FromBody] UpdateRoomBookingDto updateBookingDto)
 	{
 		try
 		{
@@ -136,8 +135,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 				return BadRequest(_response);
 			}
 
-			_response = await groomingServiceBooking.UpdateGroomingServiceBookingAsync(bookingId,
-				groomingServiceBookingDto);
+			_response = await roomBookingService.UpdateRoomBookingAsync(bookingId, updateBookingDto);
 			if (!_response.IsSucceed)
 				return BadRequest(_response);
 
@@ -162,7 +160,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	{
 		try
 		{
-			_response = await groomingServiceBooking.DeleteGroomingServiceBookingAsync(bookingId);
+			_response = await roomBookingService.DeleteRoomBookingAsync(bookingId);
 			if (!_response.IsSucceed)
 				return NotFound(_response);
 
