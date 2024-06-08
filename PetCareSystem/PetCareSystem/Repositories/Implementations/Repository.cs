@@ -32,6 +32,7 @@ public class Repository<T> : IRepository<T> where T : class
 		}
 
 		query = includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(p => p.Trim())  // Add this line to trim whitespace
 			.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
 
 		return await query.ToListAsync();
@@ -58,6 +59,7 @@ public class Repository<T> : IRepository<T> where T : class
 		}
 
 		query = includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(p => p.Trim())  // Add this line to trim whitespace
 			.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
 
 		return await query.FirstOrDefaultAsync();
