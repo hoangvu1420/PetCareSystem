@@ -51,8 +51,8 @@ export default function ViewRooms() {
 
   return (
     <div className="">
-        <div className="w-full flex justify-between p-5">
-        <Typography className="" variant="h4" color="blue-gray">Phòng</Typography>
+        <div className="w-full flex justify-between pb-5">
+        <Typography className="" variant="h4" color="blue-gray">Danh sách phòng</Typography>
         <Button className="px-3" onClick={handleOpenAdd}>
             <div className="flex justify-center items-center">
                 <FaPlus className="mr-1"/>

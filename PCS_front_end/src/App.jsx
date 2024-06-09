@@ -11,6 +11,7 @@ import ViewServices from './pages/Service/ViewServices';
 import Protected from './pages/Protected';
 import Auth from './pages/Auth';
 import ViewRooms from './pages/ViewRooms/ViewRooms';
+import Rooms from './pages/Rooms';
 
 export const UserContext = createContext();
 
@@ -41,7 +42,7 @@ function App() {
               <Route path='services' element={<ViewServices/>}/>
               <Route path='pets' element={<CustomerViewAllPet/>}/>
               <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
-              <Route path='rooms' element={<ViewRooms/>}/>
+              <Route path='rooms' element={<Rooms/>}/>
             </Route>
           </Route>
           <Route path='*' element={<>404 ERROR This page was not found</>}/>
