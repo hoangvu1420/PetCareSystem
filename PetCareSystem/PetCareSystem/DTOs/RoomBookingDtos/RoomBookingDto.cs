@@ -1,20 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace PetCareSystem.DTOs.RoomBookingDtos;
 
-namespace PetCareSystem.Models;
-
-public class PetRoom : BaseEntity
+public class RoomBookingDto
 {
-	[ForeignKey("Pet")]
-	public int PetId { get; set; }
-	public Pet Pet { get; set; }
+	public int Id { get; set; }
 
-	[ForeignKey("Room")]
+	public int PetId { get; set; }
+	public string PetName { get; set; }
+
 	public int RoomId { get; set; }
-	public Room Room { get; set; }
+	public string RoomName { get; set; }
 
 	public DateTime CheckIn { get; set; }
 	public DateTime CheckOut { get; set; }
 
+	public int TotalDays { get; set; }
 	public decimal TotalPrice { get; set; }
 	public string? Notes { get; set; }
 }

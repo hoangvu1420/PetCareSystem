@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetCareSystem.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52d887f99503ae4e13ff366f0fd0761656cc207d")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de811c1125369d56370ea40f8ef3e09da04d21cd")]
+>>>>>>> back-end
 [assembly: System.Reflection.AssemblyProductAttribute("PetCareSystem.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetCareSystem.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
