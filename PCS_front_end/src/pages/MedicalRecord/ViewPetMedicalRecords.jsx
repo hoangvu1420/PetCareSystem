@@ -7,6 +7,7 @@ import axios from "axios";
 import AddMedicalRecordDialog from "./AddMedicalRecordDialog";
 import EditMedicalRecordDialog from "./EditMedicalRecordDialog";
 import { toast } from "react-toastify";
+import utils from "../../utils/utils";
 
 const TABLE_HEAD = ["Chẩn đoán", "Bác sĩ", "Thuốc", "Chế độ ăn", "Ngày", "Hẹn khám lại", "Ghi chú", ""];
 
@@ -81,8 +82,8 @@ export default function ViewPetMedicalRecords() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.doctor}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.medication}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.diet}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.date)).toLocaleDateString()}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{(new Date(record.nextAppointment)).toLocaleDateString()}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{utils.convertDate(record.date)}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{utils.convertDate(record.nextAppointment)}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.notes}</Typography></td>
                 <td className="p-4 sticky right-0">
                     <Button className="px-3 mr-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
