@@ -42,8 +42,7 @@ export default function NavbarDefault() {
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium"
-                >
+                    className="flex items-center gap-x-2 p-1 font-medium">
                     <MdPets className='h-5 w-5'/>
 
                     <Link to="/protected/pets">
@@ -54,8 +53,7 @@ export default function NavbarDefault() {
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium"
-                >
+                    className="flex items-center gap-x-2 p-1 font-medium">
                     <MdRoomService className='h-5 w-5'/>
 
                     <Link to="/protected/services">
@@ -66,8 +64,7 @@ export default function NavbarDefault() {
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium"
-                >
+                    className="flex items-center gap-x-2 p-1 font-medium">
                     <MdRoom className='h-5 w-5'/>
                     <Link to='/protected/rooms'>
                         Rooms
@@ -77,8 +74,7 @@ export default function NavbarDefault() {
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium"
-                >
+                    className="flex items-center gap-x-2 p-1 font-medium">
                     <MdPhone className='h-5 w-5'/>
                     <Link to='/'>
                         Contact
@@ -133,8 +129,7 @@ export default function NavbarDefault() {
                         variant="text"
                         className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                         ripple={false}
-                        onClick={() => setOpenNav(!openNav)}
-                    >
+                        onClick={() => setOpenNav(!openNav)}>
                         {openNav ? (
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -142,13 +137,11 @@ export default function NavbarDefault() {
                                 className="h-6 w-6"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                strokeWidth={2}
-                            >
+                                strokeWidth={2}>
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
+                                    d="M6 18L18 6M6 6l12 12"/>
                             </svg>
                         ) : (
                             <svg
@@ -156,13 +149,11 @@ export default function NavbarDefault() {
                                 className="h-6 w-6"
                                 fill="none"
                                 stroke="currentColor"
-                                strokeWidth={2}
-                            >
+                                strokeWidth={2}>
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
+                                    d="M4 6h16M4 12h16M4 18h16"/>
                             </svg>
                         )}
                     </IconButton>

@@ -14,7 +14,7 @@ public class PetRoom : BaseEntity
 
 	public DateTime CheckIn { get; set; }
 	public DateTime CheckOut { get; set; }
-	public bool IsIn { get; set; }
+
 	public decimal TotalPrice { get; set; }
 	public string? Notes { get; set; }
 }

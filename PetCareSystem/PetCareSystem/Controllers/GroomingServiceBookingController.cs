@@ -49,7 +49,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 		}
 	}
 
-	[HttpGet("{bookingId:int}", Name = "GetBookingById")]
+	[HttpGet("{bookingId:int}", Name = "GetGroomingServiceBookingById")]
 	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -81,7 +81,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-	public async Task<ActionResult<ApiResponse>> CreateBooking(CreateGroomingServiceBookingDto groomingServiceBookingDTO)
+	public async Task<ActionResult<ApiResponse>> CreateBooking(CreateGroomingServiceBookingDto groomingServiceBookingDto)
 	{
 		try
 		{
@@ -97,12 +97,12 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 				return BadRequest(_response);
 			}
 
-			_response = await groomingServiceBooking.CreateGroomingServiceBookingAsync(groomingServiceBookingDTO);
+			_response = await groomingServiceBooking.CreateGroomingServiceBookingAsync(groomingServiceBookingDto);
 			if (!_response.IsSucceed)
 				return BadRequest(_response);
 			var createdBookingId = (_response.Data as GroomingServiceBookingDto)!.Id;
 
-			return CreatedAtRoute("GetBookingById", new { bookingId = createdBookingId }, _response);
+			return CreatedAtRoute("GetGroomingServiceBookingById", new { bookingId = createdBookingId }, _response);
 		}
 		catch (Exception e)
 		{
@@ -120,7 +120,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 	[ProducesResponseType(StatusCodes.Status403Forbidden)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	public async Task<ActionResult<ApiResponse>> UpdateBooking(int bookingId,
-		UpdateGroomingServiceBookingDto groomingServiceBookingDTO)
+		UpdateGroomingServiceBookingDto groomingServiceBookingDto)
 	{
 		try
 		{
@@ -137,7 +137,7 @@ public class GroomingServiceBookingController(IGroomingServiceBookingService gro
 			}
 
 			_response = await groomingServiceBooking.UpdateGroomingServiceBookingAsync(bookingId,
-				groomingServiceBookingDTO);
+				groomingServiceBookingDto);
 			if (!_response.IsSucceed)
 				return BadRequest(_response);
 

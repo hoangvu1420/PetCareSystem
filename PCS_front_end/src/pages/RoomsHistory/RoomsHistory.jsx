@@ -74,7 +74,10 @@ export default function RoomsHistory() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{utils.formatPrice(record.totalPrice)} VND</Typography></td>
                 <td className="sticky right-0">
                     <Button className="px-3 mr-2" onClick={() => handleOpenEdit(record)}><FaEye/></Button>
-                    <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
+                    {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
+                        <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
+                        : null
+                    }
                 </td>
                 </tr>
             ))}

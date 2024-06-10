@@ -421,9 +421,6 @@ namespace PetCareSystem.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsIn")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
@@ -489,6 +486,9 @@ namespace PetCareSystem.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsIn")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
