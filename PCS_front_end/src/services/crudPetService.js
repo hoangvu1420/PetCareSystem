@@ -2,11 +2,16 @@
 make CRUD Pet request to API endpoint */
 
 import axios from "axios"
+import { jwtDecode } from "jwt-decode";
 
 const baseUrl = 'https://petcaresystem20240514113535.azurewebsites.net'
 
 const getOwnedPet = (token, user_id) => {
+    const decoded = jwtDecode(token)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    if (decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"].includes("Admin")) {
+        return axios.get(`${baseUrl}/api/pets`)
+    }
     return axios.get(`${baseUrl}/api/pets?userId=${user_id}`)
 }
 
