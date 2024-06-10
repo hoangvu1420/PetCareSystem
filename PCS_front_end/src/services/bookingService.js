@@ -10,14 +10,14 @@ const getBookings = (token) => {
     return axios.get(`${baseUrl}/api/room-bookings`)
 }
 
-const addRoom = (token, room_data) => {
+const createBooking = (token, booking_data) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return axios.post(`${baseUrl}/api/rooms`, room_data)
+    return axios.post(`${baseUrl}/api/room-bookings`, booking_data)
 }
 
-const deleteRoom = (token, room_id) => {
+const deleteBooking = (token, booking_id) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return axios.delete(`${baseUrl}/api/rooms/${room_id}`)
+    return axios.delete(`${baseUrl}/api/room-bookings/${booking_id}`)
 }
 
 const editBooking = (token, booking_id, booking_data) => {
@@ -25,4 +25,4 @@ const editBooking = (token, booking_id, booking_data) => {
     return axios.put(`${baseUrl}/api/room-bookings/${booking_id}`, booking_data)
 }
 
-export default { getBookings, addRoom, deleteRoom, editBooking }
+export default { getBookings, createBooking, deleteBooking, editBooking }

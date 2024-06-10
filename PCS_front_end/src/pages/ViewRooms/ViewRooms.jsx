@@ -6,6 +6,7 @@ import AddRoomDialog from "./AddRoomDialog";
 import EditRoomDialog from "./EditRoomDialog";
 import { toast } from "react-toastify";
 import crudRoomService from "../../services/crudRoomService";
+import BookRoomDialog from "./BookRoomDialog";
 
 const TABLE_HEAD = ["Phòng", "Giá (VND)", "Lượt book", "Mô tả", ""];
 
@@ -80,6 +81,7 @@ export default function ViewRooms() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.bookedCount}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.description}</Typography></td>
                 <td className="p-4 sticky right-0 flex flex-col md:flex-row gap-3">
+                    <BookRoomDialog roomId={record.id}/>
                     <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
                     <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
                 </td>

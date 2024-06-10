@@ -5,12 +5,13 @@ import { FaEdit, FaTrash, FaPlus, FaEye } from "react-icons/fa";
 import EditBookingDialog from "./EditBookingDialog";
 import { toast } from "react-toastify";
 import bookingService from "../../services/bookingService";
+import utils from "../../utils/utils";
 
 const TABLE_HEAD = ["Thú cưng", "Phòng", "Đã ở", "Thành tiền", ""];
 
 export default function RoomsHistory() {
     const { user_data } = useContext(UserContext);
-    const [room_data, setBookingData] = useState([]);
+    const [booking_data, setBookingData] = useState([]);
     const [openEdit, setOpenEdit] = useState(false);
     const [currentRecord, setCurrentRecord] = useState(null);
 
@@ -18,13 +19,14 @@ export default function RoomsHistory() {
         setCurrentRecord(record);
         setOpenEdit(!openEdit);
     };
+
     const handleDelete = async (record) => {
         try {
-            const res = await crudRoomService.deleteRoom(JSON.parse(user_data).token, record.id)
+            const res = await bookingService.deleteBooking(JSON.parse(user_data).token, record.id)
             console.log(res)
             if (res.data.isSucceed) {
                 toast.success("Xoá thành công", {autoClose: 2000});
-                getRooms();
+                await getRooms();
             }
         }
         catch (e) {
@@ -46,20 +48,6 @@ export default function RoomsHistory() {
         getRooms();
     }, []);
 
-    function convertDate(d) {
-        return (new Date(d)).toLocaleDateString('en-GB')
-    }
-    
-    function formatPrice(price) {
-        // Convert the price to a string
-        const priceString = price.toString();
-    
-        // Use a regular expression to add commas
-        const formattedPrice = priceString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    
-        return formattedPrice;
-    }
-
   return (
     <div className="overflow-">
         <div className="w-full flex justify-between pb-5">
@@ -78,12 +66,12 @@ export default function RoomsHistory() {
             </tr>
             </thead>
             <tbody>
-            {room_data.map((record, index) => (
+            {booking_data.map((record, index) => (
                 <tr key={index} className="even:bg-blue-gray-50/50">
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.petName}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.roomName}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.totalDays} ngày</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{formatPrice(record.totalPrice)} VND</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{utils.formatPrice(record.totalPrice)} VND</Typography></td>
                 <td className="sticky right-0">
                     <Button className="px-3 mr-2" onClick={() => handleOpenEdit(record)}><FaEye/></Button>
                     <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
