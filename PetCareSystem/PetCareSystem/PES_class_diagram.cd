@@ -66,14 +66,14 @@
   <Class Name="PetCareSystem.Models.PetRoom">
     <Position X="31" Y="9.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAgAAACAAAADAAAABIBAAAAAQAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAACAAAADAAAABIBAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\PetRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PetCareSystem.Models.Room">
     <Position X="28.75" Y="5.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAQAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Models\Room.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -164,7 +164,7 @@
   <Class Name="PetCareSystem.Utilities.DtoParser">
     <Position X="21.75" Y="21.5" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAIAAAAAAAAAAgAAQQAAQgAggAAABAAACEAgA=</HashCode>
+      <HashCode>AACAAAQAIAAAAAAAAAAgAAQQAQQgAggAAABAAACEAgA=</HashCode>
       <FileName>Utilities\DtoParser.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -412,6 +412,50 @@
       <FileName>DTOs\GroomingServiceBookingDtos\UpdateGroomingServiceBookingDto.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PetCareSystem.DTOs.RoomBookingDtos.CreateRoomBookingDto">
+    <Position X="1.5" Y="44.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAACAAAABAAAAAIBAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\RoomBookingDtos\CreateRoomBookingDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.RoomBookingDtos.RoomBookingDto">
+    <Position X="4.75" Y="44.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAiIAACAAAABAAAAAIBAAAQAAAAQAAAAAAAABAAAAA=</HashCode>
+      <FileName>DTOs\RoomBookingDtos\RoomBookingDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.DTOs.RoomBookingDtos.UpdateRoomBookingDto">
+    <Position X="7.75" Y="44.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\RoomBookingDtos\UpdateRoomBookingDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Controllers.RoomBookingController">
+    <Position X="11" Y="8.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAACAAAAAAAAAAAAAQAAAAIAAAAAQIAAA=</HashCode>
+      <FileName>Controllers\RoomBookingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PetCareSystem.Services.Implementations.RoomBookingService">
+    <Position X="52.75" Y="10.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAABAEAEAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Services\Implementations\RoomBookingService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PetCareSystem.Repositories.Implementations.PetRoomRepository">
+    <Position X="49.25" Y="20.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Implementations\PetRoomRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Struct Name="PetCareSystem.Services.Implementations.Token">
     <Position X="33.25" Y="9.25" Width="2" />
     <TypeIdentifier>
@@ -507,7 +551,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="PetCareSystem.Repositories.Contracts.IRoomRepository">
-    <Position X="46.5" Y="16" Width="2.75" />
+    <Position X="46.5" Y="15.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\Contracts\IRoomRepository.cs</FileName>
@@ -518,6 +562,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Repositories\Contracts\IPetGroomingServiceRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Services.Contracts.IRoomBookingService">
+    <Position X="52.75" Y="7.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAABAEAEAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Services\Contracts\IRoomBookingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PetCareSystem.Repositories.Contracts.IPetRoomRepository">
+    <Position X="49.75" Y="16.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\Contracts\IPetRoomRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
