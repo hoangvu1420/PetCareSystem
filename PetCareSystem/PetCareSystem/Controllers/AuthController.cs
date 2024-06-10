@@ -5,17 +5,10 @@ using PetCareSystem.Services.Contracts;
 
 namespace PetCareSystem.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/auth")]
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController(IAuthService authService) : ControllerBase
 {
-	private readonly IAuthService _authService;
-
-	public AuthController(IAuthService authService)
-	{
-		_authService = authService;
-	}
-
 	[HttpPost]
 	[Route("register")]
 	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
@@ -31,12 +24,12 @@ public class AuthController : ControllerBase
 
 			return BadRequest(new AuthResponse
 			{
-				IsSucceed = false, 
+				IsSucceed = false,
 				ErrorMessages = errorMessages
 			});
 		}
 
-		var registerResult = await _authService.RegisterAsync(registerDto);
+		var registerResult = await authService.RegisterAsync(registerDto);
 
 		if (registerResult.IsSucceed)
 			return Ok(registerResult);
@@ -46,8 +39,8 @@ public class AuthController : ControllerBase
 
 	[HttpPost]
 	[Route("login")]
-	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
-	[ProducesResponseType(typeof(AuthResponse), StatusCodes.Status400BadRequest)]
+	[ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(LoginResponse), StatusCodes.Status400BadRequest)]
 	public async Task<IActionResult> Login([FromBody] LoginRequestDto loginDto)
 	{
 		if (!ModelState.IsValid)
@@ -57,19 +50,49 @@ public class AuthController : ControllerBase
 				.Select(e => e.ErrorMessage)
 				.ToList();
 
-			return BadRequest(new AuthResponse
+			return BadRequest(new LoginResponse
 			{
 				IsSucceed = false,
 				ErrorMessages = errorMessages
 			});
 		}
 
-		var loginResult = await _authService.LoginAsync(loginDto);
+		var loginResult = await authService.LoginAsync(loginDto);
 
 		if (loginResult.IsSucceed)
 			return Ok(loginResult);
 
 		return BadRequest(loginResult);
+	}
+
+	[HttpPost]
+	[Route("refresh-token")]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status400BadRequest)]
+	[ProducesResponseType(typeof(RefreshTokenResponse), StatusCodes.Status403Forbidden)]
+	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
+	public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestDto request)
+	{
+		if (!ModelState.IsValid)
+		{
+			var errorMessages = ModelState.Values
+				.SelectMany(v => v.Errors)
+				.Select(e => e.ErrorMessage)
+				.ToList();
+
+			return BadRequest(new RefreshTokenResponse
+			{
+				IsSucceed = false,
+				ErrorMessages = errorMessages
+			});
+		}
+
+		var refreshTokenResult = await authService.IssueRefreshTokenAsync(request);
+
+		if (refreshTokenResult.IsSucceed)
+			return Ok(refreshTokenResult);
+
+		return BadRequest(refreshTokenResult);
 	}
 
 	[HttpPost]
@@ -95,7 +118,7 @@ public class AuthController : ControllerBase
 			});
 		}
 
-		var addToRoleResult = await _authService.AddToRoleAsync(addToRoleDto);
+		var addToRoleResult = await authService.AddToRoleAsync(addToRoleDto);
 
 		if (addToRoleResult.IsSucceed)
 			return Ok(addToRoleResult);

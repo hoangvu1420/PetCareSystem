@@ -1,0 +1,40 @@
+name: Deploy ASP.NET Web API to Azure
+
+on:
+  push:
+    branches:
+      - deploy  # Trigger this workflow on pushes to the 'deploy' branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./PetCareSystem/PetCareSystem
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: ./PetCareSystem/PetCareSystem
+
+    - name: Publish
+      run: dotnet publish -c Release -o publish_output --no-build
+      working-directory: ./PetCareSystem/PetCareSystem
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'PetCareSystem20240514113535'
+        slot-name: production
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ./PetCareSystem/PetCareSystem/publish_output
+        

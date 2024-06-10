@@ -7,11 +7,14 @@ import {
     CardFooter,
     Typography,
     Input,
+    Select,
+    Option
 } from "@material-tailwind/react";
 import { IoIosAdd } from "react-icons/io";
-import axios from "axios";
 import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
+
+import crudPetService from "../../../services/crudPetService";
 
 export default function CreateNewPetButton(props) {
     const [open, setOpen] = useState(false);
@@ -19,15 +22,13 @@ export default function CreateNewPetButton(props) {
     const [pet_data, setPetData] = useState({
         "name": "",
         "age": "",
-        "gender": "",
         "hairColor": "",
+        "gender": "",
         "species": "",
         "breed": "",
         "imageUrl": "",
         "ownerId": JSON.parse(user_data).userInfo.id
     });
-
-    const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
 
     const handleOpen = () => setOpen((cur) => !cur);
 
@@ -38,18 +39,22 @@ export default function CreateNewPetButton(props) {
         })
     }
 
-    const onCreatingPet = () => {
+    const onCreatingPet = async () => {
         handleOpen();
-        axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        axios.post(api_url + '/api/pets', pet_data)
-            .then((res) => {
-                console.log(res);
-                if (res.data.isSucceed === true) {
-                    props.getPetByCurrentId();
-                    toast.success("Tạo thành công", { autoClose: 2000 });
-                }
-            })
-            .catch((e) => console.log(e));
+
+        try {
+            const res = await crudPetService.createPet(
+                JSON.parse(user_data).token,
+                pet_data
+            )
+            console.log(res);
+            if (res.data.isSucceed === true) {
+                props.getPetByCurrentId();
+                toast.success("Tạo thành công", { autoClose: 2000 });
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
 
@@ -75,7 +80,10 @@ export default function CreateNewPetButton(props) {
                         <Input name="name" value={pet_data.name} onChange={handleChange} label="Tên" size="md" />
                         <Input name="species" value={pet_data.species} onChange={handleChange} label="Loài" size="md" />
                         <Input name="age" value={pet_data.age} onChange={handleChange} label="Tuổi" type="number" size="md" />
-                        <Input name="gender" value={pet_data.gender} onChange={handleChange} label="Giới tính" size="md" />
+                        <Select onChange={(val) => setPetData({...pet_data, ["gender"]: val})} label="Giới tính" size="md">
+                            <Option value="Male" onChange={handleChange}>Male</Option>
+                            <Option value="Female" onChange={handleChange}>Female</Option>
+                        </Select>
                         <Input name="breed" value={pet_data.breed} onChange={handleChange} label="Giống" size="md" />
                         <Input name="hairColor" value={pet_data.hairColor} onChange={handleChange} label="Màu lông" size="md" />
                         <Input name="imageUrl" value={pet_data.imageUrl} onChange={handleChange} label="Link ảnh" type="url" size="md" />

@@ -2,7 +2,7 @@
 
 namespace PetCareSystem.Models;
 
-public class PetRoom
+public class PetRoom : BaseEntity
 {
 	[ForeignKey("Pet")]
 	public int PetId { get; set; }

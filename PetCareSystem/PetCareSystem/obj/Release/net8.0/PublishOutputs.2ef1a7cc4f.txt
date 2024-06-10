@@ -2,6 +2,8 @@ D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\Pe
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\appsettings.json
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\appsettings.Production.json
+D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Resources\cat_breeds.json
+D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Resources\dog_breeds.json
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\PetCareSystem.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\PetCareSystem.runtimeconfig.json
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\PetCareSystem.pdb
@@ -26,6 +28,7 @@ D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\Pe
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\OneDrive - Hanoi University of Science and Technology\Flavour\ITSS-Group19\PetCareSystem\PetCareSystem\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
