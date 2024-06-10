@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export default function ViewServices() {
     const [data, updateData] = useState([]);
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net'
-    const { user_data, setUserData } = useContext(UserContext);
+    const { user_data } = useContext(UserContext);
 
     const getGroomingServices = () => {
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
@@ -46,9 +46,11 @@ export default function ViewServices() {
                         />
                     </li>
                 ))}
+                {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
                 <li className="p-2">
                     <CreateNewServiceButton getGroomingServices={getGroomingServices}/>
                 </li>
+                : null}
             </ul>
         </div>
         
