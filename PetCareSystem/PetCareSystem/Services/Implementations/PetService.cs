@@ -20,7 +20,7 @@ public class PetService(IPetRepository petRepository, UserManager<AppUser> userM
 		if (!petList.Any())
 		{
 			response.IsSucceed = false;
-			response.ErrorMessages = ["No pets found"];
+			response.ErrorMessages = ["No pets found."];
 			return response;
 		}
 
