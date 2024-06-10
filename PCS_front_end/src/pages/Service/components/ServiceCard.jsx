@@ -12,6 +12,7 @@ import DeleteServiceButton from "./DeleteServiceButton";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../../App";
+import utils from "../../../utils/utils";
 
 export default function ServiceCard(props) {
     const navigate = useNavigate();
@@ -33,7 +34,7 @@ export default function ServiceCard(props) {
                     <div className="flex flex-col">
                         <div className="w-full"><span className="font-semibold">Mô tả:</span> {props.description}</div>
                         <div className="w-full flex">
-                            <div className="w-1/2"><span className="font-semibold">Giá:</span> {props.price}đ</div>
+                            <div className="w-1/2"><span className="font-semibold">Giá:</span> {utils.formatPrice(props.price)}đ</div>
                             <div className="w-1/2"><span className="font-semibold">Đã đặt:</span> {props.bookedCount}</div>
                         </div>
                     </div>
