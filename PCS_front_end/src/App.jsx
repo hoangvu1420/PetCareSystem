@@ -15,6 +15,8 @@ export const UserContext = createContext();
 
 function App() {
   const [user_data, _setUserData] = useState(localStorage.getItem("user_data"));
+  const user = JSON.parse(user_data);
+  const isAdmin = user?.userInfo.roles.includes('Admin');
   
   function setUserData(u) {
     if (u === null) {
