@@ -10,9 +10,12 @@ import BookServiceDialog from "./BookServiceDialog";
 import EditServiceDialog from "./EditServiceDialog";
 import DeleteServiceButton from "./DeleteServiceButton";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../App";
 
 export default function ServiceCard(props) {
     const navigate = useNavigate();
+    const { user_data } = useContext(UserContext);
     return (
         <Card className="mt-6 w-80">
             <CardHeader color="blue-gray" className="relative h-48">
@@ -41,6 +44,8 @@ export default function ServiceCard(props) {
                     id={props.id}
                     name={props.name}
                     getGroomingServices={props.getGroomingServices} />
+                {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
+                <>
                 <EditServiceDialog className="mr-2"
                     id={props.id} name={props.name}
                     price={props.price}
@@ -50,6 +55,8 @@ export default function ServiceCard(props) {
                 <DeleteServiceButton className="mr-2"
                     id={props.id}
                     getGroomingServices={props.getGroomingServices} />
+                </>
+                : null}
             </CardFooter>
         </Card>
     );

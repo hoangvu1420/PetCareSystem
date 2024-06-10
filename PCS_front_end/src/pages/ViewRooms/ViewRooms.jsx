@@ -54,12 +54,15 @@ export default function ViewRooms() {
     <div className="">
         <div className="w-full flex justify-between pb-5">
         <Typography className="" variant="h4" color="blue-gray">Danh sách phòng</Typography>
+        {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
         <Button className="px-3" onClick={handleOpenAdd}>
             <div className="flex justify-center items-center">
                 <FaPlus className="mr-1"/>
                 Thêm phòng
             </div>
         </Button>
+        : null
+        }
         </div>
     
         <Card className="h-full overflow-scroll">
@@ -82,8 +85,13 @@ export default function ViewRooms() {
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.description}</Typography></td>
                 <td className="p-4 sticky right-0 flex flex-col md:flex-row gap-3">
                     <BookRoomDialog roomId={record.id}/>
-                    <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
-                    <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button>
+                    {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
+                    <>
+                        <Button className="px-3" onClick={() => handleOpenEdit(record)}><FaEdit/></Button>
+                        <Button className="px-3" variant="outlined" onClick={() => handleDelete(record)}><FaTrash/></Button> 
+                    </>
+                    : null
+                    }
                 </td>
                 </tr>
             ))}

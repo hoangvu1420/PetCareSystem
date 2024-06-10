@@ -59,8 +59,11 @@ export default function EditBookingDialog({ open, handleOpen, recordData, getRoo
           <Textarea name="notes" value={roomData.notes} onChange={handleChange} label="Ghi chú" size="md" />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button variant="text" color="gray" onClick={handleOpen}>Huỷ</Button>
-          <Button variant="gradient" onClick={onSaveRoom}>Lưu</Button>
+          <Button variant="text" color="gray" onClick={handleOpen}>Đóng</Button>
+          {JSON.parse(user_data).userInfo.roles.includes("Admin") ?
+            <Button variant="gradient" onClick={onSaveRoom}>Lưu</Button> 
+            : null
+          }
         </CardFooter>
       </Card>
     </Dialog>
