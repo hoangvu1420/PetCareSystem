@@ -7,6 +7,7 @@ import EditRoomDialog from "./EditRoomDialog";
 import { toast } from "react-toastify";
 import crudRoomService from "../../services/crudRoomService";
 import BookRoomDialog from "./BookRoomDialog";
+import utils from "../../utils/utils";
 
 const TABLE_HEAD = ["Phòng", "Giá (VND)", "Lượt book", "Mô tả", ""];
 
@@ -58,7 +59,7 @@ export default function ViewRooms() {
         <Button className="px-3" onClick={handleOpenAdd}>
             <div className="flex justify-center items-center">
                 <FaPlus className="mr-1"/>
-                Thêm phòng
+                Thêm
             </div>
         </Button>
         : null
@@ -80,7 +81,7 @@ export default function ViewRooms() {
             {room_data.map((record, index) => (
                 <tr key={index} className="even:bg-blue-gray-50/50">
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.name}</Typography></td>
-                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.price}</Typography></td>
+                <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{utils.formatPrice(record.price)}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.bookedCount}</Typography></td>
                 <td className="p-4"><Typography variant="small" color="blue-gray" className="font-normal">{record.description}</Typography></td>
                 <td className="p-4 sticky right-0 flex flex-col md:flex-row gap-3">
