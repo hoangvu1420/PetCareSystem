@@ -77,7 +77,6 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 	}
 
 	[HttpPost]
-	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
@@ -121,7 +120,6 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 	}
 
 	[HttpDelete("{recordId:int}")]
-	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
@@ -146,7 +144,6 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 	}
 
 	[HttpPut("{recordId:int}")]
-	[Authorize(Roles = UserRoles.Admin)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
