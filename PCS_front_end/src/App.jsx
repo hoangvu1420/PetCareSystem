@@ -1,5 +1,5 @@
 import { useState, createContext } from 'react'
-import { Router, Routes, Route, Link, NavLink, BrowserRouter, Navigate } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import CustomerLogin from './pages/CustomerLogin';
 import CustomerRegister from './pages/CustomerRegister';
 import Layout from './pages/Layout';
@@ -16,9 +16,7 @@ export const UserContext = createContext();
 
 function App() {
   const [user_data, _setUserData] = useState(localStorage.getItem("user_data"));
-  const user = JSON.parse(user_data);
-  const isAdmin = user?.userInfo.roles.includes('Admin');
-  
+    
   function setUserData(u) {
     if (u === null) {
       localStorage.removeItem("user_data")
