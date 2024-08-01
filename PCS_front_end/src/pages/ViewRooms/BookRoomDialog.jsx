@@ -106,6 +106,7 @@ export default function BookRoomDialog(props) {
                         </Select>
                         <Input required name="checkIn" value={booking_data.checkIn} onChange={handleChange} label="Vào" type="datetime-local" size="md" />
                         <Input required name="checkOut" value={booking_data.checkOut} onChange={handleChange} label="Ra" type="datetime-local" size="md" />
+                        <Input readOnly name="payment" value="Thanh toán tại quầy" label="Thanh toán" type="text" size="md" />
                         <Textarea name="notes" value={booking_data.notes} onChange={handleChange} label="Ghi chú" size="md" />
                     </CardBody>
                     <CardFooter className="pt-0">

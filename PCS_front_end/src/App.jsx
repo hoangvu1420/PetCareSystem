@@ -10,6 +10,7 @@ import ViewServices from './pages/Service/ViewServices';
 import Protected from './pages/Protected';
 import Auth from './pages/Auth';
 import Rooms from './pages/Rooms';
+import Contact from './pages/Contact';
 
 export const UserContext = createContext();
 
@@ -43,6 +44,7 @@ function App() {
               <Route path='pets' element={<CustomerViewAllPet/>}/>
               <Route path='medical-records/:pet_id' element={<ViewPetMedicalRecords/>}/>
               <Route path='rooms' element={<Rooms/>}/>
+              <Route path='contact' element={<Contact/>}/>
             </Route>
           </Route>
           <Route path='*' element={<>404 ERROR This page was not found</>}/>

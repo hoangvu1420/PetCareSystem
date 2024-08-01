@@ -18,7 +18,7 @@ public class MedicalRecordController(IMedicalRecordService medicalRecordService)
 	private ApiResponse _response = new();
 
 	[HttpGet]
-	[ResourceAuthorize(typeof(MedicalRecord))] // Custom filter to authorize access to resources
+	[ResourceAuthorize(typeof(Pet))] // Custom filter to authorize access to resources
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]

@@ -4,6 +4,7 @@ import {UserContext} from "../App";
 import {useContext, useEffect} from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
+import BottomBar from "./BottomBar";
 
 function Layout() {
     const {user_data, setUserData} = useContext(UserContext);
@@ -16,11 +17,12 @@ function Layout() {
     }, []);
 
     return (
-        <div className={'overflow-hidden'}>
+        <div className='flex flex-col min-h-screen overflow-hidden'>
             <NavbarDefault/>
-            <main className={'sm:max-[540px] md:max-w-[768px] lg:max-w-[1348px] mx-auto pt-6 px-4 md:px-8  overflow-hidden'}>
+            <main className='flex-grow sm:max-[540px] md:max-w-[768px] lg:max-w-[1348px] mx-auto pt-6 px-4 md:px-8 mb-8 overflow-hidden'>
                 <Outlet/>
             </main>
+            <BottomBar/>
             <ToastContainer position="bottom-right"/>
         </div>
     );

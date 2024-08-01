@@ -10,19 +10,21 @@ import {
     Select,
     Option
 } from "@material-tailwind/react";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import axios from "axios";
-import { UserContext } from "../../../App";
 import { toast } from "react-toastify";
+import axios from "axios";
+import QRPaymentPopup from '../../QRPaymentPopup';
+import { UserContext } from "../../../App";
 
 export default function BookServiceDialog(props) {
     const [open, setOpen] = useState(false);
     const [pets, setPets] = useState([]);
-    const [booking_data, setBookingData] = useState({
-        "petId": "",
-        "groomingServiceId": props.id,
-        "bookingDate": "",
-        "notes": ""
+    const [paymentMethod, setPaymentMethod] = useState('Cost', 'Momo');
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [bookingData, setBookingData] = useState({
+        petId: "",
+        groomingServiceId: props.id,
+        bookingDate: "",
+        notes: ""
     });
 
     const api_url = 'https://petcaresystem20240514113535.azurewebsites.net';
@@ -42,22 +44,34 @@ export default function BookServiceDialog(props) {
             let date = new Date(value);
             date.setHours(12, 0, 0, 0);
             value = date.toISOString().split('T')[0]; // Only keep the date part
+
+            let now = new Date();
+            if (date.getTime() < now.getTime()) {
+                value = now.toISOString().split('T')[0]; // Set the date to today if it's in the past
+            }
         }
 
         setBookingData({
-            ...booking_data,
+            ...bookingData,
             [e.target.name]: value
         });
     };
 
     const onPlaced = () => {
-        handleOpen();
+        if (paymentMethod === 'Momo') {
+            setIsPopupOpen(true); 
+        } else {
+            placeBooking();
+        }
+    };
+
+    const placeBooking = () => {
+        setOpen(false);
 
         axios.defaults.headers.common['Authorization'] = "Bearer " + JSON.parse(user_data).token;
-        console.log(booking_data);
 
         // Convert bookingDate back to an ISO string with time set to 12:00 PM
-        let bookingDataCopy = { ...booking_data };
+        let bookingDataCopy = { ...bookingData };
         let date = new Date(bookingDataCopy.bookingDate);
         date.setHours(12, 0, 0, 0);
         bookingDataCopy.bookingDate = date.toISOString();
@@ -106,10 +120,11 @@ export default function BookServiceDialog(props) {
                             Đặt dịch vụ
                         </Typography>
                         <Select
+                            required
                             label="Chọn pet"
                             name="petId"
-                            value={booking_data.petId}
-                            onChange={(e) => setBookingData({ ...booking_data, petId: e })}
+                            value={bookingData.petId}
+                            onChange={(e) => setBookingData({ ...bookingData, petId: e })}
                         >
                             {pets.map((pet) => (
                                 <Option key={pet.id} value={pet.id.toString()}>
@@ -117,8 +132,18 @@ export default function BookServiceDialog(props) {
                                 </Option>
                             ))}
                         </Select>
-                        <Input required name="bookingDate" value={booking_data.bookingDate} onChange={handleChange} label="Ngày" type="date" size="md" />
-                        <Input className="w-1/2" name="notes" value={booking_data.notes} onChange={handleChange} label="Ghi chú" type="text" size="md" placeholder="Thêm ghi chú hoặc để trống" />
+                        <Input required name="bookingDate" value={bookingData.bookingDate} onChange={handleChange} label="Ngày" type="date" size="md" />
+                        <Select
+                            label="Phương thức thanh toán"
+                            name="paymentMethod"
+                            value={paymentMethod}
+                            required
+                            onChange={(e) => setPaymentMethod(e)}
+                            >
+                            <Option value="Cost">Tiền mặt</Option>
+                            <Option value="Momo">Momo</Option>
+                        </Select>
+                        <Input className="w-1/2" name="notes" value={bookingData.notes} onChange={handleChange} label="Ghi chú" type="text" size="md" placeholder="Thêm ghi chú hoặc để trống" />
                     </CardBody>
                     <CardFooter className="pt-0">
                         <Button variant="text" color="gray" onClick={handleOpen}>
@@ -130,6 +155,11 @@ export default function BookServiceDialog(props) {
                     </CardFooter>
                 </Card>
             </Dialog>
+            <QRPaymentPopup 
+                isOpen={isPopupOpen} 
+                onClose={() => setIsPopupOpen(false)} 
+                onPaymentSuccess={placeBooking} // Callback khi thanh toán thành công
+            />
         </>
     );
 }

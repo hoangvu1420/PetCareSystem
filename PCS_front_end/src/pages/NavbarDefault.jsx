@@ -15,6 +15,7 @@ import {
 } from "@material-tailwind/react";
 import {Link, useNavigate} from 'react-router-dom';
 import {BiLogOut, BiLogIn} from "react-icons/bi";
+import Logo from '../assets/PawMingle.png';
 
 
 export default function NavbarDefault() {
@@ -42,42 +43,42 @@ export default function NavbarDefault() {
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium">
+                    className="flex items-center gap-x-2 p-1 font-bold">
                     <MdPets className='h-5 w-5'/>
 
                     <Link to="/protected/pets">
-                        Pets
+                        Thú cưng
                     </Link>
                 </Typography>
                 <Typography
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium">
+                    className="flex items-center gap-x-2 p-1 font-bold">
                     <MdRoomService className='h-5 w-5'/>
 
                     <Link to="/protected/services">
-                        Service
+                        Dịch vụ
                     </Link>
                 </Typography>
                 <Typography
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium">
+                    className="flex items-center gap-x-2 p-1 font-bold">
                     <MdRoom className='h-5 w-5'/>
                     <Link to='/protected/rooms'>
-                        Rooms
+                        Đặt phòng
                     </Link>
                 </Typography>
                 <Typography
                     as="li"
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-x-2 p-1 font-medium">
+                    className="flex items-center gap-x-2 p-1 font-bold">
                     <MdPhone className='h-5 w-5'/>
-                    <Link to='/'>
-                        Contact
+                    <Link to='/protected/contact'>
+                        Liên hệ
                     </Link>
                 </Typography>
             </ul>
@@ -90,8 +91,8 @@ export default function NavbarDefault() {
             <Navbar className="w-screen max-w-none mx-auto px-4 py-2">
                 <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
                     <Link path='relative' to='/' className="flex items-center gap-2">
-                        <MdPets className='h-10 w-10'/>
-                        <h1 className={'text-lg'}>Pet Care System</h1>
+                        <img src={Logo} alt="Logo" className='h-12'/>
+                        {/* <h1 className={'text-lg font-bold'}>Paw Mingle</h1> */}
                     </Link>
                     <div className="hidden lg:block">{navList}</div>
                     <div className="flex items-center gap-x-1">
